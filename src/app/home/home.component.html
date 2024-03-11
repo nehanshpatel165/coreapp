@@ -1,0 +1,105 @@
+<c-container class="m-5">
+    <c-row>
+      <c-col xs="8">
+        <!-- <c-row>         -->
+        <c-card class="mb-3" style="height: 200px;">
+            <img [cCardImg] src="./assets/test.jpg"  style="height: 100%;width: 100%;object-fit: cover;">
+            <c-card-img-overlay>
+              <h2 cCardTitle class="text-primary-emphasis m-3">Hello User!</h2>
+              <p cCardText class="text-primary-emphasis m-3">
+                Welcome Home.The air quality is good you can go out today!
+              </p>
+            </c-card-img-overlay>
+          </c-card>
+        <!-- </c-row> -->
+        
+          <c-card class="mb-3">
+            <c-card-body>
+              <h5 cCardTitle>Card title</h5>
+              <p cCardText>
+                Some quick example text to build on the card title and make up the bulk of the card's content.
+              </p>
+              <button cButton color="light">Go somewhere</button>
+            </c-card-body>
+          </c-card>
+
+          <c-card>
+            <c-card-body>
+              <h5 cCardTitle>Card title</h5>
+              <app-weathercomp></app-weathercomp>
+              <button cButton color="light">Go somewhere</button>
+            </c-card-body>
+          </c-card>
+      </c-col>
+
+  <c-col xs="4"><c-card class="text-center mb-4 border-top border-primary" >
+  <c-card-header>My Devices</c-card-header>
+  <c-card-body>
+   <c-row>
+    <c-col>
+    <c-card class="mb-3 bg-gradient" [ngStyle]="{'max-width.px': 250}"  color="primary">
+      <c-row class="g-0">
+        <c-col [md]="4">
+          <img [cCardImg] src="./assets/lamp.png" class="m-2" style="height: 70px;width: 70px; object-fit:scale-down">
+        </c-col>
+        <c-card-body cCol [md]="8">
+          <h5 cCardTitle style="color:white; font-weight: bold;">Lamp</h5>
+          <div class="form-check form-switch d-flex justify-content-center">
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+            <label class="form-check-label" for="flexSwitchCheckDefault"></label>
+          </div> 
+        </c-card-body>
+      </c-row>
+    </c-card>
+  </c-col>
+
+  <c-col>
+    <c-card class="mb-3 bg-gradient" [ngStyle]="{'max-width.px': 250}"  color="primary">
+      <c-row class="g-0">
+        <c-col [md]="4">
+          <img [cCardImg] src="./assets/lamp.png" class="m-2" style="height: 70px;width: 70px; object-fit:scale-down">
+        </c-col>
+        <c-card-body cCol [md]="8">
+          <h5 cCardTitle style="color:white; font-weight: bold;">Lamp</h5>
+          <div class="form-check form-switch d-flex justify-content-center">
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+            <label class="form-check-label" for="flexSwitchCheckDefault"></label>
+          </div> 
+        </c-card-body>
+      </c-row>
+    </c-card>
+  </c-col>
+  </c-row>
+  
+<c-row>
+  <c-col>
+    <c-card class="mb-3 bg-gradient" [ngStyle]="{'max-width.px': 400}"  color="primary">
+      <c-row class="g-0">
+        <c-col [md]="4">
+          <img [cCardImg] src="./assets/fan.png" class="d-flex align-items-center" style="height: 90px;width: 80px; object-fit: scale-down;">
+        </c-col>
+        <c-card-body cCol [md]="8">
+          <h5 cCardTitle style="color:white; font-weight: bold;">Fan</h5>
+          <div class="form-check form-switch d-flex justify-content-center">
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+            <label class="form-check-label" for="flexSwitchCheckDefault"></label>
+          </div> 
+        </c-card-body>
+      </c-row>
+    </c-card>
+  </c-col>
+  </c-row>
+  </c-card-body>
+</c-card>
+<c-card class="text-center border-danger-subtle">
+  <c-card-header>Temperature Chart</c-card-header>
+  <c-card-body>
+    <div style="text-align:center">
+      <apx-chart [series]="series" [chart]="chart" [xaxis]="xaxis"></apx-chart>
+    </div>    
+  </c-card-body>
+</c-card>
+</c-col>
+    </c-row>
+<!----------------------------------------------------------------------------------------------->
+</c-container>
