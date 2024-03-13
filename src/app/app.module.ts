@@ -14,11 +14,17 @@ import { SidebarModule } from '@coreui/angular';
 import { NgScrollbarModule } from 'ngx-scrollbar';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { WeathercompComponent } from './weathercomp/weathercomp.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { SolarComponent } from './solar/solar.component';
+import { DropdownModule } from '@coreui/angular';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    WeathercompComponent
+    WeathercompComponent,
+    DashboardComponent,
+    SolarComponent
   ],
   imports: [
     BrowserModule,
@@ -32,6 +38,8 @@ import { WeathercompComponent } from './weathercomp/weathercomp.component';
     SidebarModule,
     NgScrollbarModule,
     NgApexchartsModule,
+    DropdownModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
