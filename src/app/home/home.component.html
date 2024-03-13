@@ -1,35 +1,53 @@
 <c-container class="m-5">
     <c-row>
       <c-col xs="8">
-        <!-- <c-row>         -->
+        <!-- <c-row> -->
         <c-card class="mb-3" style="height: 200px;">
-            <img [cCardImg] src="./assets/test.jpg"  style="height: 100%;width: 100%;object-fit: cover;">
+            <img [cCardImg] src="./assets/homebg.jpg"  style="height: 100%;width: 100%;object-fit: cover;">
             <c-card-img-overlay>
-              <h2 cCardTitle class="text-primary-emphasis m-3">Hello User!</h2>
-              <p cCardText class="text-primary-emphasis m-3">
+              <h2 cCardTitle class="text-white m-3">Hello User!</h2>
+              <p cCardText class="text-white m-3">
                 Welcome Home.The air quality is good you can go out today!
               </p>
             </c-card-img-overlay>
           </c-card>
         <!-- </c-row> -->
-        
+        <c-row>
+          <c-col>
+                        <app-weathercomp></app-weathercomp>
+          
+        </c-col>
+        <c-col>
           <c-card class="mb-3">
             <c-card-body>
-              <h5 cCardTitle>Card title</h5>
+              <h5 cCardTitle>Air Quality Index</h5>
               <p cCardText>
-                Some quick example text to build on the card title and make up the bulk of the card's content.
+                AQI
               </p>
               <button cButton color="light">Go somewhere</button>
             </c-card-body>
           </c-card>
-
+        </c-col>
+        </c-row>
+        <c-row>
+          <c-col>
+            <!--Insert Here-->
+            <c-card>
+              <c-card-body>
+                <h5 cCardTitle>Hall Temperature</h5>  
+                <button cButton color="light">Go somewhere</button>
+              </c-card-body>
+            </c-card>
+        </c-col>
+        <c-col>
           <c-card>
             <c-card-body>
-              <h5 cCardTitle>Card title</h5>
-             
+              <h5 cCardTitle>Solar Energy Generation</h5>
               <button cButton color="light">Go somewhere</button>
             </c-card-body>
           </c-card>
+        </c-col>
+        </c-row>
       </c-col>
 
   <c-col xs="4"><c-card class="text-center mb-4 border-top border-primary" >
@@ -103,4 +121,3 @@
     </c-row>
 <!----------------------------------------------------------------------------------------------->
 </c-container>
-<h1>this is feature branch</h1>
