@@ -19,6 +19,7 @@ import { SolarComponent } from './solar/solar.component';
 import { DropdownModule } from '@coreui/angular';
 import { HttpClientModule } from '@angular/common/http';
 import { AirqualityComponent } from './airquality/airquality.component';
+import { LoginComponent } from './login/login.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +27,8 @@ import { AirqualityComponent } from './airquality/airquality.component';
     WeathercompComponent,
     DashboardComponent,
     SolarComponent,
-    AirqualityComponent
+    AirqualityComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
