@@ -1,15 +1,18 @@
-<!-- <c-navbar colorScheme="dark" class="bg-dark">
+<c-navbar style="background-color: #000000">
     <c-container fluid>
-      <a cNavbarBrand>
-        <img src="./assets/img/brand/coreui-signet.svg" alt="" width="22" height="24" />
-        <span class="align-middle ms-2">CoreUI</span>
-      </a>
+      <div style="font-size: 30px;">
+        HELLO
+      </div>
     </c-container>
-  </c-navbar> -->
+  </c-navbar>
 
-<c-sidebar id="sidebar1" visible style="background-color: #e3f2fd;">
-    <c-sidebar-brand style="background-color: black ;">Sidebar Brand</c-sidebar-brand>
-    <c-sidebar-nav [navItems]="navItems" dropdownMode="close"></c-sidebar-nav> 
+
+<c-sidebar id="sidebar1" visible="true" style="padding-top: 8vh;
+background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(66,58,142,1) 100%, rgba(12,184,235,1) 100%, rgba(0,212,255,1) 100%);opacity:100%;">
+   <c-sidebar-nav [navItems]="navItems" dropdownMode="close"></c-sidebar-nav> 
   </c-sidebar>
-  
+
+  <div style="margin-left:15vw;">
+    <router-outlet></router-outlet>
+  </div>
   
