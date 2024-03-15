@@ -38,12 +38,12 @@ navItems: INavData[] = [
     children: [
       {
         name: 'Create Location',
-        url: '/location/create', // Adjust the URL as necessary
+        url: 'location-create', // Adjust the URL as necessary
         icon: 'icon-plus', // Adjust the icon as necessary
       },
       {
         name: 'View Location',
-        url: '/location/view', // Adjust the URL as necessary
+        url: 'location-view', // Adjust the URL as necessary
         icon: 'icon-eye', // Adjust the icon as necessary
       },
     ],

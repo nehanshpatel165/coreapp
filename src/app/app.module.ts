@@ -20,6 +20,12 @@ import { DropdownModule } from '@coreui/angular';
 import { HttpClientModule } from '@angular/common/http';
 import { AirqualityComponent } from './airquality/airquality.component';
 import { LoginComponent } from './login/login.component';
+import { LocationCreateComponent } from './location/location-create/location-create.component';
+import { Router, RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { LocationViewComponent } from './location/location-view/location-view.component';
+import { LocationEditComponent } from './location/location-edit/location-edit.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +34,10 @@ import { LoginComponent } from './login/login.component';
     DashboardComponent,
     SolarComponent,
     AirqualityComponent,
-    LoginComponent
+    LoginComponent,
+    LocationCreateComponent,
+    LocationViewComponent,
+    LocationEditComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,7 +52,10 @@ import { LoginComponent } from './login/login.component';
     NgScrollbarModule,
     NgApexchartsModule,
     DropdownModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
