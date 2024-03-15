@@ -48,6 +48,10 @@ navItems: INavData[] = [
        },
      ],
   },
+  {
+    name:'Logout',
+    url:'/login'
+  }
   // Add more navigation items as needed
  ];
 
