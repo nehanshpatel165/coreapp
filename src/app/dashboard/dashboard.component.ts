@@ -20,12 +20,12 @@ navItems: INavData[] = [
      children: [
        {
          name: 'Create Device',
-         url: '/device/create', // Adjust the URL as necessary
+         url: 'device-create', // Adjust the URL as necessary
          icon: 'icon-plus', // Adjust the icon as necessary
        },
        {
          name: 'Device List',
-         url: '/device/view', // Adjust the URL as necessary
+         url: 'device-list', // Adjust the URL as necessary
          icon: 'icon-eye', // Adjust the icon as necessary
        },
      ],

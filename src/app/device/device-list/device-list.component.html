@@ -1,0 +1,31 @@
+<c-card class="example-card">
+    <c-card-header>
+        <h5 cCardTitle class="m-2">Devices</h5>
+    </c-card-header>
+    <c-card-body>
+      <p cCardText class="m-2">
+        All of your Devices in your environment
+    </p>
+    <div class="container">
+        <div class="row m-4">
+            <table >
+                <tr class="text-center text-primary fs-6">
+                    <th>Device Name</th>
+                    <th>Data Source</th>
+                    <th>Type</th>
+                    <th>Location</th>
+                    <th>Actions</th>
+                </tr>
+                <tr class="text-center" *ngFor="let device of device_info_array">
+                <td><h3 >{{ device.device_name }}</h3></td>
+                <td><h3 >{{ device.data_source_id }}</h3></td>
+                <td><h3 >{{ device.type_of_device }}</h3></td>
+                <td><h3 >location</h3></td>
+                <td><img class="p-2" style="cursor:pointer" src="assets/locationassets/edit.svg" alt="edit" routerLink="devices/edit/{{device.id}}">
+                  <img class="p-2" style="cursor:pointer" src="assets/locationassets/delete.svg" alt="delete" (click)="deleteDevice(device.id)"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    </c-card-body>
+  </c-card>
