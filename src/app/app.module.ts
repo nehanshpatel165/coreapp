@@ -18,13 +18,15 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { SolarComponent } from './solar/solar.component';
 import { DropdownModule } from '@coreui/angular';
 import { HttpClientModule } from '@angular/common/http';
+import { AirqualityComponent } from './airquality/airquality.component';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     WeathercompComponent,
     DashboardComponent,
-    SolarComponent
+    SolarComponent,
+    AirqualityComponent
   ],
   imports: [
     BrowserModule,

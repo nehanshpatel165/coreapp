@@ -10,6 +10,7 @@ import {
   ApexTitleSubtitle,
   ApexNonAxisChartSeries
 } from "ng-apexcharts";
+import { PieController } from 'chart.js';
 
 export type ChartOptions = {
   series: ApexAxisChartSeries;
@@ -23,51 +24,29 @@ export type ChartOptions = {
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
- chartOptions: any;
- series: any;
- chart: any;
- xaxis: any;
+export class HomeComponent{
+  showgraph =false
 
- ngOnInit() {
-    this.chartOptions = {
-      chart: {
-        type: 'line',
-        height: 350,
-        toolbar: {
-          show: false
-        }
-      },
-      stroke: {
-        curve: 'smooth'
-      },
-      xaxis: {
-        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-      }
-    };
+  toggleGraph(){
+    this.showgraph=!this.showgraph
+  }
 
-    this.series = [{
-      name: "Data",
-      data: []
-    }];
 
-    this.chart = {
-      height: 350,
-      type: 'line',
-    };
+  series=[{
+    data: [23, 34, 12, 54, 32,]
+  }]
 
-    this.xaxis = {
-      categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-    };
+  chartDetails:ApexChart={
+    type:'line',
+    toolbar:{
+      show:true
+    },
+  }
 
-    // Simulate dynamic data
-    const dynamicData$ = interval(1000).pipe(
-      map(val => Math.floor(Math.random() * 100)) // Generate random numbers
-    );
+  xaxis={
+    categories:["Jan","Feb","Mar","Apr","May"]
+  }
 
-    dynamicData$.subscribe(data => {
-      this.series[0].data.push(data);
-    });
- }
+  
 }
 

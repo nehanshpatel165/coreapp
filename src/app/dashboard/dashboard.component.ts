@@ -8,12 +8,8 @@ import { INavData } from '@coreui/angular'; // Adjust the import path as necessa
 export class DashboardComponent {
 navItems: INavData[] = [
   {
-    name:'              '
-  }
-  ,
-  {
     name: 'Home',
-    url: '/home',
+    url: 'home',
     icon: 'icon-new-item', // Adjust the icon as necessary
  },
  {
