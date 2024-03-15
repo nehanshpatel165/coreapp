@@ -6,6 +6,9 @@ import { LoginComponent } from './login/login.component';
 import { LocationCreateComponent } from './location/location-create/location-create.component';
 import { LocationViewComponent } from './location/location-view/location-view.component';
 import { LocationEditComponent } from './location/location-edit/location-edit.component';
+import { DeviceCreateComponent } from './device/device-create/device-create.component';
+import { DeviceListComponent } from './device/device-list/device-list.component';
+import { DeviceEditComponent } from './device/device-edit/device-edit.component';
 
 const routes: Routes = [
   // {path:'',component:DashboardComponent},
@@ -13,9 +16,9 @@ const routes: Routes = [
   {path:'login',component:LoginComponent}, 
   {path:'dashboard',component:DashboardComponent, children:[
     {path:'home',component:HomeComponent},
-    // {path:'device-create',component:DeviceCreateComponent},
-    // {path:'device-list',component:DeviceListComponent},
-    // {path: 'device-list/devices/edit/:id', component: DeviceEditComponent },
+    {path:'device-create',component:DeviceCreateComponent},
+    {path:'device-list',component:DeviceListComponent},
+    {path: 'device-list/devices/edit/:id', component: DeviceEditComponent },
     {path:'location-create',component:LocationCreateComponent},
     {path:'location-view',component:LocationViewComponent},
     {path: 'location-view/locations/edit/:id', component: LocationEditComponent },

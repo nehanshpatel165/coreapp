@@ -26,6 +26,9 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LocationViewComponent } from './location/location-view/location-view.component';
 import { LocationEditComponent } from './location/location-edit/location-edit.component';
+import { DeviceCreateComponent } from './device/device-create/device-create.component';
+import { DeviceListComponent } from './device/device-list/device-list.component';
+import { DeviceEditComponent } from './device/device-edit/device-edit.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,6 +41,9 @@ import { LocationEditComponent } from './location/location-edit/location-edit.co
     LocationCreateComponent,
     LocationViewComponent,
     LocationEditComponent,
+    DeviceCreateComponent,
+    DeviceListComponent,
+    DeviceEditComponent,
   ],
   imports: [
     BrowserModule,
