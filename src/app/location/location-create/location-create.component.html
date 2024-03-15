@@ -1,0 +1,151 @@
+<c-card class="example-card">
+    <c-card-header>
+        <h5 cCardTitle class="m-2">Create Location</h5>
+    </c-card-header>
+    <c-card-body>
+      <p cCardText>
+        Categorize the devices and distribute them into locations and floors.
+      </p>
+      <form (ngSubmit)="onSubmit(locationForm)" #locationForm="ngForm">
+        <div class="container">
+          <div class="row">
+            <div class="form-group m-2 col-4 col-md-6">
+              <label for="locationName">Location name:</label>
+              <div class="input-group">
+                <input
+                 type="text"
+                 class="form-control"
+                 name="locationName"
+                 ngModel
+                 required
+                />
+              </div>
+            </div>
+            <div class="form-group col-4 col-md-5 m-2">
+              <label for="level">Level:</label>
+              <div class="input-group Name">
+                <select
+                 type="text"
+                 name="level"
+                 class="form-control"
+                 ngModel
+                 required
+                >
+                 <option
+                    value=""
+                    disabled="disabled"
+                    selected="selected"
+                 >
+                    Select the level (floor)
+                 </option>
+                 <option value="0">Ground Floor </option>
+                 <option value="1">Floor 1</option>
+                 <option value="2">Floor 2</option>
+                 <option value="3">Floor 3</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        
+          <div class="row">
+            <div class="form-group m-2 col-12">
+                <label for="imageGroup">Select an Image:</label>
+                <div class="row">
+                 <div class="col-12 col-md-3" *ngFor="let image of images">
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="imageGroup" [value]="image.value" [(ngModel)]="selectedImage" required>
+                      <label class="form-check-label">
+                        <img class="m-2" [src]="image.src" alt="Image" style="width: 150px; height: 150px" />
+                      </label>
+                    </div>
+                 </div>
+                </div>
+               </div>
+          </div>
+          <div class="row">
+            <div class="form-group m-2 col-12">
+              <button type="submit" class="btn btn-primary" [disabled]="!locationForm.valid">Create Location</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </c-card-body>
+ </c-card>
+
+
+
+
+
+<!-- <c-card class="example-card">
+    <c-card-header>
+        <h5 cCardTitle class="m-2">Create Location</h5>
+    </c-card-header>
+    <c-card-body>
+      <p cCardText>
+        Categorize the devices and distribute them into locations and floors.
+      </p>
+      <form (ngSubmit)="onSubmit(locationForm)" #locationForm="ngForm">
+        <div class="container">
+          <div class="row">
+            <div class="form-group m-2 col">
+              <label for="locationName">Location name:</label>
+              <div class="input-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="locationName"
+                  ngModel
+                  required
+                />
+              </div>
+            </div>
+            <div class="form-group col m-2">
+              <label for="level">Level:</label>
+              <div class="input-group Name">
+                <select
+                  type="text"
+                  name="level"
+                  class="form-control"
+                  ngModel
+                  required
+                >
+                  <option
+                    value=""
+                    disabled="disabled"
+                    selected="selected"
+                  >
+                    Select the level (floor)
+                  </option>
+                  <option value="0">Ground Floor </option>
+                  <option value="1">Floor 1</option>
+                  <option value="2">Floor 2</option>
+                  <option value="3">Floor 3</option>
+                </select>
+              </div>
+            </div>
+          </div>
+    
+          <div class="row">
+            <div class="form-group m-2 col">
+                <label for="imageGroup">Select an Image:</label>
+                <div class="row">
+                  <div class="col-md-3" *ngFor="let image of images">
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="imageGroup" [value]="image.value" [(ngModel)]="selectedImage" required>
+                      <label class="form-check-label">
+                        <img class="m-2" [src]="image.src" alt="Image" style="width: 150px; height: 150px" />
+                      </label>
+                    </div>
+                  </div>
+                </div>
+               </div>
+          </div>
+          <div class="row">
+            <div class="form-group m-2 col">
+              <button type="submit" class="btn btn-primary" [disabled]="!locationForm.valid">Create Location</button>
+            </div>
+          </div>
+        </div>
+      </form>
+</c-card-body>
+  </c-card> -->
