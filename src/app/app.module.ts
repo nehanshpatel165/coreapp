@@ -30,6 +30,7 @@ import { DeviceCreateComponent } from './device/device-create/device-create.comp
 import { DeviceListComponent } from './device/device-list/device-list.component';
 import { DeviceEditComponent } from './device/device-edit/device-edit.component';
 import { HallComponent } from './display/hall/hall.component';
+import { ElectricityComponent } from './electricity/electricity.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,6 +47,7 @@ import { HallComponent } from './display/hall/hall.component';
     DeviceListComponent,
     DeviceEditComponent,
     HallComponent,
+    ElectricityComponent,
   ],
   imports: [
     BrowserModule,

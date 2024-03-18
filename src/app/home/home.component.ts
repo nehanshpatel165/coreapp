@@ -26,27 +26,16 @@ export type ChartOptions = {
 })
 export class HomeComponent{
   showgraph =false
-
+  showElgraph =false
   toggleGraph(){
     this.showgraph=!this.showgraph
   }
 
+  
 
-  series=[{
-    data: [23, 34, 12, 54, 32,]
-  }]
-
-  chartDetails:ApexChart={
-    type:'line',
-    toolbar:{
-      show:true
-    },
+  toggleElGraph(){
+    this.showElgraph=!this.showElgraph
   }
-
-  xaxis={
-    categories:["Jan","Feb","Mar","Apr","May"]
-  }
-
   
 }
 

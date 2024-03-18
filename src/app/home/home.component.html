@@ -28,19 +28,33 @@
       </c-row>
       <c-row>
         <c-col>
-     <c-card class="text-center border-danger-subtle">
-        <c-card-header>Temperature Chart</c-card-header>
-        <c-card-body>
-          <div style="text-align: center">
-            <apx-chart
-              [series]="series"
-              [chart]="chartDetails"
-              [xaxis]="xaxis"
-            ></apx-chart>
-          </div>
-        </c-card-body>
-      </c-card>
+          <c-card
+            style="background-color: #34139e; color: white; font-weight: 100"
+            class="bg-gradient"
+            *ngIf="!showElgraph"
+          >
+            <c-card-body>
+              <h5 cCardTitle>Energy Consumption</h5>
+              <div class="d-flex justify-content-between align-items-center">
+                <span>Today's Generation : 22KWH</span>
+                <button cButton color="light" (click)="toggleElGraph()">
+                  <img
+                    src="./assets/solar-icon.png"
+                    alt=""
+                    style="width: 20px; height: 20px"
+                  />
+                </button>
+              </div>
+            </c-card-body>
+          </c-card>
+          <c-card *ngIf="showElgraph">
+            <app-electricity> </app-electricity>
+            <button cButton color="light" (click)="toggleElGraph()">
+              Show Today's Consumption
+            </button>
+          </c-card>
         </c-col>
+
         <c-col>
           <c-card
             style="background-color: #ffc107; color: white; font-weight: 100"
