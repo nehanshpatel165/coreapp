@@ -29,6 +29,7 @@ import { LocationEditComponent } from './location/location-edit/location-edit.co
 import { DeviceCreateComponent } from './device/device-create/device-create.component';
 import { DeviceListComponent } from './device/device-list/device-list.component';
 import { DeviceEditComponent } from './device/device-edit/device-edit.component';
+import { HallComponent } from './display/hall/hall.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,6 +45,7 @@ import { DeviceEditComponent } from './device/device-edit/device-edit.component'
     DeviceCreateComponent,
     DeviceListComponent,
     DeviceEditComponent,
+    HallComponent,
   ],
   imports: [
     BrowserModule,

@@ -28,13 +28,18 @@
       </c-row>
       <c-row>
         <c-col>
-         
-          <c-card class="mb-4">
-            <c-card-body>
-              <h5 cCardTitle>Hall Temperature</h5>
-              <button cButton color="light">Go somewhere</button>
-            </c-card-body>
-          </c-card>
+     <c-card class="text-center border-danger-subtle">
+        <c-card-header>Temperature Chart</c-card-header>
+        <c-card-body>
+          <div style="text-align: center">
+            <apx-chart
+              [series]="series"
+              [chart]="chartDetails"
+              [xaxis]="xaxis"
+            ></apx-chart>
+          </div>
+        </c-card-body>
+      </c-card>
         </c-col>
         <c-col>
           <c-card
@@ -189,18 +194,7 @@
           </c-row>
         </c-card-body>
       </c-card>
-      <c-card class="text-center border-danger-subtle">
-        <c-card-header>Temperature Chart</c-card-header>
-        <c-card-body>
-          <div style="text-align: center">
-            <apx-chart
-              [series]="series"
-              [chart]="chartDetails"
-              [xaxis]="xaxis"
-            ></apx-chart>
-          </div>
-        </c-card-body>
-      </c-card>
+      <app-hall></app-hall>
     </c-col>
   </c-row>
 </c-container>
