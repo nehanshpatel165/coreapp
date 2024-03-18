@@ -1,18 +1,30 @@
-<c-navbar style="background-color: #000000">
-    <c-container fluid>
-      <div style="font-size: 30px;">
-        HELLO
-      </div>
-    </c-container>
-  </c-navbar>
+<c-navbar style="background-color: #b94545; height: 60px">
+  <c-container fluid>
+    <button (click)="toggleSidebar()">Hello</button>
+  </c-container>
+</c-navbar>
 
+<c-sidebar
+  [visible]="sidebarStatus"
+  style="
+    padding-top: 8vh;
+    background: linear-gradient(
+      180deg,
+      rgba(2, 0, 36, 1) 0%,
+      rgba(66, 58, 142, 1) 100%,
+      rgba(12, 184, 235, 1) 100%,
+      rgba(0, 212, 255, 1) 100%
+    );
+    opacity: 100%;
+  "
+  #sidebar1="cSidebar"
+>
+  <c-sidebar-header>
+    <button class="btn btn-secondary" (click)="toggleSidebar()">Back</button>
+  </c-sidebar-header>
+  <c-sidebar-nav data-coreui="navigation" [navItems]="navItems" dropdownMode="close"></c-sidebar-nav>
+</c-sidebar>
 
-<c-sidebar id="sidebar1" visible="true" style="padding-top: 8vh;
-background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(66,58,142,1) 100%, rgba(12,184,235,1) 100%, rgba(0,212,255,1) 100%);opacity:100%;">
-   <c-sidebar-nav [navItems]="navItems" dropdownMode="close"></c-sidebar-nav> 
-  </c-sidebar>
-
-  <div style="margin-left:15vw;">
-    <router-outlet></router-outlet>
-  </div>
-  
+<div [style]="sidebarStatus ? 'margin-left: 15vw' : ''">
+  <router-outlet></router-outlet>
+</div>
