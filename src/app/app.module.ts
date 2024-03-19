@@ -31,6 +31,7 @@ import { DeviceListComponent } from './device/device-list/device-list.component'
 import { DeviceEditComponent } from './device/device-edit/device-edit.component';
 import { HallComponent } from './display/hall/hall.component';
 import { ElectricityComponent } from './electricity/electricity.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -65,7 +66,8 @@ import { ElectricityComponent } from './electricity/electricity.component';
     HttpClientModule,
     RouterModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
