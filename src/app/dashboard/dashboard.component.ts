@@ -10,16 +10,17 @@ export class DashboardComponent {
   toggleSidebar(){
     this.sidebarStatus=!this.sidebarStatus
   }
+  
 navItems: INavData[] = [
   {
     name: 'Home',
     url: 'home',
-    icon: 'icon-new-item', // Adjust the icon as necessary
+    icon: 'cilList', // Adjust the icon as necessary
  },
   {
      name: 'Device',
      url: '/device',
-     icon: 'icon-speedometer',
+     icon: '',
      // Assuming 'children' is a property used for dropdown items
      children: [
        {
