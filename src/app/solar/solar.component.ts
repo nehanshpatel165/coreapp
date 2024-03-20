@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { cilArrowTop, cilOptions } from '@coreui/icons';
 import { ApexChart } from 'ng-apexcharts';
 
 

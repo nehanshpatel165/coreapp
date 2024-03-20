@@ -1,3 +1,4 @@
+<c-container>
 <c-card class="example-card custom-card">
     <c-card-header>
     <h5 cCardTitle class="m-2">Device general information</h5>
@@ -22,7 +23,7 @@
                   required
                 />
               </div>
-              <span *ngIf="!deviceName.valid && deviceName.touched"
+              <span *ngIf="!deviceName.valid && deviceName.touched" style="color: red;"
               >PLEASE ENTER A VALID DEVICE NAME</span
             >
             </div>
@@ -95,3 +96,4 @@
       </form>
     </c-card-body>
   </c-card>
+</c-container>

@@ -1,6 +1,6 @@
-<c-container class="mt-5 ms-4" >
+<c-container class="mt-4" >
   <c-row>
-    <c-col xs="7" >
+    <c-col class="col-xs-4 col-md-7 col-lg-8" >
       <c-card class="mb-4 custom-card" style="height: 200px;">
         <img
           [cCardImg]
@@ -15,7 +15,7 @@
         </c-card-img-overlay>
       </c-card>
       <c-row class="mb-4">
-        <c-col>
+        <c-col class="col-12 col-md-6">
           <app-weathercomp></app-weathercomp>
         </c-col>
         <c-col>
@@ -27,10 +27,11 @@
         </c-col>
       </c-row>
       <c-row>
+
         <c-col>
           <c-card
             style="background-color: #34139e; color: white; font-weight: 100"
-            class="bg-gradient custom-card"
+            class="bg-gradient custom-card mb-4"
             *ngIf="!showElgraph"
           >
             <c-card-body>
@@ -47,7 +48,7 @@
               </div>
             </c-card-body>
           </c-card>
-          <c-card *ngIf="showElgraph" class="custom-card">
+          <c-card *ngIf="showElgraph">
             <app-electricity> </app-electricity>
             <button cButton color="light" (click)="toggleElGraph()">
               Show Today's Consumption
@@ -58,7 +59,7 @@
         <c-col>
           <c-card
             style="background-color: #ffc107; color: white; font-weight: 100"
-            class="bg-gradient custom-card"
+            class="bg-gradient custom-card mb-4"
             *ngIf="!showgraph"
           >
             <c-card-body>
@@ -75,7 +76,7 @@
               </div>
             </c-card-body>
           </c-card>
-          <c-card *ngIf="showgraph" class="custom-card">
+          <c-card *ngIf="showgraph">
             <app-solar> </app-solar>
             <button cButton color="light" (click)="toggleGraph()">
               Show Today's Generation
@@ -85,7 +86,7 @@
       </c-row>
     </c-col>
 
-    <c-col xs="4"
+    <c-col class="col-md-4 col-lg-4"
       ><c-card class="text-center mb-4 border-top border-primary custom-card">
         <c-card-header>My Devices</c-card-header>
         <c-card-body>

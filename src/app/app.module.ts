@@ -31,6 +31,8 @@ import { DeviceListComponent } from './device/device-list/device-list.component'
 import { DeviceEditComponent } from './device/device-edit/device-edit.component';
 import { HallComponent } from './display/hall/hall.component';
 import { ElectricityComponent } from './electricity/electricity.component';
+import { KitchenComponent } from './display/kitchen/kitchen.component';
+import { BedroomComponent } from './display/bedroom/bedroom.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +51,8 @@ import { ElectricityComponent } from './electricity/electricity.component';
     DeviceEditComponent,
     HallComponent,
     ElectricityComponent,
+    KitchenComponent,
+    BedroomComponent,
   ],
   imports: [
     BrowserModule,
