@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { LocationService } from '../location.service';
 
+
 @Component({
   selector: 'app-location-create',
   templateUrl: './location-create.component.html',
@@ -38,5 +39,6 @@ export class LocationCreateComponent {
     { value: 'bathroom', src: 'assets/locationassets/bathroom.svg' },
  ];
  selectedImage: string ='';
+////////////////////////////////////////
 
 }

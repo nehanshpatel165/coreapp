@@ -1,7 +1,7 @@
-<c-container class="mt-5 ms-4">
+<c-container class="mt-5 ms-4" >
   <c-row>
-    <c-col xs="7">
-      <c-card class="mb-4" style="height: 200px">
+    <c-col xs="7" >
+      <c-card class="mb-4 custom-card" style="height: 200px;">
         <img
           [cCardImg]
           src="./assets/homebg.jpg"
@@ -30,7 +30,7 @@
         <c-col>
           <c-card
             style="background-color: #34139e; color: white; font-weight: 100"
-            class="bg-gradient"
+            class="bg-gradient custom-card"
             *ngIf="!showElgraph"
           >
             <c-card-body>
@@ -47,7 +47,7 @@
               </div>
             </c-card-body>
           </c-card>
-          <c-card *ngIf="showElgraph">
+          <c-card *ngIf="showElgraph" class="custom-card">
             <app-electricity> </app-electricity>
             <button cButton color="light" (click)="toggleElGraph()">
               Show Today's Consumption
@@ -58,7 +58,7 @@
         <c-col>
           <c-card
             style="background-color: #ffc107; color: white; font-weight: 100"
-            class="bg-gradient"
+            class="bg-gradient custom-card"
             *ngIf="!showgraph"
           >
             <c-card-body>
@@ -75,7 +75,7 @@
               </div>
             </c-card-body>
           </c-card>
-          <c-card *ngIf="showgraph">
+          <c-card *ngIf="showgraph" class="custom-card">
             <app-solar> </app-solar>
             <button cButton color="light" (click)="toggleGraph()">
               Show Today's Generation
@@ -86,13 +86,13 @@
     </c-col>
 
     <c-col xs="4"
-      ><c-card class="text-center mb-4 border-top border-primary">
+      ><c-card class="text-center mb-4 border-top border-primary custom-card">
         <c-card-header>My Devices</c-card-header>
         <c-card-body>
           <c-row>
             <c-col>
               <c-card
-                class="mb-3 bg-gradient"
+                class="mb-3 bg-gradient custom-card"
                 [ngStyle]="{ 'max-width.px': 250 }"
                 color="primary"
               >
@@ -130,7 +130,7 @@
 
             <c-col>
               <c-card
-                class="mb-3 bg-gradient"
+                class="mb-3 bg-gradient custom-card"
                 [ngStyle]="{ 'max-width.px': 250 }"
                 color="primary"
               >
@@ -170,7 +170,7 @@
           <c-row>
             <c-col>
               <c-card
-                class="mb-3 bg-gradient"
+                class="mb-3 bg-gradient custom-card"
                 [ngStyle]="{ 'max-width.px': 400 }"
                 color="primary"
               >
