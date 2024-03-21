@@ -1,4 +1,5 @@
-<c-card class="example-card">
+<c-container>
+<c-card class="example-card custom-card">
     <c-card-header>
     <h5 cCardTitle class="m-2">Device general information</h5>
     </c-card-header>
@@ -17,8 +18,14 @@
                   class="form-control"
                   name="deviceName"
                   ngModel
+                  #deviceName="ngModel"
+                  pattern="^[a-zA-Z][a-zA-Z0-9\s]*$"
+                  required
                 />
               </div>
+              <span *ngIf="!deviceName.valid && deviceName.touched" style="color: red;"
+              >PLEASE ENTER A VALID DEVICE NAME</span
+            >
             </div>
             <div class="form-group col m-2">
               <label for="level">Data Source ID:</label>
@@ -89,3 +96,4 @@
       </form>
     </c-card-body>
   </c-card>
+</c-container>

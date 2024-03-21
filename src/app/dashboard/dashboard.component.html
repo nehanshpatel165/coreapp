@@ -1,21 +1,18 @@
-<c-navbar style="height: 60px" color="light">
-  <c-container fluid>
-    <button (click)="toggleSidebar()">Hello</button>
+<c-navbar style="width: 100vw;background-color: #01000b; box-shadow: 3px 0px 20px 0px #6366f1">
+  <c-container  fluid [style]="sidebarStatus ? 'margin-left: 18vw' : ''" class="d-flex justify-content-start">
+    <button class="btn" (click)="toggleSidebar()"><img src="assets/dashboardassets/hamburger.png" alt=""></button>
+    <c-navbar-text style="color: white; justify-content: center; align-items: center; height: 100%; display: flex;" class="d-flex">SMART HOME DASHBOARD</c-navbar-text>
   </c-container>
 </c-navbar>
 
 <c-sidebar
   [visible]="sidebarStatus"
-  #sidebar1="cSidebar">
-<c-sidebar-brand style="border-radius: 20px; ">
-  HELLO
+  #sidebar1="cSidebar" style="box-shadow: -11px 20px 30px 0px #6366f1">
+<c-sidebar-brand style="border-radius: 20px;">
+  IOT PLUS
 </c-sidebar-brand>
   <c-sidebar-nav [navItems]="navItems" dropdownMode="none"></c-sidebar-nav>
-  <c-sidebar-footer class="d-flex justify-content-end">
-    <button class="btn btn-light" (click)="toggleSidebar()">Back</button>
-  </c-sidebar-footer>
 </c-sidebar>
-
-<div [style]="sidebarStatus ? 'margin-left: 15vw' : ''">
+<div [style]="sidebarStatus ? 'margin-left: 20vw' : 'margin-left:4vw'">
   <router-outlet></router-outlet>
 </div>

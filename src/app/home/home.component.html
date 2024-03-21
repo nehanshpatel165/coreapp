@@ -1,7 +1,7 @@
-<c-container class="mt-5 ms-4">
+<c-container class="mt-4" >
   <c-row>
-    <c-col xs="7">
-      <c-card class="mb-4" style="height: 200px">
+    <c-col class="col-xs-4 col-md-7 col-lg-8" >
+      <c-card class="mb-4 custom-card" style="height: 200px;">
         <img
           [cCardImg]
           src="./assets/homebg.jpg"
@@ -15,7 +15,7 @@
         </c-card-img-overlay>
       </c-card>
       <c-row class="mb-4">
-        <c-col>
+        <c-col class="col-12 col-md-6">
           <app-weathercomp></app-weathercomp>
         </c-col>
         <c-col>
@@ -27,10 +27,11 @@
         </c-col>
       </c-row>
       <c-row>
+
         <c-col>
           <c-card
             style="background-color: #34139e; color: white; font-weight: 100"
-            class="bg-gradient"
+            class="bg-gradient custom-card mb-4"
             *ngIf="!showElgraph"
           >
             <c-card-body>
@@ -58,7 +59,7 @@
         <c-col>
           <c-card
             style="background-color: #ffc107; color: white; font-weight: 100"
-            class="bg-gradient"
+            class="bg-gradient custom-card mb-4"
             *ngIf="!showgraph"
           >
             <c-card-body>
@@ -85,130 +86,27 @@
       </c-row>
     </c-col>
 
-    <c-col xs="4"
-      ><c-card class="text-center mb-4 border-top border-primary">
-        <c-card-header>My Devices</c-card-header>
+    <c-col class="col-md-4 col-lg-4"
+      ><c-card class="text-center mb-4 border-top border-primary custom-card">
+        <c-card-header>
+          <nav class="nav nav-pills flex-column flex-sm-row">
+            <div class="col">
+            <a class="flex-sm-fill text-sm-center nav-link" (click)="selectedComponent='hall'" style="cursor: pointer;" [ngClass]="selectedComponent==='hall' ? 'active' : ''">Hall</a>
+          </div>
+          <div class="col">
+            <a class="flex-sm-fill text-sm-center nav-link" (click)="selectedComponent='kitchen'" style="cursor: pointer;" [ngClass]="selectedComponent==='kitchen' ? 'active' : ''">Kitchen</a>
+          </div>
+          <div class="col">
+            <a class="flex-sm-fill text-sm-center nav-link" (click)="selectedComponent='bedroom'" style="cursor: pointer;" [ngClass]="selectedComponent==='bedroom' ? 'active' : ''">Bedroom</a>
+          </div>
+          </nav>
+        </c-card-header>
         <c-card-body>
-          <c-row>
-            <c-col>
-              <c-card
-                class="mb-3 bg-gradient"
-                [ngStyle]="{ 'max-width.px': 250 }"
-                color="primary"
-              >
-                <c-row class="g-0">
-                  <c-col [md]="4">
-                    <img
-                      [cCardImg]
-                      src="./assets/lamp.png"
-                      class="m-2"
-                      style="height: 70px; width: 70px; object-fit: scale-down"
-                    />
-                  </c-col>
-                  <c-card-body cCol [md]="8">
-                    <h5 cCardTitle style="color: white; font-weight: bold">
-                      Lamp
-                    </h5>
-                    <div
-                      class="form-check form-switch d-flex justify-content-center"
-                    >
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        role="switch"
-                        id="flexSwitchCheckDefault"
-                      />
-                      <label
-                        class="form-check-label"
-                        for="flexSwitchCheckDefault"
-                      ></label>
-                    </div>
-                  </c-card-body>
-                </c-row>
-              </c-card>
-            </c-col>
-
-            <c-col>
-              <c-card
-                class="mb-3 bg-gradient"
-                [ngStyle]="{ 'max-width.px': 250 }"
-                color="primary"
-              >
-                <c-row class="g-0">
-                  <c-col [md]="4">
-                    <img
-                      [cCardImg]
-                      src="./assets/lamp.png"
-                      class="m-2"
-                      style="height: 70px; width: 70px; object-fit: scale-down"
-                    />
-                  </c-col>
-                  <c-card-body cCol [md]="8">
-                    <h5 cCardTitle style="color: white; font-weight: bold">
-                      Lamp
-                    </h5>
-                    <div
-                      class="form-check form-switch d-flex justify-content-center"
-                    >
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        role="switch"
-                        id="flexSwitchCheckDefault"
-                      />
-                      <label
-                        class="form-check-label"
-                        for="flexSwitchCheckDefault"
-                      ></label>
-                    </div>
-                  </c-card-body>
-                </c-row>
-              </c-card>
-            </c-col>
-          </c-row>
-
-          <c-row>
-            <c-col>
-              <c-card
-                class="mb-3 bg-gradient"
-                [ngStyle]="{ 'max-width.px': 400 }"
-                color="primary"
-              >
-                <c-row class="g-0">
-                  <c-col [md]="4">
-                    <img
-                      [cCardImg]
-                      src="./assets/fan.png"
-                      class="d-flex align-items-center"
-                      style="height: 90px; width: 80px; object-fit: scale-down"
-                    />
-                  </c-col>
-                  <c-card-body cCol [md]="8">
-                    <h5 cCardTitle style="color: white; font-weight: bold">
-                      Fan
-                    </h5>
-                    <div
-                      class="form-check form-switch d-flex justify-content-center"
-                    >
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        role="switch"
-                        id="flexSwitchCheckDefault"
-                      />
-                      <label
-                        class="form-check-label"
-                        for="flexSwitchCheckDefault"
-                      ></label>
-                    </div>
-                  </c-card-body>
-                </c-row>
-              </c-card>
-            </c-col>
-          </c-row>
+          <app-hall *ngIf="selectedComponent === 'hall'"></app-hall>
+          <app-bedroom *ngIf="selectedComponent === 'bedroom'"></app-bedroom>
+          <app-kitchen *ngIf="selectedComponent === 'kitchen'"></app-kitchen>
         </c-card-body>
       </c-card>
-      <app-hall></app-hall>
     </c-col>
   </c-row>
 </c-container>
