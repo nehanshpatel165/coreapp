@@ -9,11 +9,10 @@
   [visible]="sidebarStatus"
   #sidebar1="cSidebar" style="box-shadow: -11px 20px 30px 0px #6366f1">
 <c-sidebar-brand style="border-radius: 20px;">
-  HELLO
+  IOT PLUS
 </c-sidebar-brand>
   <c-sidebar-nav [navItems]="navItems" dropdownMode="none"></c-sidebar-nav>
 </c-sidebar>
-
-<div [style]="sidebarStatus ? 'margin-left: 20vw' : 'margin-left:10vw'">
+<div [style]="sidebarStatus ? 'margin-left: 20vw' : 'margin-left:4vw'">
   <router-outlet></router-outlet>
 </div>

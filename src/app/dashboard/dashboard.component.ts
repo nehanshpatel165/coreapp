@@ -6,7 +6,7 @@ import { INavData } from '@coreui/angular'; // Adjust the import path as necessa
   styleUrl: './dashboard.component.scss'
 })
 export class DashboardComponent {
-  sidebarStatus=true
+  sidebarStatus=false
   toggleSidebar(){
     this.sidebarStatus=!this.sidebarStatus
   }
