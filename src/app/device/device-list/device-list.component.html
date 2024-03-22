@@ -17,10 +17,10 @@
                     <th>Actions</th>
                 </tr>
                 <tr class="text-center" *ngFor="let device of device_info_array">
-                <td><h3 >{{ device.device_name }}</h3></td>
-                <td><h3 >{{ device.data_source_id }}</h3></td>
-                <td><h3 >{{ device.type_of_device }}</h3></td>
-                <td><h3 >location</h3></td>
+                <td>{{ device.device_name }}</td>
+                <td>{{ device.data_source_id }}</td>
+                <td>{{ device.type_of_device }}</td>
+                <td>location</td>
                 <td><img class="p-2" style="cursor:pointer" src="assets/locationassets/edit.svg" alt="edit" routerLink="devices/edit/{{device.id}}">
                   <img class="p-2" style="cursor:pointer" src="assets/locationassets/delete.svg" alt="delete" (click)="deleteDevice(device.id)"></td>
                 </tr>
