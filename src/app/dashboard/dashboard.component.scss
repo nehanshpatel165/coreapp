@@ -11,6 +11,16 @@ c-sidebar {
   --cui-sidebar-nav-group-toggle-show-color: #6366f1;
   --cui-sidebar-nav-link-border-radius: 6px;
   --cui-sidebar-footer-bg: #ffffff;
+  --cui-sidebar-nav-link-active-icon-color: #6366f1;
+  --cui-sidebar-nav-link-disabled-icon-color: #6366f1;
+  --cui-sidebar-nav-link-icon-color: #6366f1;
+  --cui-sidebar-nav-link-hover-icon-color: #6366f1;
+  --cui-sidebar-nav-link-padding-x: 10px;
+  --cui-sidebar-nav-link-padding-y: 14px;
+  --cui-sidebar-nav-icon-width: 50px;
+  --cui-sidebar-nav-icon-height: 24px;
+  --cui-sidebar-nav-icon-font-size: 20px;
+  --cui-mobile-breakpoint: 400px;
 }
 *{
     font-family: "Poppins",sans-serif;

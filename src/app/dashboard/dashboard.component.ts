@@ -15,12 +15,12 @@ navItems: INavData[] = [
   {
     name: 'Home',
     url: 'home',
-    icon: 'cilList', // Adjust the icon as necessary
+    icon: 'fa-solid fa-house', // Adjust the icon as necessary
  },
   {
      name: 'Device',
      url: '/device',
-     icon: '',
+     icon: 'fa-solid fa-mobile',
      // Assuming 'children' is a property used for dropdown items
      children: [
        {
@@ -38,7 +38,7 @@ navItems: INavData[] = [
   {
     name: 'Location',
     url: '/location',
-    icon: 'icon-speedometer',
+    icon: 'fa-solid fa-location-crosshairs',
     // Assuming 'children' is a property used for dropdown items
     children: [
       {
@@ -55,7 +55,8 @@ navItems: INavData[] = [
   },
   {
     name:'Logout',
-    url:'/login'
+    url:'/login',
+    icon:'fa-solid fa-right-from-bracket'
   }
   // Add more navigation items as needed
  ];

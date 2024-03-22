@@ -33,6 +33,7 @@ import { HallComponent } from './display/hall/hall.component';
 import { ElectricityComponent } from './electricity/electricity.component';
 import { KitchenComponent } from './display/kitchen/kitchen.component';
 import { BedroomComponent } from './display/bedroom/bedroom.component';
+import { TooltipModule } from '@coreui/angular';
 
 @NgModule({
   declarations: [
@@ -71,6 +72,7 @@ import { BedroomComponent } from './display/bedroom/bedroom.component';
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
+    TooltipModule
 
   ],
   providers: [],

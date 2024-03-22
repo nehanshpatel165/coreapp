@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import "@coreui/coreui/scss/coreui";
 @import "bootstrap/dist/css/bootstrap.min.css";
-
+@import '@fortawesome/fontawesome-free/css/all.css';
 .custom-card {
     box-shadow: 4px 4px 0px 0 #6366f1;
     transition: 0.3s;
@@ -11,3 +11,4 @@
     }
  
 }
+
