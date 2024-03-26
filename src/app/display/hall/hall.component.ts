@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { NgForm } from '@angular/forms';
 @Component({
   selector: 'app-hall',
   templateUrl: './hall.component.html',
@@ -7,6 +7,10 @@ import { Component } from '@angular/core';
 })
 export class HallComponent {
   min = 0;
-  max = 6;
-  value = 4;
+  max = 3;
+  value = 1;
+  fanSwitchChecked = false;
+  logCheckboxValue(event: any) {
+    console.log('Checkbox value:', event.target.checked);
+ }
 }
