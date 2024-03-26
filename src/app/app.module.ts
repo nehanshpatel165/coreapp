@@ -34,6 +34,7 @@ import { ElectricityComponent } from './electricity/electricity.component';
 import { KitchenComponent } from './display/kitchen/kitchen.component';
 import { BedroomComponent } from './display/bedroom/bedroom.component';
 import { TooltipModule } from '@coreui/angular';
+import { SignupComponent } from './signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { TooltipModule } from '@coreui/angular';
     ElectricityComponent,
     KitchenComponent,
     BedroomComponent,
+    SignupComponent,
   ],
   imports: [
     BrowserModule,

@@ -9,6 +9,7 @@ import { LocationEditComponent } from './location/location-edit/location-edit.co
 import { DeviceCreateComponent } from './device/device-create/device-create.component';
 import { DeviceListComponent } from './device/device-list/device-list.component';
 import { DeviceEditComponent } from './device/device-edit/device-edit.component';
+import { SignupComponent } from './signup/signup.component';
 
 const routes: Routes = [
   // {path:'',component:DashboardComponent},
@@ -23,6 +24,8 @@ const routes: Routes = [
     {path:'location-view',component:LocationViewComponent},
     {path: 'location-view/locations/edit/:id', component: LocationEditComponent },
   ]},
+  {path:'signup',component:SignupComponent},
+  {path:'login/signup',component:SignupComponent}
 ];
 
 @NgModule({
