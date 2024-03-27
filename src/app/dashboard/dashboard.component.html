@@ -1,6 +1,7 @@
 <c-navbar style="width: 100vw;background-color: #01000b; box-shadow: 3px 0px 20px 0px #6366f1">
-  <c-container  fluid [style]="sidebarStatus ? 'margin-left: 18vw' : ''" class="d-flex justify-content-start">
-    <button class="btn" (click)="toggleSidebar()"><img src="assets/dashboardassets/hamburger.png" alt=""></button>
+  <c-container  fluid [style]="sidebarStatus ? 'margin-left: 16vw' : ''" class="d-flex justify-content-start">
+    <!-- <button class="btn" (click)="toggleSidebar()"><img src="assets/dashboardassets/hamburger.png" alt=""></button> -->
+    <button class="btn" (click)="toggleSidebar()"><img *ngIf="!sidebarStatus" src="assets/dashboardassets/open.png" alt=""><img *ngIf="sidebarStatus" src="assets/dashboardassets/close.png" alt=""></button>
     <c-navbar-text style="color: white; justify-content: center; align-items: center; height: 100%; display: flex;" class="d-flex">SMART HOME DASHBOARD</c-navbar-text>
   </c-container>
 </c-navbar>
