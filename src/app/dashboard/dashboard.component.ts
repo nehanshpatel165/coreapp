@@ -26,12 +26,12 @@ navItems: INavData[] = [
        {
          name: 'Create Device',
          url: 'device-create', // Adjust the URL as necessary
-         icon: 'icon-plus', // Adjust the icon as necessary
+         icon: 'fa-solid fa-plus', // Adjust the icon as necessary
        },
        {
          name: 'Device List',
          url: 'device-list', // Adjust the URL as necessary
-         icon: 'icon-eye', // Adjust the icon as necessary
+         icon: 'fa-solid fa-list', // Adjust the icon as necessary
        },
      ],
   },
@@ -44,12 +44,12 @@ navItems: INavData[] = [
       {
         name: 'Create Location',
         url: 'location-create', // Adjust the URL as necessary
-        icon: 'icon-plus', // Adjust the icon as necessary
+        icon: 'fa-solid fa-plus', // Adjust the icon as necessary
       },
       {
         name: 'View Location',
         url: 'location-view', // Adjust the URL as necessary
-        icon: 'icon-eye', // Adjust the icon as necessary
+        icon: 'fa-solid fa-list', // Adjust the icon as necessary
       },
     ],
   },

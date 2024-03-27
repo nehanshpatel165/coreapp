@@ -6,7 +6,4 @@ import { Component } from '@angular/core';
   styleUrl: './hall.component.scss'
 })
 export class HallComponent {
-  min = 0;
-  max = 6;
-  value = 4;
 }
