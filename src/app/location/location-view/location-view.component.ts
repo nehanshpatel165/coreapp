@@ -29,7 +29,7 @@ export class LocationViewComponent {
  ngOnInit(): void {
     this.locationService.getLocation().subscribe(data => {
       console.log(data.data);
-      data.data.forEach((item: { location_name:string; img_name:string; level: number; id :number }) => {
+      data.data.forEach((item: { location_name:string; img_name:string; level: string; id :number }) => {
         let location_info = {
           location_name: item.location_name,
           img_name: this.imagePath + item.img_name +'.svg',
