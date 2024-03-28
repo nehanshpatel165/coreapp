@@ -16,8 +16,8 @@
                  type="text"
                  class="form-control"
                  name="locationName"
-                 ngModel
-                 #locationName="ngModel"
+                [(ngModel)] ="locationInfo.location_name"
+                #locationName="ngModel"
                  pattern="^[a-zA-Z][a-zA-Z0-9\s]*$"
                  required
                 />
@@ -33,7 +33,7 @@
                  type="text"
                  name="level"
                  class="form-control"
-                 ngModel
+                 [(ngModel)]="locationInfo.level"
                  required
                 >
                  <option
