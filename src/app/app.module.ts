@@ -34,6 +34,10 @@ import { ElectricityComponent } from './electricity/electricity.component';
 import { KitchenComponent } from './display/kitchen/kitchen.component';
 import { BedroomComponent } from './display/bedroom/bedroom.component';
 import { TooltipModule } from '@coreui/angular';
+import { ToastModule } from '@coreui/angular';
+import { SpinnerModule } from '@coreui/angular';
+import { PopoverModule } from '@coreui/angular';
+import { ModalModule } from '@coreui/angular';
 
 @NgModule({
   declarations: [
@@ -72,7 +76,11 @@ import { TooltipModule } from '@coreui/angular';
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
-    TooltipModule
+    TooltipModule,
+    ToastModule,
+    SpinnerModule,
+    PopoverModule,
+    ModalModule
 
   ],
   providers: [],

@@ -69,7 +69,11 @@
           </div>
           <div class="row">
             <div class="form-group m-2 col-12">
-              <button type="submit" class="btn btn-primary" [disabled]="!locationForm.valid" >Create Location</button>
+              <button *ngIf="!isLoading" type="submit" class="btn btn-primary" [disabled]="!locationForm.valid" >Create Location</button>
+              <button *ngIf="isLoading" cButton class="m-1" disabled>
+                <c-spinner  size="sm" variant="grow"></c-spinner>
+                Creating Location
+              </button>
             </div>
           </div>
         </div>
@@ -77,5 +81,19 @@
     </c-card-body>
  </c-card>
 
-
+  <!---------------------------------------------------------------------------------------------------------------->
+  <c-toaster [placement]="position" class="p-3" position="absolute">
+    <c-toast
+      (timer)="onTimerChange($event)"
+      (visibleChange)="onVisibleChange($event)"
+      [visible]="visible"
+      class="align-items-center text-white border-0" color="primary">
+      <c-toast-header>
+        <strong class="me-auto">IOT PLUS</strong>
+      </c-toast-header>
+      <c-toast-body>
+        <span *ngIf="visible">Location Created Successfully</span>
+      </c-toast-body>
+    </c-toast>
+  </c-toaster>
 

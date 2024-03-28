@@ -22,10 +22,25 @@
                 <td>{{ device.type_of_device }}</td>
                 <td>location</td>
                 <td><img class="p-2" style="cursor:pointer" src="assets/locationassets/edit.svg" alt="edit" routerLink="devices/edit/{{device.id}}">
-                  <img class="p-2" style="cursor:pointer" src="assets/locationassets/delete.svg" alt="delete" (click)="deleteDevice(device.id)"></td>
+                  <img class="p-2" style="cursor:pointer" src="assets/locationassets/delete.svg" alt="delete" (click)="prepareDeleteDevice(device.id)"></td>
                 </tr>
             </table>
         </div>
     </div>
     </c-card-body>
   </c-card>
+
+   <!------------------------------------------------->
+   <c-modal id="deleteConfirmationModal" alignment="center" [visible]="showDeleteConfirmationModal" (visibleChange)="handleDeleteConfirmationChange($event)">
+    <c-modal-header>
+      <h5 cModalTitle>Confirm Deletion</h5>
+      <button (click)="toggleDeleteConfirmationModal()" cButtonClose></button>
+    </c-modal-header>
+    <c-modal-body>Are you sure you want to delete this device?</c-modal-body>
+    <c-modal-footer>
+      <button (click)="toggleDeleteConfirmationModal()" cButton color="secondary">
+        Cancel
+      </button>
+      <button (click)="deviceToDeleteId && deleteDevice(deviceToDeleteId)" cButton color="primary">Delete</button>
+    </c-modal-footer>
+  </c-modal>

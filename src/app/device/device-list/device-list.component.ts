@@ -16,15 +16,18 @@ export class DeviceListComponent {
       this.deviceService.deleteDevice(id).subscribe({
         next: (response) => {
           console.log('Device deleted successfully', response);
-          this.device_info_array = this.device_info_array.filter(location => location.id !== id);
+          this.device_info_array = this.device_info_array.filter(device => device.id !== id);
+          this.toggleDeleteConfirmationModal();
         },
         error: (error) => {
           console.error("Error while deleting the device", error);
+          this.toggleDeleteConfirmationModal();
         }
       });
     } else {
       console.error("Device ID is not provided");
     }
+    this.router.navigate(['dashboard/device-list']);
   }
 
   ngOnInit(): void {
@@ -41,4 +44,34 @@ export class DeviceListComponent {
       });
     });
  }
+
+ public visible = false;
+
+ toggleLiveDemo() {
+   this.visible = !this.visible;
+ }
+
+ handleLiveDemoChange(event: any) {
+   this.visible = event;
+ }
+
+ deviceToDeleteId: string | null = null;
+ showDeleteConfirmationModal = false;
+
+prepareDeleteDevice(id: string): void {
+ this.deviceToDeleteId = id; 
+ this.showDeleteConfirmationModal = true; 
+}
+
+toggleDeleteConfirmationModal(): void {
+ this.showDeleteConfirmationModal = !this.showDeleteConfirmationModal;
+}
+
+handleDeleteConfirmationChange(event: any): void {
+ this.showDeleteConfirmationModal = event;
+}
+
+
+
+
 }

@@ -10,6 +10,7 @@ import { DeviceService } from '../device.service';
   styleUrl: './device-create.component.scss'
 })
 export class DeviceCreateComponent {
+  isLoading=false
   deviceInfo={
     device_name:'',
     type_of_device:'',
@@ -28,14 +29,44 @@ export class DeviceCreateComponent {
     })
   }
   onSubmit(form:NgForm){
+    
     console.log(form)
     this.deviceInfo.device_name=form.value.deviceName
     this.deviceInfo.data_source_id=form.value.datasourceid
     this.deviceInfo.type_of_device=form.value.devicetype
     this.deviceService.createDevice(this.deviceInfo).subscribe(
-      response => {console.log('Device created successfully',response)},
-      error =>{console.log("Error while creating the device",error)}
-    )
-    this.router.navigate(['dashboard/device-list'])
+      response => {
+        console.log('Device created successfully', response);
+        this.toggleToast()
+        this.toggleLoading()
+        setTimeout(() => {
+          this.router.navigate(['dashboard/device-list']); // Redirect after a delay
+        }, 2000);
+      },
+      error => { console.log("Error while creating the device", error);}
+    );
+   
+  }
+
+//////////////////////////////////////////////////////////
+  position = 'top-end';
+  visible = false;
+  percentage = 0;
+
+  toggleToast() {
+    this.visible = !this.visible;
+  }
+
+  toggleLoading(){
+    this.isLoading=!this.isLoading
+  }
+
+  onVisibleChange($event: boolean) {
+    this.visible = $event;
+    this.percentage = !this.visible ? 0 : this.percentage;
+  }
+
+  onTimerChange($event: number) {
+    this.percentage = $event * 25;
   }
 }
