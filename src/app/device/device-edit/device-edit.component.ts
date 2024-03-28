@@ -32,7 +32,7 @@ ngOnInit(): void {
   if (id !== null) {
     this.deviceService.getDeviceById(id).subscribe({
       next: (device) => {
-        this.deviceInfo = device;
+        this.deviceInfo = device.data;
       },
       error: (error) => {
         console.error("Error fetching device", error);

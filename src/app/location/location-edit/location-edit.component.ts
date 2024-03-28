@@ -1,14 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LocationService } from '../location.service';
-
+import { ChangeDetectorRef } from '@angular/core';
 @Component({
   selector: 'app-location-edit',
   templateUrl: './location-edit.component.html',
   styleUrl: './location-edit.component.scss'
 })
-export class LocationEditComponent {
+export class LocationEditComponent implements OnInit {
 
   locationInfo = {
     location_name: '',
@@ -17,7 +17,7 @@ export class LocationEditComponent {
     id:''
  };
 
- constructor(private route: ActivatedRoute, private locationService: LocationService, private router :Router) {}
+ constructor(private route: ActivatedRoute, private locationService: LocationService, private router :Router,private cdr:ChangeDetectorRef) {}
  images = [
   { value: 'master-bedroom', src: 'assets/locationassets/master-bedroom.svg' },
   { value: 'kitchen', src: 'assets/locationassets/kitchen.svg' },
@@ -25,12 +25,15 @@ export class LocationEditComponent {
   { value: 'bathroom', src: 'assets/locationassets/bathroom.svg' },
 ];
 selectedImage: string ='';
-ngOnInit(): void {
+ngOnInit():void {
   const id = this.route.snapshot.paramMap.get('id');
   if (id !== null) {
     this.locationService.getLocationById(id).subscribe({
       next: (location) => {
-        this.locationInfo = location;
+        this.locationInfo = location.data;
+        console.log(this.locationInfo);
+        this.selectedImage=this.locationInfo.img_name
+        this.cdr.detectChanges();
       },
       error: (error) => {
         console.error("Error fetching location", error);
@@ -54,7 +57,7 @@ onSubmit(form: NgForm): void {
         this.toggleToast()
         this.toggleLoading()
         setTimeout(() => {
-          this.router.navigate(['dashboard/location-view'])// Redirect after a delay
+          this.router.navigate(['dashboard/location-view'])
         }, 2000);
       },
       error: (error) => {
