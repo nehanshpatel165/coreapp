@@ -17,14 +17,17 @@ export class LocationViewComponent {
       next: (response) => {
         console.log('Location deleted successfully', response);
         this.location_info_array = this.location_info_array.filter(location => location.id !== id);
+        this.toggleDeleteConfirmationModal();
       },
       error: (error) => {
         console.error("Error while deleting the location", error);
+        this.toggleDeleteConfirmationModal();
       }
     });
   } else {
     console.error("Location ID is not provided");
   }
+  this.router.navigate(['dashboard/location-view']);
 }
  ngOnInit(): void {
     this.locationService.getLocation().subscribe(data => {
@@ -41,18 +44,29 @@ export class LocationViewComponent {
     });
  }
 
+ public visible = false;
 
+ toggleLiveDemo() {
+   this.visible = !this.visible;
+ }
 
+ handleLiveDemoChange(event: any) {
+   this.visible = event;
+ }
 
+ locationToDeleteId: string | null = null;
+ showDeleteConfirmationModal = false;
 
+prepareDeleteLocation(id: string): void {
+ this.locationToDeleteId = id; 
+ this.showDeleteConfirmationModal = true; 
+}
 
+toggleDeleteConfirmationModal(): void {
+ this.showDeleteConfirmationModal = !this.showDeleteConfirmationModal;
+}
 
-
-
-
-
-
-
-
-
+handleDeleteConfirmationChange(event: any): void {
+ this.showDeleteConfirmationModal = event;
+}
 }

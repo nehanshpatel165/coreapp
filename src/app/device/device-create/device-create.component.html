@@ -82,9 +82,16 @@
                     type="submit"
                     class="btn btn-primary"
                     [disabled]="!deviceForm.valid"
+                    *ngIf="!isLoading"
                   >
                     Create Device
                   </button>
+                  
+                  <button *ngIf="isLoading" cButton class="m-1" disabled>
+                    <c-spinner  size="sm" variant="grow"></c-spinner>
+                    Creating Device
+                  </button>
+
                   <button
                   class="btn btn-primary m-2"
                 >
@@ -97,3 +104,20 @@
     </c-card-body>
   </c-card>
 </c-container>
+
+<!---------------------------------------------------------------------------------------------------------------->
+
+<c-toaster [placement]="position" class="p-3" position="absolute">
+  <c-toast
+    (timer)="onTimerChange($event)"
+    (visibleChange)="onVisibleChange($event)"
+    [visible]="visible"
+    class="align-items-center text-white border-0" color="primary">
+    <c-toast-header>
+      <strong class="me-auto">IOT PLUS</strong>
+    </c-toast-header>
+    <c-toast-body>
+      <span *ngIf="visible">Device Created Successfully</span>
+    </c-toast-body>
+  </c-toast>
+</c-toaster>

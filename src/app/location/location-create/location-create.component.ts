@@ -25,12 +25,16 @@ export class LocationCreateComponent {
     this.locationInfo.level=form.value.level;
     this.locationInfo.img_name=form.value.imageGroup;
     this.locationService.createLocation(this.locationInfo).subscribe(
-      response=>{
-        console.log('Location created successfully',response);
+      response => {
+        console.log('Location created successfully', response);
+        this.toggleToast()
+        this.toggleLoading()
+        setTimeout(() => {
+          this.router.navigate(['dashboard/location-view'])// Redirect after a delay
+        }, 2000);
       },error =>{
         console.error("Error while creating the location", error)
       }) 
-    this.router.navigate(['dashboard/location-view'])
   }
   images = [
     { value: 'master-bedroom', src: 'assets/locationassets/master-bedroom.svg' },
@@ -39,6 +43,26 @@ export class LocationCreateComponent {
     { value: 'bathroom', src: 'assets/locationassets/bathroom.svg' },
  ];
  selectedImage: string ='';
-////////////////////////////////////////
+ //////////////////////////////////////////////////////////
+ position = 'top-end';
+ visible = false;
+ percentage = 0;
+ isLoading=false
 
+ toggleToast() {
+   this.visible = !this.visible;
+ }
+
+ toggleLoading(){
+   this.isLoading=!this.isLoading
+ }
+
+ onVisibleChange($event: boolean) {
+   this.visible = $event;
+   this.percentage = !this.visible ? 0 : this.percentage;
+ }
+
+ onTimerChange($event: number) {
+   this.percentage = $event * 25;
+ }
 }

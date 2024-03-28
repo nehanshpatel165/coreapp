@@ -49,8 +49,13 @@ onSubmit(form: NgForm): void {
     this.locationInfo.img_name=form.value.imageGroup;
     this.locationInfo.id=id;
     this.locationService.updateLocation(this.locationInfo).subscribe({
-      next: (response) => {
+      next:  (response) => {
         console.log('Location updated successfully', response);
+        this.toggleToast()
+        this.toggleLoading()
+        setTimeout(() => {
+          this.router.navigate(['dashboard/location-view'])// Redirect after a delay
+        }, 2000);
       },
       error: (error) => {
         console.error("Error while updating the location", error);
@@ -59,7 +64,28 @@ onSubmit(form: NgForm): void {
   } else {
     console.error("Location ID is not provided");
   }
-  this.router.navigate(['dashboard/location-view']);
+}
+//////////////////////////////////////////////////////////
+position = 'top-end';
+visible = false;
+percentage = 0;
+isLoading=false
+
+toggleToast() {
+  this.visible = !this.visible;
+}
+
+toggleLoading(){
+  this.isLoading=!this.isLoading
+}
+
+onVisibleChange($event: boolean) {
+  this.visible = $event;
+  this.percentage = !this.visible ? 0 : this.percentage;
+}
+
+onTimerChange($event: number) {
+  this.percentage = $event * 25;
 }
 
 }

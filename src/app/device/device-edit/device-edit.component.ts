@@ -19,7 +19,7 @@ export class DeviceEditComponent {
   }
  constructor(private route: ActivatedRoute, private locationService: LocationService, private router :Router,private deviceService:DeviceService) {}
  locations :any[] =[]
-
+ isLoading = false
 
 ngOnInit(): void {
   
@@ -51,8 +51,13 @@ onSubmit(form: NgForm): void {
     this.deviceInfo.data_source_id=form.value.datasourceid;
     this.deviceInfo.id=id;
     this.deviceService.updateDevice(this.deviceInfo).subscribe({
-      next: (response) => {
-        console.log('Device updated successfully', response);
+      next:  (response) => {
+        console.log('Device created successfully', response);
+        this.toggleToast()
+        this.toggleLoading()
+        setTimeout(() => {
+          this.router.navigate(['dashboard/device-list']); // Redirect after a delay
+        }, 2000);
       },
       error: (error) => {
         console.error("Error while updating the device", error);
@@ -61,6 +66,30 @@ onSubmit(form: NgForm): void {
   } else {
     console.error("Device ID is not provided");
   }
-  this.router.navigate(['dashboard/device-list']);
+;
 }
+
+position = 'top-end';
+
+visible = false;
+  percentage = 0;
+
+  toggleToast() {
+    this.visible = !this.visible;
+  }
+
+  toggleLoading(){
+    this.isLoading=!this.isLoading
+  }
+
+  onVisibleChange($event: boolean) {
+    this.visible = $event;
+    this.percentage = !this.visible ? 0 : this.percentage;
+  }
+
+  onTimerChange($event: number) {
+    this.percentage = $event * 25;
+  }
+
+
 }
