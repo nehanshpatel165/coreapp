@@ -38,6 +38,8 @@ import { ToastModule } from '@coreui/angular';
 import { SpinnerModule } from '@coreui/angular';
 import { PopoverModule } from '@coreui/angular';
 import { ModalModule } from '@coreui/angular';
+import { SignupComponent } from './signup/signup.component';
+
 
 @NgModule({
   declarations: [
@@ -58,6 +60,7 @@ import { ModalModule } from '@coreui/angular';
     ElectricityComponent,
     KitchenComponent,
     BedroomComponent,
+    SignupComponent,
   ],
   imports: [
     BrowserModule,
