@@ -29,7 +29,7 @@ export type ChartOptions = {
 export class HomeComponent{
   showgraph =false
   showElgraph =false
-  selectedComponent = ' Hall'
+  selectedComponent = 'Hall'
   toggleGraph(){
     this.showgraph=!this.showgraph
   }
