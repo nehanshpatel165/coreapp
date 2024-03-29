@@ -14,14 +14,15 @@ export class LocationCreateComponent {
 
   locationInfo={
     location_name:'',
-    level:0,
+    level:'',
     img_name:''
   }
 
 
   onSubmit(form:NgForm){
     console.log(form);
-    this.locationInfo.location_name=form.value.locationName;
+    // this.locationInfo.location_name=form.value.locationName;
+    this.locationInfo.location_name=form.value.location;
     this.locationInfo.level=form.value.level;
     this.locationInfo.img_name=form.value.imageGroup;
     this.locationService.createLocation(this.locationInfo).subscribe(
