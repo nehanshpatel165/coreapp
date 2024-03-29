@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { DeviceService } from '../../device/device.service';
+import { LocationService } from '../../location/location.service';
 
 @Component({
   selector: 'app-hall',
