@@ -14,7 +14,8 @@ export class LocationEditComponent implements OnInit {
     location_name: '',
     level: 0,
     img_name: '',
-    id:''
+    id:'',
+    description:''
  };
 
  constructor(private route: ActivatedRoute, private locationService: LocationService, private router :Router,private cdr:ChangeDetectorRef) {}
@@ -51,6 +52,7 @@ onSubmit(form: NgForm): void {
     this.locationInfo.level=form.value.level;
     this.locationInfo.img_name=form.value.imageGroup;
     this.locationInfo.id=id;
+    this.locationInfo.description=form.value.locationDescription;
     this.locationService.updateLocation(this.locationInfo).subscribe({
       next:  (response) => {
         console.log('Location updated successfully', response);

@@ -14,13 +14,15 @@
                     <th>Data Source</th>
                     <th>Type</th>
                     <th>Location</th>
+                    <th>Description</th>
                     <th>Actions</th>
                 </tr>
                 <tr class="text-center" *ngFor="let device of device_info_array">
                 <td>{{ device.device_name }}</td>
                 <td>{{ device.data_source_id }}</td>
                 <td>{{ device.type_of_device }}</td>
-                <td>location</td>
+                <td>{{device.location}}</td>
+                <td>{{device.description}}</td>
                 <td><img class="p-2" style="cursor:pointer" src="assets/locationassets/edit.svg" alt="edit" routerLink="devices/edit/{{device.id}}">
                   <img class="p-2" style="cursor:pointer" src="assets/locationassets/delete.svg" alt="delete" (click)="prepareDeleteDevice(device.id)"></td>
                 </tr>
@@ -44,3 +46,22 @@
       <button (click)="deviceToDeleteId && deleteDevice(deviceToDeleteId)" cButton color="primary">Delete</button>
     </c-modal-footer>
   </c-modal>
+
+  <!--------------------------------------------------->
+
+  <c-toaster [placement]="position" class="p-3" position="absolute">
+    <c-toast
+
+      [visible]="visible"
+      class="align-items-center text-white border-0" color="primary">
+      <c-toast-header>
+        <strong class="me-auto">IOT PLUS</strong>
+      </c-toast-header>
+      <c-toast-body>
+        <span *ngIf="visible">Device Deleted Successfully</span>
+      </c-toast-body>
+    </c-toast>
+  </c-toaster>
+
+  <!-- (timer)="onTimerChange($event)"
+  (visibleChange)="onVisibleChange($event)" -->

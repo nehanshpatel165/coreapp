@@ -18,6 +18,7 @@ export class DeviceListComponent {
           console.log('Device deleted successfully', response);
           this.device_info_array = this.device_info_array.filter(device => device.id !== id);
           this.toggleDeleteConfirmationModal();
+          this.toggleToast()
         },
         error: (error) => {
           console.error("Error while deleting the device", error);
@@ -33,12 +34,14 @@ export class DeviceListComponent {
   ngOnInit(): void {
     this.deviceService.getDevice().subscribe(data => {
       console.log(data.data);
-      data.data.forEach((item: { device_name:string; type_of_device:string; data_source_id: string; id :number }) => {
+      data.data.forEach((item: { device_name:string; type_of_device:string; data_source_id: string; id :number ;location:string,desc:string}) => {
         let device_info = {
           device_name: item.device_name,
           type_of_device:item.type_of_device,
           data_source_id:item.data_source_id,
           id:item.id,
+          location:item.location,
+          description:item.desc,
         };
         this.device_info_array.push(device_info);
       });
@@ -72,6 +75,23 @@ handleDeleteConfirmationChange(event: any): void {
 }
 
 
+//////////////////////////////////////////////////////////
+position = 'top-end';
+percentage = 0;
 
-
+toggleToast() {
+  this.visible = !this.visible;
 }
+
+
+
+// onVisibleChange($event: boolean) {
+//   this.visible = $event;
+//   this.percentage = !this.visible ? 0 : this.percentage;
+// }
+
+// onTimerChange($event: number) {
+//   this.percentage = $event * 25;
+// }
+}
+

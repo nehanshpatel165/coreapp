@@ -51,7 +51,20 @@
               </div>
             </div>
           </div>
-        
+          <div class="row">
+            <div class="form-group col m-2">
+              <label for="locationDescription">Description:</label>
+              <div class="input-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="locationDescription"
+                  [(ngModel)]="locationInfo.description"
+                  #deviceName="ngModel"
+                />
+              </div>
+            </div>
+            </div>
           <div class="row">
             <div class="form-group m-2 col-12">
                 <label for="imageGroup">Select an Image:</label>
@@ -73,6 +86,11 @@
               <button *ngIf="isLoading" cButton class="m-1" disabled>
                 <c-spinner  size="sm" variant="grow"></c-spinner>
                 Updating Location
+              </button>
+              <button 
+              type="reset"
+              class="btn btn-primary m-2">
+                Cancel
               </button>
             </div>
           </div>

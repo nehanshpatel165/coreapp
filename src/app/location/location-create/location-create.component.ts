@@ -15,7 +15,8 @@ export class LocationCreateComponent {
   locationInfo={
     location_name:'',
     level:'',
-    img_name:''
+    img_name:'',
+    description:''
   }
 
 
@@ -25,6 +26,7 @@ export class LocationCreateComponent {
     this.locationInfo.location_name=form.value.location;
     this.locationInfo.level=form.value.level;
     this.locationInfo.img_name=form.value.imageGroup;
+    this.locationInfo.description=form.value.locationDescription
     this.locationService.createLocation(this.locationInfo).subscribe(
       response => {
         console.log('Location created successfully', response);

@@ -14,7 +14,7 @@ export class DeviceCreateComponent {
   deviceInfo={
     device_name:'',
     type_of_device:'',
-    // model:'',
+    desc:'',
     data_source_id:'',
     location:''
   }
@@ -35,7 +35,8 @@ export class DeviceCreateComponent {
     this.deviceInfo.device_name=form.value.deviceName
     this.deviceInfo.data_source_id=form.value.datasourceid
     this.deviceInfo.type_of_device=form.value.devicetype
-    // this.deviceInfo.location=form.value.locationName
+    this.deviceInfo.location=form.value.locationName
+    this.deviceInfo.desc=form.value.deviceDescription
     this.deviceService.createDevice(this.deviceInfo).subscribe(
       response => {
         console.log('Device created successfully', response);
@@ -49,7 +50,6 @@ export class DeviceCreateComponent {
     );
    
   }
-
 //////////////////////////////////////////////////////////
   position = 'top-end';
   visible = false;

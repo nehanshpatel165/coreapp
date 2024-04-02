@@ -13,9 +13,10 @@ export class DeviceEditComponent {
   deviceInfo={
     device_name:'',
     type_of_device:'',
-    // model:'',
     data_source_id:'',
-    id:''
+    id:'',
+    desc:'',
+    location:''
   }
  constructor(private route: ActivatedRoute, private locationService: LocationService, private router :Router,private deviceService:DeviceService) {}
  locations :any[] =[]
@@ -50,6 +51,8 @@ onSubmit(form: NgForm): void {
     this.deviceInfo.type_of_device=form.value.devicetype;
     this.deviceInfo.data_source_id=form.value.datasourceid;
     this.deviceInfo.id=id;
+    this.deviceInfo.location=form.value.locationName
+    this.deviceInfo.desc=form.value.deviceDescription
     this.deviceService.updateDevice(this.deviceInfo).subscribe({
       next:  (response) => {
         console.log('Device created successfully', response);
