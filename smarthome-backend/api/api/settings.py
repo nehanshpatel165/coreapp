@@ -168,4 +168,4 @@ REST_FRAMEWORK = {
     )
 }
 
-AUTH_USER_MODEL = "UserAuth.MyUser"
+AUTH_USER_MODEL = "UserAuth.User"

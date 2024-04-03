@@ -2,8 +2,8 @@ from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
 
 
-class MyUserManager(BaseUserManager):
-    def create_user(self, email, phone, password=None):
+class UserManager(BaseUserManager):
+    def create_user(self, email, phone, password=None, password2=None):
         """
         Creates and saves a User with the given email, date of
         birth and password.
@@ -20,39 +20,35 @@ class MyUserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, email, date_of_birth, password=None):
+    def create_superuser(self, email, phone, password=None):
         """
         Creates and saves a superuser with the given email, date of
         birth and password.
         """
-        user = self.create_user(
-            email,
-            password=password,
-            date_of_birth=date_of_birth,
-        )
+        user = self.create_user(email, phone=phone, password=password)
         user.is_admin = True
         user.save(using=self._db)
         return user
 
 
-class MyUser(AbstractBaseUser):
+class User(AbstractBaseUser):
     email = models.EmailField(
         verbose_name="email address",
         max_length=255,
         unique=True,
     )
-    # date_of_birth = models.DateField()
-    phone = models.CharField(max_length=10)
+
+    phone = models.CharField(max_length=10, unique=True)
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
 
-    objects = MyUserManager()
+    objects = UserManager()
 
     USERNAME_FIELD = "phone"
     REQUIRED_FIELDS = ["email"]
 
     def __str__(self):
-        return self.email
+        return self.phone
 
     def has_perm(self, perm, obj=None):
         "Does the user have a specific permission?"

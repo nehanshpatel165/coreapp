@@ -7,10 +7,12 @@ from rest_framework.authentication import BasicAuthentication
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from .models import SensorLocation
 from .serializers import LoacationSerializer
-import firebase_admin
-from firebase_admin import credentials, firestore
+
+# import firebase_admin
+# from firebase_admin import credentials, firestore
 from .models import SensorLocation
-from .firebase_client import FirebaseClient
+
+# from .firebase_client import FirebaseClient
 
 
 # cred = credentials.Certificate(
@@ -59,7 +61,7 @@ from .firebase_client import FirebaseClient
 
 
 class LocationViewset(viewsets.ViewSet):
-    client = FirebaseClient()
+    # client = FirebaseClient()
     serializer_class = LoacationSerializer
     queryset = SensorLocation.objects
     http_method_names = ["get", "post", "put", "delete"]
@@ -70,7 +72,7 @@ class LocationViewset(viewsets.ViewSet):
             serialized = LoacationSerializer(data=request.data)
             if serialized.is_valid():
                 serialized.save()
-                self.client.create(serialized.data)
+                # self.client.create(serialized.data)
                 return Response(
                     {
                         "message": "success",
@@ -128,7 +130,7 @@ class LocationViewset(viewsets.ViewSet):
 
     def update(self, request, pk=None):
         try:
-            print("here")
+
             data = self.queryset.get(id=pk)
             serialized = LoacationSerializer(data, data=request.data, partial=True)
             if serialized.is_valid():

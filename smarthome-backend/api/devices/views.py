@@ -80,8 +80,12 @@ class DeviceViewset(viewsets.ViewSet):
 
     def update(self, request, pk=None):
         try:
-            data = self.queryset.get(id=pk)
-            serialized = DeviceSerializer(data, data=request.data, partial=True)
+            obj = self.queryset.get(id=pk)
+            data = request.data.copy()
+            location_obj = SensorLocation.objects.get(id=request.data["location_id"])
+            data["location"] = location_obj.id
+
+            serialized = DeviceSerializer(obj, data=data, partial=True)
             if serialized.is_valid():
                 serialized.save()
 

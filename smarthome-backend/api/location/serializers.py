@@ -7,4 +7,3 @@ class LoacationSerializer(serializers.ModelSerializer):
     class Meta:
         model = SensorLocation
         fields = "__all__"
-
