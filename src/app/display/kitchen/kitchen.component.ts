@@ -73,7 +73,7 @@ fetchKitchens(): void {
     // Now devicesByLocation contains all devices grouped by location
    this.devicesByLocationArray = Object.values(devicesByLocation);
    this.flattenedDevicesByLocationArray = this.devicesByLocationArray.flat();
-    console.log(this.devicesByLocationArray);
+    console.log('devicesarr',this.flattenedDevicesByLocationArray);
     // You can now use devicesByLocation to access devices by their location
  });
  }
