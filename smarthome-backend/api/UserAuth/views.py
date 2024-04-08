@@ -33,7 +33,7 @@ class UserRegisterViewset(APIView):
             token = get_tokens_for_user(user)
             return Response(
                 {
-                    "message": "Registration Successfull",
+                    "message": "Registration Successful",
                     "Token": token,
                     "status": status.HTTP_201_CREATED,
                 },
@@ -58,7 +58,7 @@ class UserLoginViewSet(APIView):
                 token = get_tokens_for_user(user)
                 return Response(
                     {
-                        "message": "Login Successfull",
+                        "message": "Login Successful",
                         "Token": token,
                         "status": status.HTTP_200_OK,
                     },
@@ -94,5 +94,51 @@ class UserChangePasswordView(APIView):
         )
         serializer.is_valid(raise_exception=True)
         return Response(
-            {"msg": "Password Changed Successfully"}, status=status.HTTP_200_OK
+            {"msg": "Password Changed Successfuly"}, status=status.HTTP_200_OK
         )
+
+
+from django.utils import timezone
+from datetime import timedelta
+from django.conf import settings
+import jwt
+
+# def generate_new_tokens(refresh_token):
+#     try:
+#         # Decode the refresh token to get the user_id and token expiration
+#         payload = jwt.decode(refresh_token, settings.REFRESH_TOKEN_SECRET, algorithms=['HS256'])
+#         user_id = payload.get('user_id')
+#         token_exp = payload.get('exp')
+
+#         # Check if the refresh token has expired
+#         if timezone.now() >= timezone.datetime.fromtimestamp(token_exp):
+#             # Refresh token has expired, return None
+#             return None
+
+#         # Get the user object
+#         user = User.objects.get(id=user_id)
+
+#         # Generate a new access token
+#         access_token_expires = timedelta(minutes=settings.ACCESS_TOKEN_EXPIRY)
+#         access_token_payload = {
+#             'user_id': str(user.id),
+#             'exp': timezone.now() + access_token_expires,
+#         }
+#         access_token = jwt.encode(access_token_payload, settings.ACCESS_TOKEN_SECRET, algorithm='HS256')
+
+#         # Generate a new refresh token
+#         refresh_token_expires = timedelta(days=settings.REFRESH_TOKEN_EXPIRY)
+#         refresh_token_payload = {
+#             'user_id': str(user.id),
+#             'exp': timezone.now() + refresh_token_expires,
+#         }
+#         refresh_token = jwt.encode(refresh_token_payload, settings.REFRESH_TOKEN_SECRET, algorithm='HS256')
+
+#         return {
+#             'access_token': access_token,
+#             'refresh_token': refresh_token,
+#         }
+
+#     except Exception as e:
+#         # Handle any exceptions that may occur
+#         return None

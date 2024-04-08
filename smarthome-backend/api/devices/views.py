@@ -12,6 +12,14 @@ class DeviceViewset(viewsets.ViewSet):
     queryset = Devices.objects
     http_method_names = ["get", "post", "put", "delete"]
 
+    def get_queryset(self):
+        queryset = Devices.objects.all()
+        location_id = self.request.query_params.get("location_id", None)
+        if location_id is not None:
+            queryset = queryset.filter(location=location_id)
+
+        return queryset
+
     def create(self, request):
         try:
             data = request.data.copy()
@@ -43,7 +51,7 @@ class DeviceViewset(viewsets.ViewSet):
 
     def list(self, request):
         try:
-            data = self.queryset.all()
+            data = self.get_queryset()
             serializer = DeviceSerializer(data, many=True)
             return Response(
                 {
