@@ -20,7 +20,7 @@
                 <td>{{ device.device_name }}</td>
                 <td>{{ device.data_source_id }}</td>
                 <td>{{ device.type_of_device }}</td>
-                <td>location</td>
+                <td>{{device.location?.location_name}}</td>
                 <td><img class="p-2" style="cursor:pointer" src="assets/locationassets/edit.svg" alt="edit" routerLink="devices/edit/{{device.id}}">
                   <img class="p-2" style="cursor:pointer" src="assets/locationassets/delete.svg" alt="delete" (click)="prepareDeleteDevice(device.id)"></td>
                 </tr>

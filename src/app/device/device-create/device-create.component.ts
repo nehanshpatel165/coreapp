@@ -15,7 +15,8 @@ export class DeviceCreateComponent {
     device_name:'',
     type_of_device:'',
     // model:'',
-    data_source_id:''
+    data_source_id:'',
+    location_id:''
   }
   locations :any[] =[]
 
@@ -34,6 +35,7 @@ export class DeviceCreateComponent {
     this.deviceInfo.device_name=form.value.deviceName
     this.deviceInfo.data_source_id=form.value.datasourceid
     this.deviceInfo.type_of_device=form.value.devicetype
+    this.deviceInfo.location_id=form.value.locationid
     this.deviceService.createDevice(this.deviceInfo).subscribe(
       response => {
         console.log('Device created successfully', response);

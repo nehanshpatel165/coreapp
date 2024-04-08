@@ -33,12 +33,13 @@ export class DeviceListComponent {
   ngOnInit(): void {
     this.deviceService.getDevice().subscribe(data => {
       console.log(data.data);
-      data.data.forEach((item: { device_name:string; type_of_device:string; data_source_id: string; id :number }) => {
+      data.data.forEach((item: { device_name:string; type_of_device:string; data_source_id: string; id :number ;location:{}}) => {
         let device_info = {
           device_name: item.device_name,
           type_of_device:item.type_of_device,
           data_source_id:item.data_source_id,
           id:item.id,
+          location:item.location,
         };
         this.device_info_array.push(device_info);
       });
