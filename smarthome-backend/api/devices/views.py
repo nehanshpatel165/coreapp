@@ -13,10 +13,17 @@ class DeviceViewset(viewsets.ViewSet):
     http_method_names = ["get", "post", "put", "delete"]
 
     def get_queryset(self):
+        location_ids = []
         queryset = Devices.objects.all()
+        location_queryset = SensorLocation.objects.all()
         location_id = self.request.query_params.get("location_id", None)
+        category = self.request.query_params.get("category", None)
         if location_id is not None:
             queryset = queryset.filter(location=location_id)
+        elif category is not None:
+            location_obj = location_queryset.filter(category=category)
+            location_ids = [location.id for location in location_obj]
+            queryset = queryset.filter(location__in=location_ids)
 
         return queryset
 
@@ -30,7 +37,7 @@ class DeviceViewset(viewsets.ViewSet):
                 serialized.save()
                 return Response(
                     {
-                        "message": "success",
+                        "message": "Device created successfully",
                         "data": serialized.data,
                         "status": status.HTTP_201_CREATED,
                     },
@@ -55,7 +62,7 @@ class DeviceViewset(viewsets.ViewSet):
             serializer = DeviceSerializer(data, many=True)
             return Response(
                 {
-                    "message": "success",
+                    "message": "Devices fetched successfully",
                     "data": serializer.data,
                     "status": status.HTTP_200_OK,
                 },
@@ -74,7 +81,7 @@ class DeviceViewset(viewsets.ViewSet):
             serializer = DeviceSerializer(data)
             return Response(
                 {
-                    "message": "success",
+                    "message": "Device fetched successfully",
                     "data": serializer.data,
                     "status": status.HTTP_200_OK,
                 },
@@ -99,7 +106,7 @@ class DeviceViewset(viewsets.ViewSet):
 
                 return Response(
                     {
-                        "message": "success",
+                        "message": "Devices updated successfully",
                         "data": serialized.data,
                         "status": status.HTTP_201_CREATED,
                     },
@@ -120,7 +127,11 @@ class DeviceViewset(viewsets.ViewSet):
             data = self.queryset.get(id=pk)
             data.delete()
             return Response(
-                {"message": "success", "status": status.HTTP_200_OK},
+                {
+                    "Data": [],
+                    "message": "Device deleted successfully",
+                    "status": status.HTTP_200_OK,
+                },
                 status=status.HTTP_200_OK,
             )
         except Exception as e:

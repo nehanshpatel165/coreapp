@@ -75,7 +75,7 @@ class LocationViewset(viewsets.ViewSet):
                 # self.client.create(serialized.data)
                 return Response(
                     {
-                        "message": "success",
+                        "message": "Location created successfully",
                         "data": serialized.data,
                         "status": status.HTTP_201_CREATED,
                     },
@@ -97,7 +97,7 @@ class LocationViewset(viewsets.ViewSet):
             serializer = LoacationSerializer(data, many=True)
             return Response(
                 {
-                    "message": "success",
+                    "message": "Location fetched successfully",
                     "data": serializer.data,
                     "status": status.HTTP_200_OK,
                 },
@@ -116,7 +116,7 @@ class LocationViewset(viewsets.ViewSet):
             serializer = LoacationSerializer(data)
             return Response(
                 {
-                    "message": "success",
+                    "message": "location fetched successfully",
                     "data": serializer.data,
                     "status": status.HTTP_200_OK,
                 },
@@ -138,7 +138,7 @@ class LocationViewset(viewsets.ViewSet):
                 self.client.update(pk, serialized.data)
                 return Response(
                     {
-                        "message": "success",
+                        "message": "Location updated successfully",
                         "data": serialized.data,
                         "status": status.HTTP_201_CREATED,
                     },
@@ -160,7 +160,11 @@ class LocationViewset(viewsets.ViewSet):
             data.delete()
             # doc_ref.delete()
             return Response(
-                {"message": "success", "status": status.HTTP_200_OK},
+                {
+                    "Data": [],
+                    "message": "Location deleted successfully",
+                    "status": status.HTTP_200_OK,
+                },
                 status=status.HTTP_200_OK,
             )
         except Exception as e:
