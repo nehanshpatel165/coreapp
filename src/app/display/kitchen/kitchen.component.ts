@@ -12,22 +12,21 @@ export class KitchenComponent {
   max = 6;
   value = 4;
   fanSwitchChecked = false;
-  logCheckboxValue(event: any) {
-    console.log('Checkbox value:', event.target.checked);
- }
-
  imagePath = 'assets/locationassets/';
  location_info_array: any[] = [];
  kitchens: any[] = []; // Array to store bedroom data
  selectedKitchen: string=''; // Property to store the selected bedroom
  devicesByLocationArray:any[]=[]
  flattenedDevicesByLocationArray: any[] = [];
+ devicesFound:boolean = true
+
 
  constructor(private locationService: LocationService,private deviceService:DeviceService) {}
 
  ngOnInit(): void {
     this.fetchKitchens();
     this.fetchDevices();
+    this.checkDevicesForSelectedKitchen();
  }
 
 fetchKitchens(): void {
@@ -44,6 +43,7 @@ fetchKitchens(): void {
  onKitchenChange(event: any): void {
    //  this.selectedBedroom = bedroom;
    this.selectedKitchen = event.target.value;
+   this.checkDevicesForSelectedKitchen();
     // Here you can add logic to update the UI based on the selected bedroom
  }
 
@@ -77,4 +77,20 @@ fetchKitchens(): void {
     // You can now use devicesByLocation to access devices by their location
  });
  }
+
+ checkDevicesForSelectedKitchen(): void {
+  const devicesForSelectedKitchen = this.flattenedDevicesByLocationArray.filter(device => device.location === this.selectedKitchen);
+  this.devicesFound = devicesForSelectedKitchen.length > 0;
+ }
+
+ groupLampsInPairs(): any[][] {
+  // Assuming selectedBedroom is a property in your component that holds the currently selected bedroom
+  const lamps = this.flattenedDevicesByLocationArray.filter(device => device.type_of_device === 'lamp' && device.location === this.selectedKitchen);
+  const groupedLamps = [];
+  for (let i = 0; i < lamps.length; i += 2) {
+     groupedLamps.push(lamps.slice(i, i + 2));
+  }
+  return groupedLamps;
+ }
+
 }

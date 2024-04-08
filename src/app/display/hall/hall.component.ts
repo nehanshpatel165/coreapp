@@ -13,22 +13,20 @@ export class HallComponent implements OnInit{
   max = 6;
   value = 4;
   fanSwitchChecked = false;
-  logCheckboxValue(event: any) {
-    console.log('Checkbox value:', event.target.checked);
- }
-
  imagePath = 'assets/locationassets/';
  location_info_array: any[] = [];
  halls: any[] = []; // Array to store bedroom data
  selectedHall: string=''; // Property to store the selected bedroom
  devicesByLocationArray:any[]=[]
  flattenedDevicesByLocationArray: any[] = [];
+ devicesFound:boolean = true
 
  constructor(private locationService: LocationService,private deviceService:DeviceService) {}
 
  ngOnInit(): void {
     this.fetchHalls();
     this.fetchDevices();
+    this.checkDevicesForSelectedHall();
  }
 
 fetchHalls(): void {
@@ -36,7 +34,6 @@ fetchHalls(): void {
     this.halls = data.data.filter((location: { location_name: string; }) => location.location_name === 'Hall');
     if (this.halls.length > 0) {
       this.selectedHall = this.halls[0]; 
-      // Select the first bedroom by default
     }
  });
  console.log('halls',this.halls)
@@ -45,6 +42,7 @@ fetchHalls(): void {
  onHallChange(event: any): void {
    //  this.selectedBedroom = bedroom;
    this.selectedHall = event.target.value;
+   this.checkDevicesForSelectedHall();
     // Here you can add logic to update the UI based on the selected bedroom
  }
 
@@ -79,4 +77,17 @@ fetchHalls(): void {
  });
  }
 
+ checkDevicesForSelectedHall(): void {
+  const devicesForSelectedHall = this.flattenedDevicesByLocationArray.filter(device => device.location === this.selectedHall);
+  this.devicesFound = devicesForSelectedHall.length > 0;
+ }
+
+ groupLampsInPairs(): any[][] {
+  const lamps = this.flattenedDevicesByLocationArray.filter(device => device.type_of_device === 'lamp' && device.location === this.selectedHall);
+  const groupedLamps = [];
+  for (let i = 0; i < lamps.length; i += 2) {
+     groupedLamps.push(lamps.slice(i, i + 2));
+  }
+  return groupedLamps;
+ }
 }

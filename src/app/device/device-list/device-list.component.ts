@@ -9,6 +9,7 @@ import { DeviceService } from '../device.service';
 })
 export class DeviceListComponent {
   device_info_array: any[] = []; 
+  originalDeviceInfoArray: any[] = []; 
   constructor(private deviceService: DeviceService,private router : Router,private route : ActivatedRoute) {}
 
   deleteDevice(id: string): void {
@@ -44,6 +45,7 @@ export class DeviceListComponent {
           description:item.desc,
         };
         this.device_info_array.push(device_info);
+        this.originalDeviceInfoArray.push(device_info); 
       });
     });
  }
@@ -83,15 +85,19 @@ toggleToast() {
   this.visible = !this.visible;
 }
 
-
-
-// onVisibleChange($event: boolean) {
-//   this.visible = $event;
-//   this.percentage = !this.visible ? 0 : this.percentage;
-// }
-
-// onTimerChange($event: number) {
-//   this.percentage = $event * 25;
-// }
+/////////////////////////////////////////////////////////////
+selectedFilterType: string = ''; 
+filterDevicesByType(filterType:string): void {
+  this.selectedFilterType = filterType;
+  if (this.selectedFilterType === '') {
+    // If the selected type is an empty string, reset the device list to the original list
+    this.device_info_array = [...this.originalDeviceInfoArray];
+ } else {
+    // Otherwise, filter the devices based on the selected type
+    this.device_info_array = this.originalDeviceInfoArray.filter(device => device.type_of_device === this.selectedFilterType);
+ }
 }
+}
+
+
 

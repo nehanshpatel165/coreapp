@@ -39,7 +39,9 @@ import { SpinnerModule } from '@coreui/angular';
 import { PopoverModule } from '@coreui/angular';
 import { ModalModule } from '@coreui/angular';
 import { SignupComponent } from './signup/signup.component';
-
+import { PlaceholderModule } from '@coreui/angular';
+import { UtilitiesModule } from '@coreui/angular';
+import { AlertModule } from '@coreui/angular';
 
 @NgModule({
   declarations: [
@@ -83,7 +85,11 @@ import { SignupComponent } from './signup/signup.component';
     ToastModule,
     SpinnerModule,
     PopoverModule,
-    ModalModule
+    ModalModule,
+    PlaceholderModule,
+    UtilitiesModule,
+    AlertModule,
+    NgScrollbarModule
 
   ],
   providers: [],

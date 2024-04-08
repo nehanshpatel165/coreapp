@@ -3,10 +3,29 @@
         <h5 cCardTitle class="m-2">Devices</h5>
     </c-card-header>
     <c-card-body>
-      <p cCardText class="m-2">
-        All of your Devices in your environment
-    </p>
-    <div class="container">
+      <div class="row m-4">
+        <div class="col-8">
+          <p cCardText> All of your devices</p>
+        </div>
+        <div class="col-4">
+        <!-- <select class="form-select" (change)="filterDevicesByType($event)">
+          <option value="">All Devices</option>
+          <option value="lamp">Lamp</option>
+          <option value="fan">Fan</option>
+        </select> -->
+        <div class="btn-group">
+          <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            Filter Devices By Type
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" style="cursor: pointer;" (click)="filterDevicesByType('')">All Devices</a></li>
+            <li><a class="dropdown-item" style="cursor: pointer;" (click)="filterDevicesByType('lamp')">Lamp</a></li>
+            <li><a class="dropdown-item" style="cursor: pointer;" (click)="filterDevicesByType('fan')">Fan</a></li>
+          </ul>
+        </div>
+      </div>
+     </div> 
+    <div class="container">   
         <div class="row m-4">
             <table >
                 <tr class="text-center text-primary fs-6">

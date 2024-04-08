@@ -1,6 +1,7 @@
 .example-card{
   width:auto;
-  height: auto;
+  height: 80vh;
+  overflow-y: scroll;
   max-width: 1000px;
   margin-top: 40px;
 }
