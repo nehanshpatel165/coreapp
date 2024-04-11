@@ -10,7 +10,7 @@ import {
   ApexTitleSubtitle,
   ApexNonAxisChartSeries
 } from "ng-apexcharts";
-import { PieController } from 'chart.js';
+
 import { Router, ActivatedRoute } from '@angular/router';
 import { LocationService } from '../location/location.service';
 

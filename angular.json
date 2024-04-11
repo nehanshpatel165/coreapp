@@ -39,7 +39,7 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": ["node_modules/apexcharts/dist/apexcharts.min.js","E:/Toshal/Angular Projects/coreapp/node_modules/bootstrap/dist/js/bootstrap.bundle.js"]
+            "scripts": ["node_modules/apexcharts/dist/apexcharts.min.js","C:/Users/Jay Taneja/OneDrive/Desktop/clg/projects/coreapp/node_modules/bootstrap/dist/js/bootstrap.min.js"]
           },
           "configurations": {
             "production": {
@@ -104,5 +104,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }
