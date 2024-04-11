@@ -18,6 +18,7 @@ export class LocationViewComponent {
         console.log('Location deleted successfully', response);
         this.location_info_array = this.location_info_array.filter(location => location.id !== id);
         this.toggleDeleteConfirmationModal();
+        this.toggleToast()
       },
       error: (error) => {
         console.error("Error while deleting the location", error);
@@ -32,12 +33,13 @@ export class LocationViewComponent {
  ngOnInit(): void {
     this.locationService.getLocation().subscribe(data => {
       console.log(data.data);
-      data.data.forEach((item: { location_name:string; img_name:string; level: number; id :number }) => {
+      data.data.forEach((item: { location_name:string; img_name:string; level: string; id :number ;description:string}) => {
         let location_info = {
           location_name: item.location_name,
           img_name: this.imagePath + item.img_name +'.svg',
           level: item.level,
           id:item.id,
+          description:item.description,
         };
         this.location_info_array.push(location_info);
       });
@@ -69,4 +71,12 @@ toggleDeleteConfirmationModal(): void {
 handleDeleteConfirmationChange(event: any): void {
  this.showDeleteConfirmationModal = event;
 }
+
+//////////////////////////////////////////////////////////
+position = 'top-end';
+
+toggleToast() {
+  this.visible = !this.visible;
+}
+
 }

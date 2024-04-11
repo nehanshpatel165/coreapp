@@ -13,12 +13,14 @@
                     <th>Image</th>
                     <th>Location name</th>
                     <th>Level</th>
+                    <th>Description</th>
                     <th>Actions</th>
                 </tr>
                 <tr class="text-center" *ngFor="let location of location_info_array">
                 <td><img style="width: 150px; height: 150px" [src]="location.img_name" alt={{location.img_name}}></td>
                 <td><p>{{ location.location_name }}</p></td>
                 <td><p>Level: {{ location.level }}</p></td>
+                <td><p>{{location.description}}</p></td>
                 <td><img class="p-2" style="cursor:pointer" src="assets/locationassets/edit.svg" alt="edit" routerLink="locations/edit/{{location.id}}">
                   <img class="p-2" style="cursor:pointer" src="assets/locationassets/delete.svg" alt="delete" (click)="prepareDeleteLocation(location.id)" >
                 </td>
@@ -43,3 +45,18 @@
       <button (click)="locationToDeleteId && deleteLocation(locationToDeleteId)" cButton color="primary">Delete</button>
     </c-modal-footer>
   </c-modal>
+
+    <!--------------------------------------------------->
+
+    <c-toaster [placement]="position" class="p-3" position="absolute">
+      <c-toast
+        [visible]="visible"
+        class="align-items-center text-white border-0" color="primary">
+        <c-toast-header>
+          <strong class="me-auto">IOT PLUS</strong>
+        </c-toast-header>
+        <c-toast-body>
+          <span *ngIf="visible">Location Deleted Successfully</span>
+        </c-toast-body>
+      </c-toast>
+    </c-toaster>

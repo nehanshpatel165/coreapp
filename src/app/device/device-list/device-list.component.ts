@@ -9,6 +9,7 @@ import { DeviceService } from '../device.service';
 })
 export class DeviceListComponent {
   device_info_array: any[] = []; 
+  originalDeviceInfoArray: any[] = []; 
   constructor(private deviceService: DeviceService,private router : Router,private route : ActivatedRoute) {}
 
   deleteDevice(id: string): void {
@@ -18,6 +19,7 @@ export class DeviceListComponent {
           console.log('Device deleted successfully', response);
           this.device_info_array = this.device_info_array.filter(device => device.id !== id);
           this.toggleDeleteConfirmationModal();
+          this.toggleToast()
         },
         error: (error) => {
           console.error("Error while deleting the device", error);
@@ -33,14 +35,17 @@ export class DeviceListComponent {
   ngOnInit(): void {
     this.deviceService.getDevice().subscribe(data => {
       console.log(data.data);
-      data.data.forEach((item: { device_name:string; type_of_device:string; data_source_id: string; id :number }) => {
+      data.data.forEach((item: { device_name:string; type_of_device:string; data_source_id: string; id :number ;location:string,desc:string}) => {
         let device_info = {
           device_name: item.device_name,
           type_of_device:item.type_of_device,
           data_source_id:item.data_source_id,
           id:item.id,
+          location:item.location,
+          description:item.desc,
         };
         this.device_info_array.push(device_info);
+        this.originalDeviceInfoArray.push(device_info); 
       });
     });
  }
@@ -72,6 +77,27 @@ handleDeleteConfirmationChange(event: any): void {
 }
 
 
+//////////////////////////////////////////////////////////
+position = 'top-end';
+percentage = 0;
 
-
+toggleToast() {
+  this.visible = !this.visible;
 }
+
+/////////////////////////////////////////////////////////////
+selectedFilterType: string = ''; 
+filterDevicesByType(filterType:string): void {
+  this.selectedFilterType = filterType;
+  if (this.selectedFilterType === '') {
+    // If the selected type is an empty string, reset the device list to the original list
+    this.device_info_array = [...this.originalDeviceInfoArray];
+ } else {
+    // Otherwise, filter the devices based on the selected type
+    this.device_info_array = this.originalDeviceInfoArray.filter(device => device.type_of_device === this.selectedFilterType);
+ }
+}
+}
+
+
+

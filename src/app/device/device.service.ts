@@ -32,22 +32,4 @@ export class DeviceService {
  }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

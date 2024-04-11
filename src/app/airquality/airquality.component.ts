@@ -32,7 +32,7 @@ private intervalId: any;
     this.intervalId = setInterval(() => {
       aqi++;
       const deg = this.calculateValue(aqi);
-      console.log(`AQI: ${aqi}, DEG: ${deg.toFixed(2)}`);
+      // console.log(`AQI: ${aqi}, DEG: ${deg.toFixed(2)}`);
       this.renderer.setProperty(this.currentAqi.nativeElement, 'innerText', aqi.toString());
       this.renderer.setStyle(this.indicator.nativeElement, 'transform', `rotate(${deg}deg)`);
       if (aqi === 100) {
