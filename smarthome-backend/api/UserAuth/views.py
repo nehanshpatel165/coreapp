@@ -7,10 +7,17 @@ from .serializers import (
     UserProfileSerializer,
     UserChangePasswordSerializer,
 )
+
 from django.contrib.auth import authenticate
 from rest_framework_simplejwt.tokens import RefreshToken
 from .renderers import UserRenderer
 from rest_framework.permissions import IsAuthenticated
+
+
+# from time import time
+from rest_framework_simplejwt.views import TokenRefreshView
+from rest_framework.response import Response
+from rest_framework import status
 
 
 def get_tokens_for_user(user):
@@ -22,7 +29,18 @@ def get_tokens_for_user(user):
     }
 
 
-# Create your views here.
+class CustomTokenRefreshView(TokenRefreshView):
+    def post(self, request, *args, **kwargs):
+        try:
+            serializer = self.get_serializer(data=request.data)
+            if serializer.is_valid(raise_exception=True):
+                user = request.user
+                tokens = get_tokens_for_user(user)
+                return Response(tokens, status=status.HTTP_200_OK)
+        except Exception as e:
+            return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
+
+
 class UserRegisterViewset(APIView):
 
     def post(self, request):
@@ -96,49 +114,3 @@ class UserChangePasswordView(APIView):
         return Response(
             {"msg": "Password Changed Successfuly"}, status=status.HTTP_200_OK
         )
-
-
-from django.utils import timezone
-from datetime import timedelta
-from django.conf import settings
-import jwt
-
-# def generate_new_tokens(refresh_token):
-#     try:
-#         # Decode the refresh token to get the user_id and token expiration
-#         payload = jwt.decode(refresh_token, settings.REFRESH_TOKEN_SECRET, algorithms=['HS256'])
-#         user_id = payload.get('user_id')
-#         token_exp = payload.get('exp')
-
-#         # Check if the refresh token has expired
-#         if timezone.now() >= timezone.datetime.fromtimestamp(token_exp):
-#             # Refresh token has expired, return None
-#             return None
-
-#         # Get the user object
-#         user = User.objects.get(id=user_id)
-
-#         # Generate a new access token
-#         access_token_expires = timedelta(minutes=settings.ACCESS_TOKEN_EXPIRY)
-#         access_token_payload = {
-#             'user_id': str(user.id),
-#             'exp': timezone.now() + access_token_expires,
-#         }
-#         access_token = jwt.encode(access_token_payload, settings.ACCESS_TOKEN_SECRET, algorithm='HS256')
-
-#         # Generate a new refresh token
-#         refresh_token_expires = timedelta(days=settings.REFRESH_TOKEN_EXPIRY)
-#         refresh_token_payload = {
-#             'user_id': str(user.id),
-#             'exp': timezone.now() + refresh_token_expires,
-#         }
-#         refresh_token = jwt.encode(refresh_token_payload, settings.REFRESH_TOKEN_SECRET, algorithm='HS256')
-
-#         return {
-#             'access_token': access_token,
-#             'refresh_token': refresh_token,
-#         }
-
-#     except Exception as e:
-#         # Handle any exceptions that may occur
-#         return None

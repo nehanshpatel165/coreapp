@@ -25,15 +25,15 @@ from .models import SensorLocation
 # docs = db.collection("smarthome_data").document()
 # docu = db.collection("smarthome_data").stream()
 
-# config = {
-#     "apiKey": "AIzaSyD3cggRKBbt4Z93igmRwtMHFasr4l8xpBY",
-#     "authDomain": "smart-home-dashboard-57894.firebaseapp.com",
-#     "projectId": "smart-home-dashboard-57894",
-#     "storageBucket": "smart-home-dashboard-57894.appspot.com",
-#     "databaseURL": "https://smart-home-dashboard-57894-default-rtdb.firebaseio.com/",
-#     "messagingSenderId": "472715103056",
-#     "appId": "1:472715103056:web:70d35588081b2f2731ba55",
-# }
+config = {
+    "apiKey": "AIzaSyC068zjRaaKmePnSe-QSpRSbrt1zPzpt-I",
+    "authDomain": "smarthome-db-ea412.firebaseapp.com",
+    "projectId": "smarthome-db-ea412",
+    "storageBucket": "smarthome-db-ea412.appspot.com",
+    "messagingSenderId": "387205056346",
+    "appId": "1:387205056346:web:3493e659560b1958769563",
+    "measurementId": "G-G7K46M3PD2",
+}
 
 # firebase = pyrebase.initialize_app(config)
 # authe = firebase.auth()
@@ -135,7 +135,7 @@ class LocationViewset(viewsets.ViewSet):
             serialized = LoacationSerializer(data, data=request.data, partial=True)
             if serialized.is_valid():
                 serialized.save()
-                self.client.update(pk, serialized.data)
+                # self.client.update(pk, serialized.data)
                 return Response(
                     {
                         "message": "Location updated successfully",
