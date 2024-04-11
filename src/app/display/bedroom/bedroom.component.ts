@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { LocationService } from '../../location/location.service';
 import { DeviceService } from '../../device/device.service';
 
@@ -8,6 +8,10 @@ import { DeviceService } from '../../device/device.service';
  styleUrls: ['./bedroom.component.scss']
 })
 export class BedroomComponent implements OnInit {
+  min = 0;
+max = 3;
+value = 2;
+fanSwitchChecked = false;
  imagePath = 'assets/locationassets/';
  location_info_array: any[] = [];
  bedrooms: any[] = []; // Array to store bedroom data
@@ -21,7 +25,6 @@ export class BedroomComponent implements OnInit {
  ngOnInit(): void {
     this.fetchBedrooms();
     this.fetchDevices();
-    this.checkDevicesForSelectedBedroom();
  }
 
 
@@ -29,18 +32,15 @@ fetchBedrooms(): void {
  this.locationService.getLocation().subscribe(data => {
     this.bedrooms = data.data.filter((location: { location_name: string; }) => location.location_name === 'Bedroom');
     if (this.bedrooms.length > 0) {
-      this.selectedBedroom = this.bedrooms[0]; 
-      // Select the first bedroom by default
+      this.selectedBedroom = `${this.bedrooms[0].location_name} Floor-${this.bedrooms[0].level} ${this.bedrooms[0].description}`;
     }
  });
  console.log(this.bedrooms)
 }
 
  onBedroomChange(event: any): void {
-   //  this.selectedBedroom = bedroom;
-   this.selectedBedroom = event.target.value;
    this.checkDevicesForSelectedBedroom();
-    // Here you can add logic to update the UI based on the selected bedroom
+   this.selectedBedroom = event.target.value;
  }
 
  
@@ -79,14 +79,10 @@ fetchBedrooms(): void {
   this.devicesFound = devicesForSelectedBedroom.length > 0;
  }
 
-min = 0;
-max = 6;
-value = 4;
-fanSwitchChecked = false;
+
 
 ////////////////////////
 groupLampsInPairs(): any[][] {
- // Assuming selectedBedroom is a property in your component that holds the currently selected bedroom
  const lamps = this.flattenedDevicesByLocationArray.filter(device => device.type_of_device === 'lamp' && device.location === this.selectedBedroom);
  const groupedLamps = [];
  for (let i = 0; i < lamps.length; i += 2) {

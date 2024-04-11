@@ -26,24 +26,21 @@ export class HallComponent implements OnInit{
  ngOnInit(): void {
     this.fetchHalls();
     this.fetchDevices();
-    this.checkDevicesForSelectedHall();
  }
 
 fetchHalls(): void {
  this.locationService.getLocation().subscribe(data => {
     this.halls = data.data.filter((location: { location_name: string; }) => location.location_name === 'Hall');
     if (this.halls.length > 0) {
-      this.selectedHall = this.halls[0]; 
+      this.selectedHall = `${this.halls[0].location_name} Floor-${this.halls[0].level} ${this.halls[0].description}`;
     }
  });
  console.log('halls',this.halls)
 }
 
  onHallChange(event: any): void {
-   //  this.selectedBedroom = bedroom;
-   this.selectedHall = event.target.value;
    this.checkDevicesForSelectedHall();
-    // Here you can add logic to update the UI based on the selected bedroom
+   this.selectedHall = event.target.value;
  }
 
  
