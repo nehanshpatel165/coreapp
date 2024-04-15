@@ -1,14 +1,14 @@
 from rest_framework.routers import DefaultRouter
-from location import views
+from . import views
 from django.urls import path
 
-app_name = "locations"
+app_name = "SensorSync"
 
 urlpatterns = []
 
 router = DefaultRouter(trailing_slash="/?")
 
-router.register(r"location", views.LocationViewset, basename="location")
+router.register(r"solar-data", views.SolarPanelViewSet, basename="solar")
 
 
 urlpatterns += router.urls

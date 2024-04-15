@@ -5,12 +5,14 @@ from rest_framework.response import Response
 from .models import Devices
 from .serializers import DeviceSerializer
 from location.models import SensorLocation
+from rest_framework.permissions import IsAuthenticated
 
 
 class DeviceViewset(viewsets.ViewSet):
     serializer_class = DeviceSerializer
     queryset = Devices.objects
     http_method_names = ["get", "post", "put", "delete"]
+    permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         location_ids = []
@@ -32,7 +34,9 @@ class DeviceViewset(viewsets.ViewSet):
             data = request.data.copy()
             location_obj = SensorLocation.objects.get(id=request.data["location_id"])
             data["location"] = location_obj.id
-            serialized = DeviceSerializer(data=data)
+            print(request.user)
+            data["created_by"] = request.user.id
+            serialized = self.serializer_class(data=data)
             if serialized.is_valid():
                 serialized.save()
                 return Response(
@@ -59,7 +63,7 @@ class DeviceViewset(viewsets.ViewSet):
     def list(self, request):
         try:
             data = self.get_queryset()
-            serializer = DeviceSerializer(data, many=True)
+            serializer = self.serializer_class(data, many=True)
             return Response(
                 {
                     "message": "Devices fetched successfully",
@@ -78,7 +82,7 @@ class DeviceViewset(viewsets.ViewSet):
         try:
 
             data = self.queryset.get(id=pk)
-            serializer = DeviceSerializer(data)
+            serializer = self.serializer_class(data)
             return Response(
                 {
                     "message": "Device fetched successfully",
@@ -100,7 +104,7 @@ class DeviceViewset(viewsets.ViewSet):
             location_obj = SensorLocation.objects.get(id=request.data["location_id"])
             data["location"] = location_obj.id
 
-            serialized = DeviceSerializer(obj, data=data, partial=True)
+            serialized = self.serializer_class(obj, data=data, partial=True)
             if serialized.is_valid():
                 serialized.save()
 

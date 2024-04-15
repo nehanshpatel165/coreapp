@@ -24,4 +24,5 @@ urlpatterns = [
     path("", include("location.urls")),
     path("", include("devices.urls")),
     path("", include("UserAuth.urls")),
+    path("", include("SensorSync.urls")),
 ]
