@@ -4,7 +4,7 @@ from UserAuth.models import User
 
 device_choices = (
     ("Fan", "fan"),
-    ("Light", "light"),
+    ("Lamp", "lamp"),
     ("AC", "AC"),
     ("Heater", "heater"),
     ("Solar Panel", "solar_panel"),
