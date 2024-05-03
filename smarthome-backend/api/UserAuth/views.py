@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from .serializers import (
     UserSerializer,
     UserLoginSerializer,
+    TokenRefreshSerializer,
     UserProfileSerializer,
     UserChangePasswordSerializer,
 )
@@ -29,11 +30,13 @@ def get_tokens_for_user(user):
     }
 
 
-class CustomTokenRefreshView(TokenRefreshView):
+class CustomTokenRefreshView(APIView):
+
     def post(self, request, *args, **kwargs):
         try:
-            serializer = self.get_serializer(data=request.data)
+            serializer = TokenRefreshSerializer(data=request.data)
             if serializer.is_valid(raise_exception=True):
+                refresh = RefreshToken(request.data["refresh"])
                 user = request.user
                 tokens = get_tokens_for_user(user)
                 return Response(tokens, status=status.HTTP_200_OK)
@@ -47,12 +50,10 @@ class UserRegisterViewset(APIView):
         data = request.data
         serializer = UserSerializer(data=data)
         if serializer.is_valid():
-            user = serializer.save()
-            token = get_tokens_for_user(user)
+            serializer.save()
             return Response(
                 {
                     "message": "Registration Successful",
-                    "Token": token,
                     "status": status.HTTP_201_CREATED,
                 },
                 status=status.HTTP_201_CREATED,

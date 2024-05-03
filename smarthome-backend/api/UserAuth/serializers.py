@@ -29,6 +29,11 @@ class UserLoginSerializer(serializers.ModelSerializer):
         fields = ("phone", "password")
 
 
+class TokenRefreshSerializer(serializers.Serializer):
+
+    refresh = serializers.CharField()
+
+
 class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = User

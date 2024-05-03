@@ -1,3 +1,4 @@
+import datetime
 from django.shortcuts import render
 from .serializers import SolarPanelSerializer
 from rest_framework import viewsets, status
@@ -29,15 +30,16 @@ class SolarPanelViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self, request):
         devices = Devices.objects.filter(created_by=request.user.id)
-        queryset = devices.filter(type_of_device="solar_panel")
+        queryset = devices.filter(type_of_device="Solar Panel")
         return queryset
 
     def list(self, request, format=None):
         try:
             solar = db.child("Data").child("Solar").get().val()
+            date = datetime.datetime.now().date()
             data = self.get_queryset(request)
             serializer = self.serializer_class(
-                data, many=True, context={"sensor_data": solar}
+                data, many=True, context={"sensor_data": solar, "date": date}
             )
             return Response(
                 {

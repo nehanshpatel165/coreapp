@@ -16,5 +16,13 @@ class SolarPanelSerializer(serializers.Serializer):
         # Merge location_data into the representation of the DevicesSerializer
         representation = super().to_representation(instance)
         representation["location"] = location_data["location_name"]
-        representation["power_consumption"] = self.context["sensor_data"]
+        representation["power_consumption"] = {
+            "power": self.context["sensor_data"],
+            "date": self.context["date"],
+        }
         return representation
+
+
+class TokenRefreshSerializer(serializers.Serializer):
+
+    refresh = serializers.CharField()
