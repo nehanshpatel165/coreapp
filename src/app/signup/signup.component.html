@@ -21,32 +21,30 @@ Please log in to access your personalized smart home controls and features.
   
           <div class="card bg-glass">
             <div class="card-body px-4 py-5 px-md-5">
-              <form>
+              <form (ngSubmit)="onSubmit(signupForm)" #signupForm="ngForm">
                 <div class="row">
-                  <div class="col-md-6 mb-4">
+                  <div class="col-md-12 mb-4">
                     <div class="form-outline">
-                      <input type="text" id="form3Example1" class="form-control" />
-                      <label class="form-label" for="form3Example1">First name</label>
-                    </div>
-                  </div>
-                  <div class="col-md-6 mb-4">
-                    <div class="form-outline">
-                      <input type="text" id="form3Example2" class="form-control" />
-                      <label class="form-label" for="form3Example2">Last name</label>
+                      <input type="text" id="phoneno"  ngModel name="phoneno" class="form-control" />
+                      <label class="form-label" for="phoneno">Phone Number</label>
                     </div>
                   </div>
                 </div>
   
                 <div class="form-outline mb-4">
-                  <input type="email" id="form3Example3" class="form-control" />
-                  <label class="form-label" for="form3Example3">Email address</label>
+                  <input ngModel type="email" id="email" name="email" class="form-control" />
+                  <label class="form-label" for="email">Email address</label>
                 </div>
   
                 <div class="form-outline mb-4">
-                  <input type="password" id="form3Example4" class="form-control" />
-                  <label class="form-label" for="form3Example4">Password</label>
+                  <input ngModel name="password" type="password" id="password" class="form-control" />
+                  <label class="form-label" for="password">Password</label>
                 </div>
                 
+                <div class="form-outline mb-4">
+                  <input ngModel name="password2" type="password" id="password2" class="form-control" />
+                  <label class="form-label" for="password2">Confirm Password</label>
+                </div>
                 <button type="submit" class="btn btn-primary btn-block mb-4">
                   Sign up
                 </button>

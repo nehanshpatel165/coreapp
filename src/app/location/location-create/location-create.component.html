@@ -1,99 +1,140 @@
 <c-card class="example-card custom-card">
-    <c-card-header>
-        <h5 cCardTitle class="m-2">Create Location</h5>
-    </c-card-header>
-    <c-card-body>
-      <p cCardText>
-        Categorize the devices and distribute them into locations and floors.
-      </p>
-      <form (ngSubmit)="onSubmit(locationForm)" #locationForm="ngForm">
-        <div class="container">
-          <div class="row">
-            <div class="form-group m-2 col-4 col-md-6">
-              <label for="locationName">Location name:</label>
-              <div class="input-group">
-                <input
-                 type="text"
-                 ngModel
-                 class="form-control"
-                 name="locationName"
-                 #locationName = "ngModel"
-                 pattern="^[a-zA-Z][a-zA-Z0-9\s]*$"
-                 required
-                />
-              </div>
-              <span *ngIf="!locationName.valid && locationName.touched"
-              >PLEASE ENTER A VALID LOCATION NAME</span
-            >
+  <c-card-header>
+      <h5 cCardTitle class="m-2">Create Location</h5>
+  </c-card-header>
+  <c-card-body>
+    <p cCardText>
+      Categorize the devices and distribute them into locations and floors.
+    </p>
+    <form (ngSubmit)="onSubmit(locationForm)" #locationForm="ngForm">
+      <div class="container">
+        <div class="row">
+          <div class="form-group m-2 col-4 col-md-6">
+            <!-- <label for="locationName">Location name:</label>
+            <div class="input-group">
+              <input
+               type="text"
+               ngModel
+               class="form-control"
+               name="locationName"
+               #locationName = "ngModel"
+               pattern="^[a-zA-Z][a-zA-Z0-9\s]*$"
+               required
+              />
+            </div> -->
+            <label for="category">Location:</label>
+            <div class="input-group Name">
+              <select
+               type="text"
+               name="category"
+               class="form-control"
+               ngModel
+               required
+              >
+               <option
+                  value=""
+                  disabled="disabled"
+                  selected="selected"
+               >
+                  Select the location 
+               </option>
+               <option value="Living Room">Living Room </option>
+               <option value="Dining Room">Dining Room</option>
+               <option value="Hallway">Hallway</option>
+               <option value="Garden">Garden</option>
+               <option value="Office">Office</option>
+               <option value="Bathroom">Bathroom</option>
+               <option value="Bed Room">Bedroom</option>
+               <option value="Kitchen">Kitchen</option>
+               <option value="Others">Others</option>
+              </select>
             </div>
-            <div class="form-group col-4 col-md-5 m-2">
-              <label for="level">Level:</label>
-              <div class="input-group Name">
-                <select
-                 type="text"
-                 name="level"
-                 class="form-control"
-                 ngModel
-                 required
-                >
-                 <option
-                    value=""
-                    disabled="disabled"
-                    selected="selected"
-                 >
-                    Select the level (floor)
-                 </option>
-                 <option value="0">Ground Floor </option>
-                 <option value="1">Floor 1</option>
-                 <option value="2">Floor 2</option>
-                 <option value="3">Floor 3</option>
-                </select>
-              </div>
-            </div>
-          </div>
-        
-          <div class="row">
-            <div class="form-group m-2 col-12">
-                <label for="imageGroup">Select an Image:</label>
-                <div class="row">
-                 <div class="col-12 col-md-3" *ngFor="let image of images">
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="imageGroup" [value]="image.value" [(ngModel)]="selectedImage" required>
-                      <label class="form-check-label">
-                        <img class="m-2" [src]="image.src" alt="Image" style="width: 150px; height: 150px" />
-                      </label>
-                    </div>
-                 </div>
-                </div>
-               </div>
-          </div>
-          <div class="row">
-            <div class="form-group m-2 col-12">
-              <button *ngIf="!isLoading" type="submit" class="btn btn-primary" [disabled]="!locationForm.valid" >Create Location</button>
-              <button *ngIf="isLoading" cButton class="m-1" disabled>
-                <c-spinner  size="sm" variant="grow"></c-spinner>
-                Creating Location
-              </button>
+             </div>
+          <div class="form-group col-4 col-md-5 m-2">
+            <label for="level">Level:</label>
+            <div class="input-group Name">
+              <select
+               type="text"
+               name="level"
+               class="form-control"
+               ngModel
+               required
+              >
+               <option
+                  value=""
+                  disabled="disabled"
+                  selected="selected"
+               >
+                  Select the level (floor)
+               </option>
+               <option value="0">Ground Floor </option>
+               <option value="1">Floor 1</option>
+               <option value="2">Floor 2</option>
+               <option value="3">Floor 3</option>
+              </select>
             </div>
           </div>
         </div>
-      </form>
-    </c-card-body>
- </c-card>
+        <div class="row">
+          <div class="form-group col m-2">
+            <label for="location_name">Location Name:</label>
+            <div class="input-group">
+              <input
+                type="text"
+                class="form-control"
+                name="location_name"
+                ngModel
+                #deviceName="ngModel"
+              />
+            </div>
+          </div>
+          </div>
+        <div class="row">
+          <div class="form-group m-2 col-12">
+              <label for="imageGroup">Select an Image:</label>
+              <div class="row">
+               <div class="col-12 col-md-3" *ngFor="let image of images">
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="imageGroup" [value]="image.value" [(ngModel)]="selectedImage" required>
+                    <label class="form-check-label">
+                      <img class="m-2" [src]="image.src" alt="Image" style="width: 150px; height: 150px" />
+                    </label>
+                  </div>
+               </div>
+              </div>
+             </div>
+        </div>
+        <div class="row">
+          <div class="form-group m-2 col-12">
+            <button *ngIf="!isLoading" type="submit" class="btn btn-primary" [disabled]="!locationForm.valid" >Create Location</button>
+            <button *ngIf="isLoading" cButton class="m-1" disabled>
+              <c-spinner  size="sm" variant="grow"></c-spinner>
+              Creating Location
+            </button>
+            <button 
+            type="reset"
+            class="btn btn-primary m-2">
+              Cancel
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </c-card-body>
+</c-card>
 
-  <!---------------------------------------------------------------------------------------------------------------->
-  <c-toaster [placement]="position" class="p-3" position="absolute">
-    <c-toast
-      (timer)="onTimerChange($event)"
-      (visibleChange)="onVisibleChange($event)"
-      [visible]="visible"
-      class="align-items-center text-white border-0" color="primary">
-      <c-toast-header>
-        <strong class="me-auto">IOT PLUS</strong>
-      </c-toast-header>
-      <c-toast-body>
-        <span *ngIf="visible">Location Created Successfully</span>
-      </c-toast-body>
-    </c-toast>
-  </c-toaster>
-
+<!---------------------------------------------------------------------------------------------------------------->
+<c-toaster [placement]="position" class="p-3" position="absolute">
+  <c-toast
+    (timer)="onTimerChange($event)"
+    (visibleChange)="onVisibleChange($event)"
+    [visible]="visible"
+    class="align-items-center text-white border-0" color="primary">
+    <c-toast-header>
+      <strong class="me-auto">IntelliHouse</strong>
+    </c-toast-header>
+    <c-toast-body>
+      <span *ngIf="visible">Location Created Successfully</span>
+    </c-toast-body>
+  </c-toast>
+</c-toaster>

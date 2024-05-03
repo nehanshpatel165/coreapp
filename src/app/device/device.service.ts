@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -31,7 +31,10 @@ export class DeviceService {
    return this.http.delete(`http://127.0.0.1:8000/devices/${id}`);
  }
 
-
+ getDeviceByCategory(category:string):Observable<any>{
+  let params = new HttpParams().set('category', category);
+    return this.http.get(this.apiUrl, { params });
+ }
 
 
 

@@ -102,12 +102,12 @@
           </nav> -->
           <nav class="nav nav-pills flex-column flex-sm-row">
             <div class="col" *ngFor="let location of filteredLocations">
-            <a class="flex-sm-fill text-sm-center nav-link" (click)="selectedComponent=location.location_name" style="cursor: pointer;" [ngClass]="selectedComponent===location.location_name ? 'active' : ''">{{location.location_name}}</a>
+            <a class="flex-sm-fill text-sm-center nav-link" (click)="selectedComponent=location.category" style="cursor: pointer;" [ngClass]="selectedComponent===location.category ? 'active' : ''">{{location.category}}</a>
           </div></nav>
         </c-card-header>
         <c-card-body>
-          <app-hall *ngIf="selectedComponent === 'Hall'"></app-hall>
-          <app-bedroom *ngIf="selectedComponent === 'Bedroom'"></app-bedroom>
+          <app-hall *ngIf="selectedComponent === 'Living Room'"></app-hall>
+          <app-bedroom *ngIf="selectedComponent === 'Bed Room'"></app-bedroom>
           <app-kitchen *ngIf="selectedComponent === 'Kitchen'"></app-kitchen>
         </c-card-body>
       </c-card>

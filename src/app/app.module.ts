@@ -17,7 +17,7 @@ import { WeathercompComponent } from './weathercomp/weathercomp.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SolarComponent } from './solar/solar.component';
 import { DropdownModule } from '@coreui/angular';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AirqualityComponent } from './airquality/airquality.component';
 import { LoginComponent } from './login/login.component';
 import { LocationCreateComponent } from './location/location-create/location-create.component';
@@ -39,8 +39,9 @@ import { SpinnerModule } from '@coreui/angular';
 import { PopoverModule } from '@coreui/angular';
 import { ModalModule } from '@coreui/angular';
 import { SignupComponent } from './signup/signup.component';
-
-
+import { AlertComponent } from '@coreui/angular';
+import { CustomInterceptor } from './shared/custom.interceptor';
+import { DatePipe } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
@@ -83,10 +84,10 @@ import { SignupComponent } from './signup/signup.component';
     ToastModule,
     SpinnerModule,
     PopoverModule,
-    ModalModule
-
+    ModalModule,
+    AlertComponent,
   ],
-  providers: [],
+  providers: [ { provide: HTTP_INTERCEPTORS, useClass: CustomInterceptor, multi: true },DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -66,11 +66,13 @@ export class HomeComponent{
 
 ngOnInit(): void {
  this.locationService.getLocation().subscribe(data => {
-    this.location_info_array = data.data.map((item: { location_name: any; img_name: string; level: any; id: any; }) => ({
+    this.location_info_array = data.data.map((item: { location_name: any; img_name: string; level: any; id: any;category:'' }) => ({
       location_name: item.location_name,
       img_name: this.imagePath + item.img_name + '.svg',
       level: item.level,
       id: item.id,
+      category: item.category,
+      
     }));
     this.filteredLocations = this.filterUniqueLocations(this.location_info_array);
  });
@@ -82,7 +84,7 @@ filteredLocations: any[] = [];
 
  filterUniqueLocations(array: any[]): any[] {
   const uniqueLocations = array.reduce((acc, current) => {
-     const x = acc.find((item : any) => item.location_name === current.location_name);
+     const x = acc.find((item : any) => item.category === current.category);
      if (!x) {
        return acc.concat([current]);
      } else {

@@ -13,17 +13,19 @@ export class LocationCreateComponent {
   constructor(private locationService:LocationService,private router:Router){}
 
   locationInfo={
-    location_name:'',
+    category:'',
     level:0,
-    img_name:''
+    img_name:'',
+    location_name:''
   }
 
 
   onSubmit(form:NgForm){
     console.log(form);
-    this.locationInfo.location_name=form.value.locationName;
+    this.locationInfo.category=form.value.category;
     this.locationInfo.level=form.value.level;
     this.locationInfo.img_name=form.value.imageGroup;
+    this.locationInfo.location_name=form.value.location_name
     this.locationService.createLocation(this.locationInfo).subscribe(
       response => {
         console.log('Location created successfully', response);

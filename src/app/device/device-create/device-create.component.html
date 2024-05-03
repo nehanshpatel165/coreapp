@@ -36,6 +36,10 @@
                 ngModel
               />
             </div>
+            <div class="form-group col m-2">
+              <label for="installdate">Installation Date:</label>
+              <input type="date" id="installdate" name="installdate" ngModel>
+            </div>
           </div>
     
         <div class="row">
@@ -47,15 +51,17 @@
                   name="devicetype"
                   class="form-control"
                   ngModel
-                  
+                  #deviceTypeSelect = "ngModel"
                 >
                   <option value="" disabled="disabled" selected="selected">
                     Select Device
                   </option>
-                  <option value="thsensor">Temperature & Humidity Sensor</option>
-                  <option value="cosensor">CO2 Sensor</option>
-                  <option value="lamp">Lamp</option>
-                  <option value="fan">Fan</option>
+                  <option value="Solar Panel">Solar Panel</option>
+                  <option value="Air Purifier">Air Purifier</option>
+                  <option value="Lamp">Lamp</option>
+                  <option value="Fan">Fan</option>
+                  <option value="ac">AC</option>
+                  <option value="heater">heater</option>
                 </select>
               </div>
             </div>
@@ -74,6 +80,42 @@
                     <option *ngFor="let location of locations" value="{{location.id}}">{{location.location_name}} {{location.level}}</option>
                   </select>
                 </div>
+              </div>
+            </div>
+            <div class="row" *ngIf="deviceTypeSelect.value === 'Air Purifier'">
+              <div class="form-group m-2 col">
+                <label for="filtertype">Filter Type:</label>
+                <select
+                    type="text"
+                    name="filtertype"
+                    class="form-control"
+                    ngModel
+                  >
+                  <option value="" disabled="disabled" selected="selected">
+                    Select Filter Type
+                  </option>
+                    <option value="HEPA">HEPA</option>
+                    <option value="Carbon">Carbon</option>
+                  </select>
+              </div>
+              <div class="form-group col m-2">
+                <label for="filterinterval">Filter Interval:</label>
+                <select
+                type="text"
+                name="filterinterval"
+                class="form-control"
+                ngModel
+              >
+              <option value="" disabled="disabled" selected="selected">
+                Select Filter Interval
+              </option>
+                <option value="3">3 Months</option>
+                <option value="6">6 Months</option>
+              </select>
+              </div>
+              <div class="form-group col m-2">
+              <label for="lastfilterdate">Last Filter Change Date:</label>
+              <input type="date" id="lastfilterdate" name="lastfilterdate">
               </div>
             </div>
             <div class="row">

@@ -1,50 +1,50 @@
 <section class="background-radial-gradient">
-    <div class="container px-4 py-5 px-md-5 text-center text-lg-start">
-      <div class="row gx-lg-5 align-items-center mb-5">
-        <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
-        <div class="row">
-          <h1 class="fw-bold heading" style="color: hsl(218, 81%, 95%)">
-            SMART HOME<br/>
-            DASHBOARD
-          </h1></div>
-          <p class="mb-0  opacity-70" style="color: hsl(218, 81%, 85%)">
+  <div class="container px-4 py-5 px-md-5 text-center text-lg-start">
+    <div class="row gx-lg-5 align-items-center mb-5">
+      <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
+      <div class="row">
+        <h1 class="fw-bold heading" style="color: hsl(218, 81%, 95%)">
+          SMART HOME<br/>
+          DASHBOARD
+        </h1></div>
+        <p class="mb-0  opacity-70" style="color: hsl(218, 81%, 85%)">
 Please log in to access your personalized smart home controls and features. 
-          </p>
-          <p class="opacity-70" style="color: hsl(218, 81%, 85%)">
-            Manage your connected devices, monitor security, and adjust settings seamlessly from one convenient platform.
         </p>
-        </div>
-  
-        <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
-          <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></div>
-          <div id="radius-shape-2" class="position-absolute shadow-5-strong"></div>
-  
-          <div class="card bg-glass">
-            <div class="card-body px-4 py-5 px-md-5">
-              <h2>WELCOME!</h2>
-              <span>Sign in to continue to Dashboard</span>
-              <br><br>
-              <form>
-                  <div class="form-outline mb-4">
-                  <input type="email" id="form3Example3" class="form-control" />
-                  <label class="form-label" for="form3Example3">Email address</label>
-                </div>
-  
+        <p class="opacity-70" style="color: hsl(218, 81%, 85%)">
+          Manage your connected devices, monitor security, and adjust settings seamlessly from one convenient platform.
+      </p>
+      </div>
+
+      <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
+        <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></div>
+        <div id="radius-shape-2" class="position-absolute shadow-5-strong"></div>
+
+        <div class="card bg-glass">
+          <div class="card-body px-4 py-5 px-md-5">
+            <h2>WELCOME!</h2>
+            <span>Sign in to continue to Dashboard</span>
+            <br><br>
+            <form (ngSubmit)="onSubmit(loginForm)" #loginForm="ngForm">
                 <div class="form-outline mb-4">
-                  <input type="password" id="form3Example4" class="form-control" />
-                  <label class="form-label" for="form3Example4">Password</label>
-                </div>
-              
-                <button type="button" class="btn btn-primary btn-block mb-4" (click)="onClick()">
-                    Sign In
-                  </button>
-              </form>
-              <span>Don’t have an account? </span>
-              <span><a routerLink="signup">Sign Up</a></span><br>
-              <span><a routerLink="">Forgot Password?</a></span>
-            </div>
+                  <input type="text" id="phoneno"  ngModel name="phoneno" class="form-control" />
+                  <label class="form-label" for="phoneno">Phone Number</label>
+              </div>
+
+              <div class="form-outline mb-4">
+                <input ngModel name="password" type="password" id="password" class="form-control" />
+                <label class="form-label" for="password">Password</label>
+              </div>
+            
+              <button type="submit" class="btn btn-primary btn-block mb-4" >
+                  Sign In
+                </button>
+            </form>
+            <span>Don’t have an account? </span>
+            <span><a routerLink="signup">Sign Up</a></span><br>
+            <span><a routerLink="">Forgot Password?</a></span>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
