@@ -1,4 +1,5 @@
 from django.db import models
+from UserAuth.models import User
 
 # Create your models here.
 location_choices = (
@@ -21,3 +22,4 @@ class SensorLocation(models.Model):
     )
     level = models.IntegerField(blank=True, null=True)
     img_name = models.TextField(blank=True, null=True)
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE)

@@ -15,9 +15,15 @@ class LocationViewset(viewsets.ViewSet):
     http_method_names = ["get", "post", "put", "delete"]
     permission_classes = [IsAuthenticated]
 
+    def get_queryset(self, request):
+        queryset = SensorLocation.objects.filter(created_by=request.user.id)
+        return queryset
+
     def create(self, request):
         try:
-            serialized = self.serializer_class(data=request.data)
+            data = request.data.copy()
+            data["created_by"] = request.user.id
+            serialized = self.serializer_class(data=data)
             if serialized.is_valid():
                 serialized.save()
 
@@ -41,7 +47,7 @@ class LocationViewset(viewsets.ViewSet):
 
     def list(self, request):
         try:
-            data = self.queryset.all()
+            data = self.get_queryset(request)
             serializer = self.serializer_class(data, many=True)
             return Response(
                 {

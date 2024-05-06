@@ -14,9 +14,9 @@ class DeviceViewset(viewsets.ViewSet):
     http_method_names = ["get", "post", "put", "delete"]
     permission_classes = [IsAuthenticated]
 
-    def get_queryset(self):
+    def get_queryset(self, request):
         location_ids = []
-        queryset = Devices.objects.all()
+        queryset = Devices.objects.filter(created_by=request.user.id)
         location_queryset = SensorLocation.objects.all()
         location_id = self.request.query_params.get("location_id", None)
         category = self.request.query_params.get("category", None)
@@ -62,7 +62,7 @@ class DeviceViewset(viewsets.ViewSet):
 
     def list(self, request):
         try:
-            data = self.get_queryset()
+            data = self.get_queryset(request)
             serializer = self.serializer_class(data, many=True)
             return Response(
                 {
