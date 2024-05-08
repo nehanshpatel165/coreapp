@@ -9,7 +9,7 @@ import { ChangeDetectorRef } from '@angular/core';
   styleUrl: './location-edit.component.scss'
 })
 export class LocationEditComponent implements OnInit {
-
+  successMessage=''
   locationInfo = {
     location_name: '',
     level: 0,
@@ -54,6 +54,8 @@ onSubmit(form: NgForm): void {
     this.locationService.updateLocation(this.locationInfo).subscribe({
       next:  (response) => {
         console.log('Location updated successfully', response);
+        const responseMsg = response.message ? response.message : '';
+        this.successMessage = `${responseMsg}`.trim();
         this.toggleToast()
         this.toggleLoading()
         setTimeout(() => {

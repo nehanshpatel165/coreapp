@@ -19,7 +19,7 @@ export class AuthService {
       tap((response: any) => {
         localStorage.setItem('accToken', response.Token.access);
         localStorage.setItem('refToken', response.Token.refresh);
-        this.scheduleTokenRefresh();
+        // this.scheduleTokenRefresh();
       })
     );
   }
@@ -59,45 +59,5 @@ export class AuthService {
        })
     );
    }
-
-//   refreshInfo={
-//     refresh:'',
-//   }
-//   // Inside AuthService
-//   refreshToken(): Observable<any> {
-   
-//     const refreshToken = localStorage.getItem('refToken');
-//     this.refreshInfo.refresh=refreshToken || ''
-//     if (!refreshToken) {
-//       console.error('No refresh token available');
-//       return throwError('No refresh token available');
-//     }
-
-//     return this.http.post("http://127.0.0.1:8000/token/refresh",this.refreshInfo).pipe(
-//       tap((response: any) => {
-//         console.log('Refresh token response:', response); // Log the response to inspect its structure
-//         if (response && response.Token) {
-//           localStorage.setItem('accToken', response.Token.access);
-//           localStorage.setItem('refToken', response.Token.refresh);
-//         } else {
-//           console.error('Unexpected response structure:', response);
-//           // Handle unexpected response structure
-//         }
-//       })
-//    );
-//  }
-
-//  scheduleTokenRefresh() {
-//     setInterval(() => {
-//       this.refreshToken().subscribe(
-//         () => console.log('Token refreshed successfully'),
-//         error => {
-//           console.error('Error refreshing token', error);
-//           // Handle token refresh failure, e.g., redirect to login
-//         }
-//       );
-//     }, 90000); // 1.5 minutes
-//  }
- 
 
 }

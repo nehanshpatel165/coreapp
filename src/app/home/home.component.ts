@@ -29,7 +29,7 @@ export type ChartOptions = {
 export class HomeComponent{
   showgraph =false
   showElgraph =false
-  selectedComponent = 'Hall'
+  selectedComponent = ''
   toggleGraph(){
     this.showgraph=!this.showgraph
   }
@@ -45,25 +45,6 @@ export class HomeComponent{
  imagePath = 'assets/locationassets/'
   constructor(private locationService: LocationService,private router : Router,private route : ActivatedRoute) {}
 
-//  ngOnInit(): void {
-//     this.locationService.getLocation().subscribe(data => {
-//       console.log(data.data);
-//       data.data.forEach((item: { location_name:string; img_name:string; level: string; id :number }) => {
-//         let location_info = {
-//           location_name: item.location_name,
-//           img_name: this.imagePath + item.img_name +'.svg',
-//           level: item.level,
-//           id:item.id,
-//         };
-//         this.location_info_array.push(location_info);
-//       });
-//     });
-//     this.filteredLocations = this.filterUniqueLocations(this.location_info_array);
-//     console.log('original array',this.location_info_array);
-//     console.log('filtered array',this.filteredLocations);
-    
-//  }
-
 ngOnInit(): void {
  this.locationService.getLocation().subscribe(data => {
     this.location_info_array = data.data.map((item: { location_name: any; img_name: string; level: any; id: any;category:'' }) => ({
@@ -75,6 +56,9 @@ ngOnInit(): void {
       
     }));
     this.filteredLocations = this.filterUniqueLocations(this.location_info_array);
+    if (this.filteredLocations.length > 0) {
+      this.selectedComponent = this.filteredLocations[0].category;
+    }
  });
 }
  
@@ -94,11 +78,5 @@ filteredLocations: any[] = [];
   return uniqueLocations;
  }
 
- // Example of watching location_info_array for changes
-//  ngOnChanges(changes: SimpleChanges) {
-//   if (changes['location_info_array']) {
-//      this.filteredLocations = this.filterUniqueLocations(this.location_info_array);
-//   }
-//  }
 }
 

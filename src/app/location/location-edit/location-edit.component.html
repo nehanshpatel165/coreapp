@@ -18,7 +18,6 @@
                  name="locationName"
                 [(ngModel)] ="locationInfo.location_name"
                 #locationName="ngModel"
-                 pattern="^[a-zA-Z][a-zA-Z0-9\s]*$"
                  required
                 />
               </div>
@@ -92,7 +91,7 @@
       <strong class="me-auto">IOT PLUS</strong>
     </c-toast-header>
     <c-toast-body>
-      <span *ngIf="visible">Location Updated Successfully</span>
+      <span *ngIf="visible">{{successMessage}}</span>
     </c-toast-body>
   </c-toast>
 </c-toaster>

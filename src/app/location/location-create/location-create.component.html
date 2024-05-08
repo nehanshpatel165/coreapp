@@ -134,7 +134,22 @@
       <strong class="me-auto">IntelliHouse</strong>
     </c-toast-header>
     <c-toast-body>
-      <span *ngIf="visible">Location Created Successfully</span>
+      <span *ngIf="visible">{{successMessage}}</span>
+    </c-toast-body>
+  </c-toast>
+</c-toaster>
+
+<!------------------------------------------------------------------------>
+<c-toaster [placement]="errorPosition" class="p-3" position="absolute">
+  <c-toast
+    (visibleChange)="onVisibleChangeError($event)"
+    [visible]="errorVisible"
+    class="align-items-center text-white border-0" color="danger">
+    <c-toast-header>
+      <strong class="me-auto">IntelliHouse</strong>
+    </c-toast-header>
+    <c-toast-body>
+      <span *ngIf="errorVisible">{{errorMessage}}</span>
     </c-toast-body>
   </c-toast>
 </c-toaster>

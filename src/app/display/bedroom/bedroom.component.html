@@ -3,7 +3,6 @@
   <h5 class="col d-flex justify-content-start">Bedroom</h5>
 </div>
 <div class="col mb-3">
-  <!-- <select class="form-select" (change)="onBedroomChange($event)" [(ngModel)]="selectedBedroom"> -->
   <select class="form-select" (change)="onBedroomChange($event)"  [(ngModel)]="selectedBedroom">
     <option *ngFor="let bedroom of bedroomLocations" value="{{ bedroom.location_name }}">{{ bedroom.location_name }}</option>
   </select>

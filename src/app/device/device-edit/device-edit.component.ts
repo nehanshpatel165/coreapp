@@ -10,6 +10,7 @@ import { DeviceService } from '../device.service';
   styleUrl: './device-edit.component.scss'
 })
 export class DeviceEditComponent {
+  successMessage=''
   deviceInfo={
     device_name:'',
     type_of_device:'',
@@ -53,6 +54,8 @@ onSubmit(form: NgForm): void {
     this.deviceService.updateDevice(this.deviceInfo).subscribe({
       next:  (response) => {
         console.log('Device created successfully', response);
+        const responseMsg = response.message ? response.message : '';
+        this.successMessage = `${responseMsg}`.trim();
         this.toggleToast()
         this.toggleLoading()
         setTimeout(() => {

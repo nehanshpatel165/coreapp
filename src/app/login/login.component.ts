@@ -10,7 +10,7 @@ import { AuthService } from '../shared/auth.service';
 export class LoginComponent {
 
   constructor(private authService:AuthService,private router:Router){}
-
+  errorMessage=''
   loginInfo={
     phone:'',
     password:'',
@@ -25,7 +25,25 @@ export class LoginComponent {
         console.log('login successfull', response);
         this.router.navigateByUrl('/dashboard/home')
       },
-      error => { console.log("Error login", error);}
+      error => { console.log("Error login", error);
+      const Error = error.error.error ? error.error.error : '';
+      this.errorMessage = `${Error}`.trim();
+      this.toggleErrorToast()
+      }
     );
   }
+   /////////////////////////////////////////////////////////////
+
+errorPosition = 'top-end';
+errorVisible = false;
+
+toggleErrorToast() {
+  this.errorVisible = !this.errorVisible;
+  // console.log('toggled toast')
+}
+
+onVisibleChangeError($event: boolean) {
+  this.errorVisible = $event;
+}
+
 }

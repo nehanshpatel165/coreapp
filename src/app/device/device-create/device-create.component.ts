@@ -11,6 +11,7 @@ import { DatePipe } from '@angular/common';
 })
 export class DeviceCreateComponent {
   isLoading=false
+  successMessage=''
   deviceInfo={
     device_name:'',
     type_of_device:'',
@@ -47,6 +48,8 @@ export class DeviceCreateComponent {
     this.deviceService.createDevice(this.deviceInfo).subscribe(
       response => {
         console.log('Device created successfully', response);
+        const responseMsg = response.message ? response.message : '';
+        this.successMessage = `${responseMsg}`.trim();
         this.toggleToast()
         this.toggleLoading()
         setTimeout(() => {

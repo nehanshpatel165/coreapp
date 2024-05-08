@@ -1,16 +1,40 @@
 <c-navbar style="width: 100vw;background-color: #01000b; box-shadow: 3px 0px 20px 0px #6366f1">
   <c-container  fluid [style]="sidebarStatus ? 'margin-left: 16vw' : ''" class="d-flex justify-content-start">
-    <!-- <button class="btn" (click)="toggleSidebar()"><img src="assets/dashboardassets/hamburger.png" alt=""></button> -->
     <button class="btn" (click)="toggleSidebar()"><img *ngIf="!sidebarStatus" src="assets/dashboardassets/open.png" alt=""><img *ngIf="sidebarStatus" src="assets/dashboardassets/close.png" alt=""></button>
-    <c-navbar-text style="color: white; justify-content: center; align-items: center; height: 100%; display: flex;" class="d-flex">SMART HOME DASHBOARD</c-navbar-text>
+    <c-navbar-text style="color: white;">SMART HOME DASHBOARD</c-navbar-text>
   </c-container>
 </c-navbar>
+
+<!-- <nav class="navbar navbar-expand-lg" style="width: 100vw;background-color: #01000b; box-shadow: 3px 0px 20px 0px #6366f1">
+  <div class="container-fluid" [style]="sidebarStatus ? 'margin-left: 16vw' : ''" >
+    <button class="btn" (click)="toggleSidebar()"><img *ngIf="!sidebarStatus" src="assets/dashboardassets/open.png" alt=""><img *ngIf="sidebarStatus" src="assets/dashboardassets/close.png" alt=""></button>
+    <a class="navbar-brand" href="#" style="color:white;">SMART HOME DASHBOARD</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:white">
+            Dropdown link
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav> -->
+
 
 <c-sidebar
   [visible]="sidebarStatus"
   #sidebar1="cSidebar" style="box-shadow: -11px 20px 30px 0px #6366f1">
 <c-sidebar-brand style="border-radius: 20px;">
-  IOT PLUS
+  IntelliHouse
 </c-sidebar-brand>
   <c-sidebar-nav [navItems]="navItems" dropdownMode="none"></c-sidebar-nav>
 </c-sidebar>

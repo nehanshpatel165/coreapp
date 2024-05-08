@@ -38,7 +38,7 @@ fetchBedroomDevices(): void {
         data = [data];
     }
     this.bedroomDevices = data[0].data; // Assign the fetched data to the bedrooms array
-    console.log('bedroom devices',this.bedroomDevices)
+    // console.log('bedroom devices',this.bedroomDevices)
  });
 }
 
@@ -53,7 +53,7 @@ fetchBedroomLocations(): void {
          location_name: item.location_name,
        }
       ));
-       console.log('bedroom locations', this.bedroomLocations);
+      //  console.log('bedroom locations', this.bedroomLocations);
        if (this.bedroomLocations.length > 0) {
         this.selectedBedroom = `${this.bedroomLocations[0].location_name}`;
       }
@@ -72,53 +72,5 @@ fetchBedroomLocations(): void {
   }
   return groupedLamps;
  }
-
-
-
-
-//////////////////////////////////////////
-
-
- 
-//  fetchDevices():void{
-//   this.deviceService.getDevice().subscribe(data => {
-//     console.log(data.data);
-//     const devicesByLocation: { [location: string]: any[] } = {};
-
-//     data.data.forEach((item: { device_name: string; type_of_device: string; data_source_id: string; id: number; location: string; desc: string }) => {
-//       let device_info = {
-//         device_name: item.device_name,
-//         type_of_device: item.type_of_device,
-//         data_source_id: item.data_source_id,
-//         id: item.id,
-//         location: item.location,
-//         description: item.desc,
-//       };
-
-//       // Group devices by location
-//       if (!devicesByLocation[item.location]) {
-//         devicesByLocation[item.location] = [];
-//       }
-//       devicesByLocation[item.location].push(device_info);
-//     });
-
-//     // Now devicesByLocation contains all devices grouped by location
-//    this.devicesByLocationArray = Object.values(devicesByLocation);
-//    this.flattenedDevicesByLocationArray = this.devicesByLocationArray.flat();
-//     console.log('flattened array:-',this.flattenedDevicesByLocationArray);
-//     // You can now use devicesByLocation to access devices by their location
-//  });
-//  }
-
-//  checkDevicesForSelectedBedroom(): void {
-//   const devicesForSelectedBedroom = this.flattenedDevicesByLocationArray.filter(device => device.location === this.selectedBedroom);
-//   this.devicesFound = devicesForSelectedBedroom.length > 0;
-//  }
-
-
-
-////////////////////////
-
-
 }
 

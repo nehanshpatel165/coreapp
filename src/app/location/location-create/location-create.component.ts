@@ -11,7 +11,8 @@ import { LocationService } from '../location.service';
 })
 export class LocationCreateComponent {
   constructor(private locationService:LocationService,private router:Router){}
-
+  successMessage=''
+  errorMessage=''
   locationInfo={
     category:'',
     level:0,
@@ -29,13 +30,18 @@ export class LocationCreateComponent {
     this.locationService.createLocation(this.locationInfo).subscribe(
       response => {
         console.log('Location created successfully', response);
+        const responseMsg = response.message ? response.message : '';
+        this.successMessage = `${responseMsg}`.trim();
         this.toggleToast()
         this.toggleLoading()
         setTimeout(() => {
           this.router.navigate(['dashboard/location-view'])// Redirect after a delay
         }, 2000);
       },error =>{
-        console.error("Error while creating the location", error)
+        console.error("Error while creating the location", error);
+        const errorMsg = error.message ? error.message : '';
+        this.errorMessage = `${errorMsg}`.trim();
+        this.toggleErrorToast()
       }) 
   }
   images = [
@@ -67,4 +73,18 @@ export class LocationCreateComponent {
  onTimerChange($event: number) {
    this.percentage = $event * 25;
  }
+
+  /////////////////////////////////////////////////////////////
+
+errorPosition = 'top-end';
+errorVisible = false;
+
+toggleErrorToast() {
+  this.errorVisible = !this.errorVisible;
+  // console.log('toggled toast')
+}
+
+onVisibleChangeError($event: boolean) {
+  this.errorVisible = $event;
+}
 }
