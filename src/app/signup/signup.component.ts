@@ -1,24 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../shared/auth.service';
-
+import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.scss'
 })
-export class SignupComponent {
+export class SignupComponent  {
   constructor(private authService:AuthService,private router:Router){}
   errorMessage=''
   signupInfo={
+    name:'',
     email:'',
     phone:'',
     password:'',
     password2:''
   }
 
+
   onSubmit(form:NgForm){
+    this.signupInfo.name=form.value.name
     this.signupInfo.email=form.value.email
     this.signupInfo.phone=form.value.phoneno
     this.signupInfo.password=form.value.password

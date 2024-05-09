@@ -25,27 +25,35 @@ Please log in to access your personalized smart home controls and features.
                 <div class="row">
                   <div class="col-md-12 mb-4">
                     <div class="form-outline">
-                      <input type="text" id="phoneno"  ngModel name="phoneno" class="form-control" />
-                      <label class="form-label" for="phoneno">Phone Number</label>
+                      <label class="form-label" for="name">Name</label>
+                      <input type="text" id="name"  ngModel name="name" class="form-control" required />
                     </div>
                   </div>
                 </div>
   
-                <div class="form-outline mb-4">
-                  <input ngModel type="email" id="email" name="email" class="form-control" />
-                  <label class="form-label" for="email">Email address</label>
+                <div class="form-outline mb-4 row">
+                  <div class="col-6">
+                    <label class="form-label" for="email">Email address</label>
+                  <input ngModel #email="ngModel" type="email" id="email" name="email" class="form-control" required email/>
+                  <p *ngIf="!email.valid && email.touched" style="color: red;"> ENTER A VALID EMAIL</p>
+                </div>
+                  <div class="col-6">
+                    <label class="form-label" for="phoneno">Phone Number</label>
+                  <input ngModel #phoneno="ngModel"  type="text" id="phoneno"  ngModel name="phoneno" class="form-control" required pattern="^((\\+91-?)|0)?[0-9]{10}$"/>
+                  <p *ngIf="!phoneno.valid && phoneno.touched" style="color: red;"> ENTER A VALID PHONE NUMBER</p>
+                </div>
                 </div>
   
                 <div class="form-outline mb-4">
-                  <input ngModel name="password" type="password" id="password" class="form-control" />
+                  <input ngModel name="password" type="password" id="password" class="form-control" required/>
                   <label class="form-label" for="password">Password</label>
                 </div>
                 
                 <div class="form-outline mb-4">
-                  <input ngModel name="password2" type="password" id="password2" class="form-control" />
+                  <input ngModel name="password2" type="password" id="password2" class="form-control" required/>
                   <label class="form-label" for="password2">Confirm Password</label>
                 </div>
-                <button type="submit" class="btn btn-primary btn-block mb-4">
+                <button type="submit" class="btn btn-primary btn-block mb-4" [disabled]="!signupForm.valid">
                   Sign up
                 </button>
               </form>

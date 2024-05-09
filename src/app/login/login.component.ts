@@ -27,7 +27,8 @@ export class LoginComponent {
       },
       error => { console.log("Error login", error);
       const Error = error.error.error ? error.error.error : '';
-      this.errorMessage = `${Error}`.trim();
+      const phoneError = error.error.error.phone ? error.error.error.phone[0] : '';
+      this.errorMessage = `${Error} ${phoneError}`.trim();
       this.toggleErrorToast()
       }
     );

@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { CardModule } from '@coreui/angular';
+import { CardModule} from '@coreui/angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ButtonModule } from '@coreui/angular';
 import { GridModule } from '@coreui/angular';
@@ -42,6 +42,7 @@ import { SignupComponent } from './signup/signup.component';
 import { AlertComponent } from '@coreui/angular';
 import { CustomInterceptor } from './shared/custom.interceptor';
 import { DatePipe } from '@angular/common';
+import { NavItemComponent } from '@coreui/angular';
 @NgModule({
   declarations: [
     AppComponent,
