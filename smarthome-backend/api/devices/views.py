@@ -34,7 +34,6 @@ class DeviceViewset(viewsets.ViewSet):
             data = request.data.copy()
             location_obj = SensorLocation.objects.get(id=request.data["location_id"])
             data["location"] = location_obj.id
-            print(request.user)
             data["created_by"] = request.user.id
             serialized = self.serializer_class(data=data)
             if serialized.is_valid():

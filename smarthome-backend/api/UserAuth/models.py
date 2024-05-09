@@ -3,35 +3,32 @@ from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
 
 
 class UserManager(BaseUserManager):
-    def create_user(self, email, phone, password=None, password2=None):
+    def create_user(self, email, phone, name, password=None, password2=None):
         """
-        Creates and saves a User with the given email, date of
-        birth and password.
+        Creates and saves a User with the given email,name and password.
         """
         if not email:
             raise ValueError("Users must have an email address")
 
-        user = self.model(
-            email=self.normalize_email(email),
-            phone=phone,
-        )
+        user = self.model(email=self.normalize_email(email), phone=phone, name=name)
 
         user.set_password(password)
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, email, phone, password=None):
+    def create_superuser(self, email, phone, name, password=None):
         """
         Creates and saves a superuser with the given email, date of
         birth and password.
         """
-        user = self.create_user(email, phone=phone, password=password)
+        user = self.create_user(email, phone=phone, name=name, password=password)
         user.is_admin = True
         user.save(using=self._db)
         return user
 
 
 class User(AbstractBaseUser):
+    name = models.CharField(max_length=25)
     email = models.EmailField(
         verbose_name="email address",
         max_length=255,
@@ -45,7 +42,7 @@ class User(AbstractBaseUser):
     objects = UserManager()
 
     USERNAME_FIELD = "phone"
-    REQUIRED_FIELDS = ["email"]
+    REQUIRED_FIELDS = ["email", "name"]
 
     def __str__(self):
         return self.phone

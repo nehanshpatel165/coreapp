@@ -7,7 +7,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ("phone", "email", "password", "password2")
+        fields = ("name", "phone", "email", "password", "password2")
         extra_kwargs = {"password": {"write_only": True}}
 
     def validate(self, obj):
@@ -37,7 +37,7 @@ class TokenRefreshSerializer(serializers.Serializer):
 class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ("id", "phone", "email")
+        fields = ("id", "name", "phone", "email")
 
 
 class UserChangePasswordSerializer(serializers.Serializer):
