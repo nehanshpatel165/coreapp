@@ -19,8 +19,9 @@ fanSwitchChecked = false;
  selectedBedroom: string=''; // Property to store the selected bedroom
  devicesByLocationArray:any[]=[]
  flattenedDevicesByLocationArray: any[] = [];
- devicesFound:boolean = true
+ devicesFound:boolean = false
   device_info_array: any;
+  filteredBedroomDevices: any[] = [];
 
  constructor(private locationService: LocationService,private deviceService:DeviceService) {}
 
@@ -28,6 +29,7 @@ fanSwitchChecked = false;
    this.fetchBedroomLocations();
     this.fetchBedroomDevices();
     // this.fetchDevices();
+    this.filteredBedroomDevices = this.bedroomDevices.filter(device => device.location.location_name === this.selectedBedroom);
  }
 
 
@@ -62,7 +64,12 @@ fetchBedroomLocations(): void {
 
  onBedroomChange(event: any): void {
    this.selectedBedroom = event.target.value;
+   this.updateFilteredDevices();
  }
+
+ updateFilteredDevices(): void {
+  this.filteredBedroomDevices = this.bedroomDevices.filter(device => device.location.location_name === this.selectedBedroom);
+}
 
  groupLampsInPairs(): any[][] {
   const lamps = this.bedroomDevices.filter(device => device.type_of_device === 'Lamp' && device.location.location_name === this.selectedBedroom);

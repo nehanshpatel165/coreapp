@@ -22,12 +22,14 @@ export class HallComponent implements OnInit{
    flattenedDevicesByLocationArray: any[] = [];
    devicesFound:boolean = true
     device_info_array: any;
+  filteredHallDevices: any[] = [];
   
    constructor(private locationService: LocationService,private deviceService:DeviceService) {}
   
    ngOnInit(): void {
      this.fetchHallLocations();
       this.fetchHallDevices();
+      this.filteredHallDevices = this.hallDevices.filter(device => device.location.location_name === this.selectedHall);
    }
   
   
@@ -62,7 +64,12 @@ export class HallComponent implements OnInit{
   
    onHallChange(event: any): void {
      this.selectedHall = event.target.value;
+   this.updateFilteredDevices();
    }
+
+   updateFilteredDevices(): void {
+    this.filteredHallDevices = this.hallDevices.filter(device => device.location.location_name === this.selectedHall);
+  }
   
    groupLampsInPairs(): any[][] {
     const lamps = this.hallDevices.filter(device => device.type_of_device === 'Lamp' && device.location.location_name === this.selectedHall);

@@ -13,6 +13,7 @@ import {
 import { PieController } from 'chart.js';
 import { Router, ActivatedRoute } from '@angular/router';
 import { LocationService } from '../location/location.service';
+import { AuthService } from '../shared/auth.service';
 
 export type ChartOptions = {
   series: ApexAxisChartSeries;
@@ -43,8 +44,9 @@ export class HomeComponent{
   //////////////////////////////////////////////////////////////
   location_info_array: any[] = []; 
  imagePath = 'assets/locationassets/'
-  constructor(private locationService: LocationService,private router : Router,private route : ActivatedRoute) {}
+  constructor(private locationService: LocationService,private router : Router,private route : ActivatedRoute,private authService:AuthService) {}
 
+  currentName=''
 ngOnInit(): void {
  this.locationService.getLocation().subscribe(data => {
     this.location_info_array = data.data.map((item: { location_name: any; img_name: string; level: any; id: any;category:'' }) => ({
@@ -60,6 +62,10 @@ ngOnInit(): void {
       this.selectedComponent = this.filteredLocations[0].category;
     }
  });
+
+ this.authService.getProfile().subscribe(data => {
+  this.currentName=data.name
+})
 }
  
  // Method to filter out duplicates based on location_name

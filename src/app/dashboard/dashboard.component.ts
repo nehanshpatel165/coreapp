@@ -1,11 +1,18 @@
-import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
 import { INavData } from '@coreui/angular'; // Adjust the import path as necessary
+import { Observable } from 'rxjs';
+import { AuthService } from '../shared/auth.service';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnInit {
+
+  constructor(private http: HttpClient, private authService:AuthService) { }
+ 
+  
   sidebarStatus=false
   toggleSidebar(){
     this.sidebarStatus=!this.sidebarStatus
@@ -61,4 +68,10 @@ navItems: INavData[] = [
   // Add more navigation items as needed
  ];
 
+ currentEmail=''
+ ngOnInit(): void {
+  this.authService.getProfile().subscribe(data => {
+    this.currentEmail=data.email
+ })
+ }
 }

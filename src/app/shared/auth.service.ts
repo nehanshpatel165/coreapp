@@ -6,7 +6,6 @@ import { Observable, tap, throwError } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  
   constructor(private http: HttpClient) {
    }
  
@@ -17,12 +16,13 @@ export class AuthService {
   login(loginInfo: any): Observable<any> {
     return this.http.post("http://127.0.0.1:8000/login-user", loginInfo).pipe(
       tap((response: any) => {
+        this.scheduleTokenRefresh();
         localStorage.setItem('accToken', response.Token.access);
         localStorage.setItem('refToken', response.Token.refresh);
-        // this.scheduleTokenRefresh();
       })
     );
   }
+
   scheduleTokenRefresh() {
     setInterval(() => {
        const currentRefreshToken = localStorage.getItem('refToken');
@@ -35,7 +35,7 @@ export class AuthService {
            // Handle token refresh failure, e.g., redirect to login
          }
        );
-    }, 120000); // 1.5 minutes 1,20,000
+    }, 60000); // 1.5 minutes 1,20,000
    }
 
    refreshToken(refreshInfo: any): Observable<any> {
@@ -59,5 +59,10 @@ export class AuthService {
        })
     );
    }
+
+   getProfile(): Observable<any> {
+    return this.http.get("http://127.0.0.1:8000/user-profile");
+  }
+
 
 }

@@ -23,12 +23,14 @@ export class KitchenComponent implements OnInit{
    flattenedDevicesByLocationArray: any[] = [];
    devicesFound:boolean = true
     device_info_array: any;
+  filteredKitchenDevices: any[] = [];
   
    constructor(private locationService: LocationService,private deviceService:DeviceService) {}
   
    ngOnInit(): void {
      this.fetchKitchenLocations();
       this.fetchKitchenDevices();
+      this.filteredKitchenDevices = this.kitchenDevices.filter(device => device.location.location_name === this.selectedKitchen);
    }
   
   
@@ -63,8 +65,13 @@ export class KitchenComponent implements OnInit{
   
    onKitchenChange(event: any): void {
      this.selectedKitchen = event.target.value;
+   this.updateFilteredDevices();
    }
-  
+
+   updateFilteredDevices(): void {
+    this.filteredKitchenDevices = this.kitchenDevices.filter(device => device.location.location_name === this.selectedKitchen);
+  }
+
    groupLampsInPairs(): any[][] {
     const lamps = this.kitchenDevices.filter(device => device.type_of_device === 'Lamp' && device.location.location_name === this.selectedKitchen);
     const groupedLamps = [];
