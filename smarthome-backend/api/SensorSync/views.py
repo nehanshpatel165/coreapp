@@ -6,6 +6,7 @@ from rest_framework.response import Response
 from devices.models import Devices
 from rest_framework.permissions import IsAuthenticated
 import pyrebase
+from SensorSync.script import send_sms
 
 config = {
     "apiKey": "AIzaSyC068zjRaaKmePnSe-QSpRSbrt1zPzpt-I",
@@ -53,5 +54,28 @@ class SolarPanelViewSet(viewsets.ModelViewSet):
         except Exception as e:
             return Response(
                 {"error": str(e), "status": status.HTTP_400_BAD_REQUEST},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+
+class SmsIntegrationViewSet(viewsets.ModelViewSet):
+    http_method_names = ["post"]
+    permission_classes = [IsAuthenticated]
+
+    def create(self, request):
+        phone = request.user.phone
+        response = send_sms(phone)
+
+        if response == 100:
+            return Response(
+                {"message": "SMS sent successfully", "status": status.HTTP_200_OK},
+                status=status.HTTP_200_OK,
+            )
+        else:
+            return Response(
+                {
+                    "message": "Something went wrong",
+                    "status": status.HTTP_400_BAD_REQUEST,
+                },
                 status=status.HTTP_400_BAD_REQUEST,
             )
