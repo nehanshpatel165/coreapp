@@ -19,9 +19,15 @@
                   ngModel
                   required
                 >
+                <option
+                value=""
+                disabled="disabled"
+                selected="selected"
+             >
+                Select Action
+             </option>
                   <option
                     value="more"
-                    selected
                   >
                     If Temperature goes more than 
                   </option>
@@ -35,6 +41,7 @@
                   name="temp"
                   ngModel
                   #temp="ngModel"
+                  placeholder="30"
                 />
               </div>
               <div class="form-group col-4 m-2">
@@ -46,9 +53,15 @@
                 required
                 cSelect
               >
+              <option
+              value=""
+              disabled="disabled"
+              selected="selected"
+           >
+              Select Response
+           </option>
                 <option
                   value="sms"
-                  selected
                 >
                   Send A SMS 
                 </option>

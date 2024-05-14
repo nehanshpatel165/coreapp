@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 })
 export class ActionComponent {
 
+  selectedAction = 'more';
   // constructor(private http: HttpClient, private authService:AuthService,private router :Router) { }
   // userInfo={
   //   name:'',
