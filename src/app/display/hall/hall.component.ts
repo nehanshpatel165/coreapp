@@ -41,6 +41,7 @@ export class HallComponent implements OnInit{
       }
       this.hallDevices = data[0].data; // Assign the fetched data to the bedrooms array
       console.log('bedroom devices',this.hallDevices)
+    this.updateFilteredDevices()
    });
   }
   

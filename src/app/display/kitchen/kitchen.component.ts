@@ -28,8 +28,8 @@ export class KitchenComponent implements OnInit{
   
    ngOnInit(): void {
      this.fetchKitchenLocations();
-     this.filteredKitchenDevices = this.kitchenDevices.filter(device => device.location.location_name === this.selectedKitchen);
      this.fetchKitchenDevices();
+     this.filteredKitchenDevices = this.kitchenDevices.filter(device => device.location.location_name === this.selectedKitchen);
       // this.fetchDevices();
    }
   
@@ -42,6 +42,7 @@ export class KitchenComponent implements OnInit{
       }
       this.kitchenDevices = data[0].data; // Assign the fetched data to the bedrooms array
       // console.log('bedroom devices',this.bedroomDevices)
+    this.updateFilteredDevices()
    });
   }
   

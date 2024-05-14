@@ -42,6 +42,7 @@ fetchBedroomDevices(): void {
     }
     this.bedroomDevices = data[0].data; // Assign the fetched data to the bedrooms array
     // console.log('bedroom devices',this.bedroomDevices)
+    this.updateFilteredDevices()
  });
 }
 
