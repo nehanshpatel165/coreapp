@@ -31,7 +31,7 @@
 
 <hr>
 
-<ng-container *ngIf="filteredKitchenDevices.length>0; else noDevicesFound">
+<ng-container  *ngIf="filteredKitchenDevices.length>0; else noDevicesFound">
 <div class="container">
 <ng-container *ngFor="let lampGroup of groupLampsInPairs(); let i = index">
 <div class="row">
@@ -114,7 +114,7 @@
 </div> 
 </ng-container>
 
-<ng-template  #noDevicesFound>
+<ng-template #noDevicesFound>
   <div class="container align-items-center justify-content-center">
     <!-- <br> -->
     <!-- <br> -->

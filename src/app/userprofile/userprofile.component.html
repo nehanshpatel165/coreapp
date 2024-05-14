@@ -1,0 +1,90 @@
+<c-card class="example-card custom-card">
+    <c-card-header>
+    <h5 cCardTitle class="m-2">User Profile</h5>
+    </c-card-header>
+    <c-card-body>
+     
+    <form (ngSubmit)="onSubmit(userForm)" #userForm="ngForm">
+        <div class="container">
+          <div class="row">
+            <div class="form-group m-2 col">
+              <label for="email">Email:</label>
+              <div class="input-group">
+                <input
+                  type="email"
+                  class="form-control"
+                  name="email"
+                  [(ngModel)]="userInfo.email"
+                  #email="ngModel"
+                  pattern="^[a-zA-Z][a-zA-Z0-9\s]*$"
+                  required
+                />
+              </div>
+            </div>
+            <div class="form-group col m-2">
+              <label for="name">Name:</label>
+              <input
+                type="text"
+                class="form-control"
+                name="name"
+                [(ngModel)]="userInfo.name"
+                #name="ngModel"
+              />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group col m-2">
+                <label for="phone">Phone:</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  name="phone"
+                  [(ngModel)]="userInfo.phone"
+                  #phone="ngModel"
+                />
+              </div>
+          </div>
+          <div class="row">
+            <div class="form-group m-2 col">
+              <button
+                type="submit"
+                class="btn btn-primary"
+                *ngIf="!isLoading"
+              >
+                Update
+              </button>
+
+              <button *ngIf="isLoading" cButton class="m-1" disabled>
+                <c-spinner  size="sm" variant="grow"></c-spinner>
+                Updating
+              </button>
+
+              <button
+              class="btn btn-primary m-2"
+            >
+              Cancel
+            </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </c-card-body>
+  </c-card>
+
+  <!---------------------------------------------------------------------------------------------------------------->
+
+<c-toaster [placement]="position" class="p-3" position="absolute">
+  <c-toast
+    (timer)="onTimerChange($event)"
+    (visibleChange)="onVisibleChange($event)"
+    [visible]="visible"
+    class="align-items-center text-white border-0" color="primary">
+    <c-toast-header>
+      <strong class="me-auto">IntelliHouse</strong>
+    </c-toast-header>
+    <c-toast-body>
+      <span *ngIf="visible">Profile Updated</span>
+    </c-toast-body>
+  </c-toast>
+</c-toaster>

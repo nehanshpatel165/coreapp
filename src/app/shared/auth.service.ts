@@ -64,5 +64,9 @@ export class AuthService {
     return this.http.get("http://127.0.0.1:8000/user-profile");
   }
 
+  updateProfile(userInfo: any): Observable<any> {
+    return this.http.put(`http://127.0.0.1:8000/user-profile`, userInfo);
+  }
+
 
 }

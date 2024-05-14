@@ -43,6 +43,9 @@ import { AlertComponent } from '@coreui/angular';
 import { CustomInterceptor } from './shared/custom.interceptor';
 import { DatePipe } from '@angular/common';
 import { NavItemComponent } from '@coreui/angular';
+import { AvatarModule } from '@coreui/angular';
+import { UserprofileComponent } from './userprofile/userprofile.component';
+import { ActionComponent } from './action/action.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -63,6 +66,8 @@ import { NavItemComponent } from '@coreui/angular';
     KitchenComponent,
     BedroomComponent,
     SignupComponent,
+    UserprofileComponent,
+    ActionComponent,
   ],
   imports: [
     BrowserModule,
@@ -87,6 +92,7 @@ import { NavItemComponent } from '@coreui/angular';
     PopoverModule,
     ModalModule,
     AlertComponent,
+    AvatarModule
   ],
   providers: [ { provide: HTTP_INTERCEPTORS, useClass: CustomInterceptor, multi: true },DatePipe],
   bootstrap: [AppComponent]

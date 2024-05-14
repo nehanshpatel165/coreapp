@@ -9,7 +9,6 @@ import { DeviceService } from '../../device/device.service';
   styleUrl: './kitchen.component.scss'
 })
 export class KitchenComponent implements OnInit{
-
   min = 0;
   max = 3;
   value = 2;
@@ -21,16 +20,17 @@ export class KitchenComponent implements OnInit{
    selectedKitchen: string=''; // Property to store the selected bedroom
    devicesByLocationArray:any[]=[]
    flattenedDevicesByLocationArray: any[] = [];
-   devicesFound:boolean = true
+   devicesFound:boolean = false
     device_info_array: any;
-  filteredKitchenDevices: any[] = [];
+    filteredKitchenDevices: any[] = [];
   
    constructor(private locationService: LocationService,private deviceService:DeviceService) {}
   
    ngOnInit(): void {
      this.fetchKitchenLocations();
-      this.fetchKitchenDevices();
-      this.filteredKitchenDevices = this.kitchenDevices.filter(device => device.location.location_name === this.selectedKitchen);
+     this.filteredKitchenDevices = this.kitchenDevices.filter(device => device.location.location_name === this.selectedKitchen);
+     this.fetchKitchenDevices();
+      // this.fetchDevices();
    }
   
   
@@ -50,8 +50,8 @@ export class KitchenComponent implements OnInit{
   fetchKitchenLocations(): void {
     this.locationService.getLocation().subscribe(data => {
       console.log(data.data)
-         const kitchenLocations = data.data.filter((item: { category: string; }) => item.category === 'Kitchen');
-         this.kitchenLocations = kitchenLocations.map((item: { location_name: any; img_name: string; level: any; id: any; category: any; }) => ({
+         const bedroomLocations = data.data.filter((item: { category: string; }) => item.category === 'Kitchen');
+         this.kitchenLocations = bedroomLocations.map((item: { location_name: any; img_name: string; level: any; id: any; category: any; }) => ({
            category: item.category,
            location_name: item.location_name,
          }
@@ -65,13 +65,13 @@ export class KitchenComponent implements OnInit{
   
    onKitchenChange(event: any): void {
      this.selectedKitchen = event.target.value;
-   this.updateFilteredDevices();
+     this.updateFilteredDevices();
    }
-
+  
    updateFilteredDevices(): void {
     this.filteredKitchenDevices = this.kitchenDevices.filter(device => device.location.location_name === this.selectedKitchen);
   }
-
+  
    groupLampsInPairs(): any[][] {
     const lamps = this.kitchenDevices.filter(device => device.type_of_device === 'Lamp' && device.location.location_name === this.selectedKitchen);
     const groupedLamps = [];
@@ -80,8 +80,4 @@ export class KitchenComponent implements OnInit{
     }
     return groupedLamps;
    }
-
-
-
-
 }

@@ -10,6 +10,8 @@ import { DeviceCreateComponent } from './device/device-create/device-create.comp
 import { DeviceListComponent } from './device/device-list/device-list.component';
 import { DeviceEditComponent } from './device/device-edit/device-edit.component';
 import { SignupComponent } from './signup/signup.component';
+import { UserprofileComponent } from './userprofile/userprofile.component';
+import { ActionComponent } from './action/action.component';
 
 const routes: Routes = [
   // {path:'',component:DashboardComponent},
@@ -23,6 +25,8 @@ const routes: Routes = [
     {path:'location-create',component:LocationCreateComponent},
     {path:'location-view',component:LocationViewComponent},
     {path: 'location-view/locations/edit/:id', component: LocationEditComponent },
+    {path: 'user-profile',component:UserprofileComponent},
+    {path: 'action',component:ActionComponent}
   ]},
   {path:'signup',component:SignupComponent},
   {path:'login/signup',component:SignupComponent}

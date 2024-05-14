@@ -4,7 +4,11 @@
      <button class="btn" (click)="toggleSidebar()"><img *ngIf="!sidebarStatus" src="assets/dashboardassets/open.png" alt=""><img *ngIf="sidebarStatus" src="assets/dashboardassets/close.png" alt=""></button>
     <c-navbar-text style="color: white;">SMART HOME DASHBOARD</c-navbar-text>
   </div>
-    <a href="" style="color: white;">{{currentEmail}}</a>
+  <div>
+  <!-- <button class="me-2 btn"><img src="assets/dashboardassets/bell.png" alt=""></button> -->
+  <c-avatar src="assets/dashboardassets/bell.png" class="me-3" style="cursor: pointer;" routerLink="action"></c-avatar>
+  <c-avatar color="warning" textColor="white" style="cursor: pointer;" routerLink="user-profile" >{{currentName}}</c-avatar>
+</div>
   </c-container>
 </c-navbar>
 

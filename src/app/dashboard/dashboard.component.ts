@@ -69,9 +69,11 @@ navItems: INavData[] = [
  ];
 
  currentEmail=''
+ currentName=''
  ngOnInit(): void {
   this.authService.getProfile().subscribe(data => {
     this.currentEmail=data.email
+    this.currentName=data.name.substring(0,1).toUpperCase()
  })
  }
 }

@@ -1,0 +1,65 @@
+<c-card class="example-card custom-card">
+    <c-card-header>
+    <h5 cCardTitle class="m-2">Events and actions</h5>
+    </c-card-header>
+    <c-card-body>
+        <p cCardText class="m-2">
+            Set different actions for specific events that might occur to this device
+        </p>
+     
+    <form>
+    <!-- <form (ngSubmit)="onSubmit(actionForm)" #actionForm="ngForm"> -->
+        <div class="container">
+            <div class="row">
+              <div class="form-group m-2 col-4">
+                <select
+                  type="text"
+                  name="actions"
+                  class="form-select"
+                  ngModel
+                  required
+                >
+                  <option
+                    value="more"
+                    selected
+                  >
+                    If Temperature goes more than 
+                  </option>
+                  <option value="less">If Temperature goes less than </option>
+                </select>
+              </div>
+              <div class="form-group col-2 m-2">
+                <input
+                  type="number"
+                  class="form-control"
+                  name="temp"
+                  ngModel
+                  #temp="ngModel"
+                />
+              </div>
+              <div class="form-group col-4 m-2">
+                <select
+                type="text"
+                name="media"
+                class="form-select"
+                ngModel
+                required
+                cSelect
+              >
+                <option
+                  value="sms"
+                  selected
+                >
+                  Send A SMS 
+                </option>
+                <option value="mail">Send A Mail</option>
+              </select>
+              </div>
+            </div>
+            <div class="row m-2">
+            <button type="submit" class="btn btn-primary col-2"> Confirm</button>
+            </div>
+          </div>
+      </form>
+    </c-card-body>
+  </c-card>

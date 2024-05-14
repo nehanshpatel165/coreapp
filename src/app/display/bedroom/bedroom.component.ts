@@ -27,9 +27,10 @@ fanSwitchChecked = false;
 
  ngOnInit(): void {
    this.fetchBedroomLocations();
-    this.fetchBedroomDevices();
-    // this.fetchDevices();
+   this.fetchBedroomDevices();
+   // this.fetchDevices();
     this.filteredBedroomDevices = this.bedroomDevices.filter(device => device.location.location_name === this.selectedBedroom);
+      
  }
 
 
