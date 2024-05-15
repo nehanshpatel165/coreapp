@@ -1,0 +1,130 @@
+<div class="row">
+    <div class="col">
+    <h5 class="col d-flex justify-content-start">Bathroom</h5>
+  </div>
+  <div class="col mb-3">
+    <select class="form-select" (change)="onBathroomChange($event)"  [(ngModel)]="selectedBathroom">
+      <option *ngFor="let bathroom of bathroomLocations" value="{{ bathroom.location_name }}">{{ bathroom.location_name }}</option>
+    </select>
+  </div>
+  </div>
+  
+  <div class="row">
+    <div class="col" >
+      <img cImg fluid height="150" rounded src="assets/locationassets/bathtub.svg" thumbnail width="180" />
+    </div>
+    <div class="col ">
+      <div class=" d-flex justify-content-center mb-2 infodiv">
+     Temp:30&#176;
+      </div>
+      <div class="d-flex row justify-content-center mb-2 infodiv">
+        Humidity:45%
+      </div>
+      <div class="d-flex row justify-content-center mb-2 infodiv" *ngIf="fanSwitchChecked">
+        Fan On
+      </div>
+      <div class="d-flex row justify-content-center mb-2 infodiv" *ngIf="!fanSwitchChecked">
+        Fan Off
+      </div>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <ng-container *ngIf="filteredBathroomDevices.length>0; else noDevicesFound">
+  <div class="container">
+  <ng-container *ngFor="let lampGroup of groupLampsInPairs(); let i = index">
+  <div class="row">
+    <div *ngFor="let lamp of lampGroup" class="col-6">
+      <c-card class="mb-3 bg-gradient" [ngStyle]="{ 'max-width.px': 180 }" style="background-color: #34139e;">
+        <c-row class="g-0">
+          <c-col [md]="3">
+            <img [cCardImg] src="./assets/lamp.png" class="mt-2" style="height: 70px; width: 70px; object-fit: scale-down" />
+          </c-col>
+          <c-card-body cCol [md]="9">
+            <h5 cCardTitle style="color: white; font-weight: bold">{{lamp.device_name}}</h5>
+            <div class="form-check form-switch d-flex justify-content-center">
+              <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault-{{i}}" />
+              <label class="form-check-label" for="flexSwitchCheckDefault-{{i}}"></label>
+            </div>
+          </c-card-body>
+        </c-row>
+      </c-card>
+    </div>
+  </div>
+  </ng-container>
+  <ng-container *ngFor="let device of bathroomDevices";>
+  <ng-container *ngIf="device.location.location_name === selectedBathroom && device.type_of_device === 'Fan'">
+  <c-row>
+    <c-col class="col-6">
+      <c-card
+        class="mb-3 bg-gradient"
+        [ngStyle]="{ 'max-width.px': 400 }"
+        style="background-color: #34139e"
+      >
+        <c-row class="g-0">
+          <c-col [md]="4">
+            <img
+              [cCardImg]
+              src="./assets/fan.png"
+              class="d-flex align-items-center"
+              style="height: 90px; width: 80px; object-fit: scale-down"
+            />
+          </c-col>
+          <c-card-body cCol [md]="8">
+            <h5 cCardTitle style="color: white; font-weight: bold">Fan</h5>
+            <div class="form-check form-switch d-inline-flex justify-content-center">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                role="switch"
+                id="flexSwitchCheckDefault"
+                ngModel
+                name="fanSwitch"
+                [(ngModel)]="fanSwitchChecked"
+                
+              />
+              <label
+                class="form-check-label"
+                for="flexSwitchCheckDefault"
+              ></label>
+            </div>
+          </c-card-body>
+        </c-row>
+      </c-card>
+    </c-col>
+  
+    <c-col class="col-6">
+      <c-card
+        class="mb-3 bg-gradient"
+        [ngStyle]="{ 'max-width.px': 400 }"
+        style="background-color: #34139e"
+      >
+        <c-row class="g-0">
+          <c-card-body cCol [md]="10">
+            <label cLabel for="customRange2"><h5 style="color: white; font-weight: bold;">Speed {{value}} </h5></label>
+            <input [(ngModel)]="value" cFormControl id="customRange2" [max]="max" [min]="min" type="range" name="value" [disabled]="!fanSwitchChecked" />
+          </c-card-body>
+        </c-row>
+      </c-card>
+    </c-col>
+  </c-row>  
+  </ng-container>
+  </ng-container>
+  </div> 
+  </ng-container>
+  
+  
+  <ng-template  #noDevicesFound>
+  <div class="container align-items-center justify-content-center">
+    <!-- <br> -->
+    <!-- <br> -->
+    <c-alert color="danger" style="color: black;">
+      No Devices Found <br>
+      <a routerLink="/dashboard/device-create" style="color:black;">Click Here To Add Devices</a>
+    </c-alert>
+  </div>
+  <!-- <br> -->
+  <!-- <br> -->
+  </ng-template>
+  

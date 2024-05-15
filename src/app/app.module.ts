@@ -46,6 +46,7 @@ import { NavItemComponent } from '@coreui/angular';
 import { AvatarModule } from '@coreui/angular';
 import { UserprofileComponent } from './userprofile/userprofile.component';
 import { ActionComponent } from './action/action.component';
+import { BathroomComponent } from './display/bathroom/bathroom.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -68,6 +69,7 @@ import { ActionComponent } from './action/action.component';
     SignupComponent,
     UserprofileComponent,
     ActionComponent,
+    BathroomComponent,
   ],
   imports: [
     BrowserModule,
