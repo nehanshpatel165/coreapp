@@ -68,5 +68,8 @@ export class AuthService {
     return this.http.put(`http://127.0.0.1:8000/user-profile`, userInfo);
   }
 
-
+  logout(){
+    localStorage.removeItem('accToken')
+    localStorage.removeItem('refToken')
+  }
 }

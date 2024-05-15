@@ -12,12 +12,12 @@ import { DeviceEditComponent } from './device/device-edit/device-edit.component'
 import { SignupComponent } from './signup/signup.component';
 import { UserprofileComponent } from './userprofile/userprofile.component';
 import { ActionComponent } from './action/action.component';
-
+import { AuthGuard } from './shared/auth.guard';
 const routes: Routes = [
   // {path:'',component:DashboardComponent},
   {path:'',component:LoginComponent},
   {path:'login',component:LoginComponent}, 
-  {path:'dashboard',component:DashboardComponent, children:[
+  {path:'dashboard',component:DashboardComponent,  canActivate: [AuthGuard],children:[
     {path:'home',component:HomeComponent},
     {path:'device-create',component:DeviceCreateComponent},
     {path:'device-list',component:DeviceListComponent},

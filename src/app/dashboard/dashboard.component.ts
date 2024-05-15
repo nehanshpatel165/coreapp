@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { INavData } from '@coreui/angular'; // Adjust the import path as necessary
 import { Observable } from 'rxjs';
 import { AuthService } from '../shared/auth.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -10,8 +11,11 @@ import { AuthService } from '../shared/auth.service';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private http: HttpClient, private authService:AuthService) { }
- 
+  constructor(private http: HttpClient, private authService:AuthService,private router:Router) { }
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/login']);
+  }
   
   sidebarStatus=false
   toggleSidebar(){
@@ -63,7 +67,8 @@ navItems: INavData[] = [
   {
     name:'Logout',
     url:'/login',
-    icon:'fa-solid fa-right-from-bracket'
+    icon:'fa-solid fa-right-from-bracket',
+
   }
   // Add more navigation items as needed
  ];
@@ -76,4 +81,6 @@ navItems: INavData[] = [
     this.currentName=data.name.substring(0,1).toUpperCase()
  })
  }
+
+
 }
