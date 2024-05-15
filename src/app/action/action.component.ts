@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-action',
@@ -6,42 +8,21 @@ import { Component } from '@angular/core';
   styleUrl: './action.component.scss'
 })
 export class ActionComponent {
+  selectedAction: string='';
+  temperature: number=0;
+  responseType: string='';
 
-  selectedAction = 'more';
-  // constructor(private http: HttpClient, private authService:AuthService,private router :Router) { }
-  // userInfo={
-  //   name:'',
-  //   email:'',
-  //   phone:0,
-  // }
+  constructor(private http: HttpClient) {}
 
-  // ngOnInit(): void {
-  //  this.authService.getProfile().subscribe(data => {
-  //    this.userInfo.email=data.email
-  //    this.userInfo.name=data.name
-  //    this.userInfo.phone=data.phone
-  // })
-  // }
+  onSubmit(form:NgForm): void {
+    if (this.selectedAction === 'more' && this.temperature > 25 && this.responseType === 'sms') {
+      this.http.post('http://127.0.0.1:8000/send-sms/',{})
+       .subscribe(
+        response => console.log(response),
+        error => console.error(error)
+       );
+    }
+  }
 
-  // onSubmit(form: NgForm): void {
-  //     this.userInfo.email=form.value.email;
-  //     this.userInfo.phone=form.value.phone;
-  //     this.userInfo.name=form.value.name;
-  //     this.authService.updateProfile(this.userInfo).subscribe({
-  //       next:  (response) => {
-  //         console.log('User Profile successfully updated', response);
-  //         const responseMsg = response.message ? response.message : '';
-  //         // this.successMessage = `${responseMsg}`.trim();
-  //         this.toggleToast()
-  //         this.toggleLoading()
-  //         setTimeout(() => {
-  //           this.isLoading=false
-  //         }, 2000);
-  //       },
-  //       error: (error) => {
-  //         console.error("Error while updating the device", error);
-  //       }
-  //     });
-  // }
 
 }
