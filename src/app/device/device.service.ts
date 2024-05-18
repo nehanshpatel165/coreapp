@@ -36,7 +36,9 @@ export class DeviceService {
     return this.http.get(this.apiUrl, { params });
  }
 
-
+ getDHTdata() : Observable<any>{
+  return this.http.get('http://127.0.0.1:8000/dht11-data/');
+ }
 
 
 

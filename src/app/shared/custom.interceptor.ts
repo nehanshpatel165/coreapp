@@ -13,7 +13,8 @@ export class CustomInterceptor implements HttpInterceptor{
         'http://127.0.0.1:8000/devices/',
         'http://127.0.0.1:8000/user-profile',
         'http://127.0.0.1:8000/token/refresh',
-        'http://127.0.0.1:8000/send-sms/'
+        'http://127.0.0.1:8000/send-sms/',
+        'http://127.0.0.1:8000/dht11-data/'
     ];
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {

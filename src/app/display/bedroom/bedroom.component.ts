@@ -22,6 +22,8 @@ fanSwitchChecked = false;
  devicesFound:boolean = false
   device_info_array: any;
   filteredBedroomDevices: any[] = [];
+  temp: any;
+  hum: any
 
  constructor(private locationService: LocationService,private deviceService:DeviceService) {}
 
@@ -30,6 +32,9 @@ fanSwitchChecked = false;
    this.fetchBedroomDevices();
    // this.fetchDevices();
     this.filteredBedroomDevices = this.bedroomDevices.filter(device => device.location.location_name === this.selectedBedroom);
+
+    /////
+   this.dhtData()
       
  }
 
@@ -81,5 +86,16 @@ fetchBedroomLocations(): void {
   }
   return groupedLamps;
  }
-}
 
+ dhtData(){
+  this.deviceService.getDHTdata().subscribe(data =>{
+    this.temp = data.data[0].Data.temp
+    this.hum = data.data[0].Data.hum
+    
+    setTimeout(()=>{
+      this.dhtData()
+    },15000)
+  })
+ }
+
+}
