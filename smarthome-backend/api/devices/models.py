@@ -6,7 +6,7 @@ device_choices = (
     ("Fan", "fan"),
     ("Lamp", "lamp"),
     ("AC", "AC"),
-    ("Heater", "heater"),
+    ("DHT11", "dht11"),
     ("Solar Panel", "solar_panel"),
     ("Air Purifier", "air_purifier"),
     ("Others", "Others"),

@@ -6,9 +6,9 @@ def send_sms(phone):
     url = "https://sms77io.p.rapidapi.com/sms"
 
     payload = {
-        "to": "+919723873082",
-        "p": "64AAA196f79d887592F16f034Faf1B313647c615b10DDaa9c0eE929d60512D46",
-        "text": "Hello nehansh , sms send karne ki api mil gayi",
+        "to": "+91" + phone,
+        "p": "b4441B8278375176D7164b4bdC2d274fc0Bb5b8690bB61d379192211ABCb8dC7",
+        "text": "Hello User , your room temperature is more than safe temperature. Please check it.",
     }
     headers = {
         "content-type": "application/x-www-form-urlencoded",
