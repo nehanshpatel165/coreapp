@@ -35,8 +35,7 @@ class DHT11Serializer(serializers.Serializer):
         location_data = LoacationSerializer(instance.location).data
         # Merge location_data into the representation of the DevicesSerializer
         representation = super().to_representation(instance)
-        representation["location"] = location_data["location_name"]
-        print(self.context["temp"], self.context["hum"])
+        representation["location"] = location_data
         representation["Data"] = {
             "temp": self.context["temp"],
             "hum": self.context["hum"],

@@ -22,7 +22,7 @@ class DeviceViewset(viewsets.ViewSet):
         category = self.request.query_params.get("category", None)
         if location_id is not None:
             queryset = queryset.filter(location=location_id)
-        elif category is not None:
+        if category is not None:
             location_obj = location_queryset.filter(category=category)
             location_ids = [location.id for location in location_obj]
             queryset = queryset.filter(location__in=location_ids)

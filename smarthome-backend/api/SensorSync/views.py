@@ -67,7 +67,11 @@ class DHT11ViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self, request):
         devices = Devices.objects.filter(created_by=request.user.id)
-        queryset = devices.filter(type_of_device="DHT11")
+        dht11_devices = devices.filter(type_of_device="DHT11")
+
+        location_id = self.request.query_params.get("location_id", None)
+        if location_id is not None:
+            queryset = dht11_devices.filter(location=location_id)
         return queryset
 
     def list(self, request, format=None):
@@ -100,7 +104,7 @@ class SmsIntegrationViewSet(viewsets.ModelViewSet):
 
     def create(self, request):
         phone = request.user.phone
-        response = send_sms(phone)
+        response = send_sms(phone, request)
 
         if response == 100:
             return Response(
