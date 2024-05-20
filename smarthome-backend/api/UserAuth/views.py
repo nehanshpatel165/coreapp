@@ -129,7 +129,6 @@ class UserChangePasswordView(APIView):
 
 
 class UserGenerateOtpView(APIView):
-    permission_classes = [IsAuthenticated]
 
     def post(self, request, format=None):
         response = script.send_otp(request)
@@ -137,7 +136,6 @@ class UserGenerateOtpView(APIView):
 
 
 class UserVerifyOtpView(APIView):
-    permission_classes = [IsAuthenticated]
 
     def post(self, request, format=None):
         otp_id = request.data.get("otp_id")
