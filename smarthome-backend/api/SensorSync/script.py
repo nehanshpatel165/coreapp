@@ -36,8 +36,8 @@ def send_otp(request):
     }
     headers = {
         "content-type": "application/json",
-        "Token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJhdXRoLWJhY2tlbmQ6YXBwIiwic3ViIjoiYzAyZTFjNzAtMzBhNC00OTViLThiMjMtMDdiNTFlOTVmNzJkIn0.EtVBgH9xQEiArXa57QAgyXk6MsKYDjLMuTzNAUjl5CY",
-        "X-RapidAPI-Key": "50945cfd56msh90b92d67b4582fap1deb46jsn4c8ad42d0e02",
+        "Token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJhdXRoLWJhY2tlbmQ6YXBwIiwic3ViIjoiNTEwM2QzNGEtYWU3NC00N2EzLWEyZjktYmZiNjkxMTlhMDE5In0.V1uYDJvsWx2pzTMNQp3xLsSoeWTsXQ4DYPUh0QS4KuE",
+        "X-RapidAPI-Key": "8a17ad2c03msh27c8ff6b80ab732p11b710jsn67007d065820",
         "X-RapidAPI-Host": "d7-verify.p.rapidapi.com",
     }
 
@@ -53,8 +53,8 @@ def verify_otp(request, otp_id, otp):
     payload = {"otp_id": otp_id, "otp_code": otp}
     headers = {
         "content-type": "application/json",
-        "Token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE2MTc1NzgzLCJpYXQiOjE3MTYxNzIxODMsImp0aSI6ImZhMzk1MzVlYTRjNzQ1YTliMzZhYjBlNDRjNDI2ZDE2IiwidXNlcl9pZCI6Mn0.JLgFSMg6e00b4xf71U1o343OLjysbZhPR5dSMqj-E7w",
-        "X-RapidAPI-Key": "50945cfd56msh90b92d67b4582fap1deb46jsn4c8ad42d0e02",
+        "Token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJhdXRoLWJhY2tlbmQ6YXBwIiwic3ViIjoiNTEwM2QzNGEtYWU3NC00N2EzLWEyZjktYmZiNjkxMTlhMDE5In0.V1uYDJvsWx2pzTMNQp3xLsSoeWTsXQ4DYPUh0QS4KuE",
+        "X-RapidAPI-Key": "8a17ad2c03msh27c8ff6b80ab732p11b710jsn67007d065820",
         "X-RapidAPI-Host": "d7-verify.p.rapidapi.com",
     }
 
