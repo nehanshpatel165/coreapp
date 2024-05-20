@@ -1,6 +1,7 @@
 import datetime
 from django.shortcuts import render
 from .serializers import SolarPanelSerializer, DHT11Serializer
+from location.models import SensorLocation
 from rest_framework import viewsets, status
 from rest_framework.response import Response
 from devices.models import Devices
@@ -67,11 +68,10 @@ class DHT11ViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self, request):
         devices = Devices.objects.filter(created_by=request.user.id)
-        dht11_devices = devices.filter(type_of_device="DHT11")
-
+        queryset = devices.filter(type_of_device="DHT11")
         location_id = self.request.query_params.get("location_id", None)
         if location_id is not None:
-            queryset = dht11_devices.filter(location=location_id)
+            queryset = queryset.filter(location_id=location_id)
         return queryset
 
     def list(self, request, format=None):
@@ -119,3 +119,23 @@ class SmsIntegrationViewSet(viewsets.ModelViewSet):
                 },
                 status=status.HTTP_400_BAD_REQUEST,
             )
+
+
+class LocationFilterDHT11(viewsets.ModelViewSet):
+    http_method_names = ["get"]
+
+    def get_queryset(self, request):
+        queryset = SensorLocation.objects.filter(created_by=request.user.id)
+        queryset = queryset.filter(type_of_device="DHT11")
+        return queryset
+
+    def list(self, request):
+        data = self.get_queryset(request)
+        return Response(
+            {
+                "Message": "Data fetched successfully",
+                "Data": data,
+                "status": status.HTTP_200_OK,
+            },
+            status=status.HTTP_200_OK,
+        )

@@ -26,6 +26,7 @@ class SolarPanelSerializer(serializers.Serializer):
 class DHT11Serializer(serializers.Serializer):
 
     device_name = serializers.CharField(max_length=100)
+    type_of_device = serializers.CharField(max_length=100)
     data_source_id = serializers.CharField(max_length=100)
     installation_date = serializers.DateField()
 

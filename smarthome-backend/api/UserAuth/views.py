@@ -8,6 +8,7 @@ from .serializers import (
     UserProfileSerializer,
     UserChangePasswordSerializer,
 )
+from SensorSync import script
 
 from django.contrib.auth import authenticate
 from rest_framework_simplejwt.tokens import RefreshToken
@@ -125,3 +126,21 @@ class UserChangePasswordView(APIView):
         return Response(
             {"msg": "Password Changed Successfuly"}, status=status.HTTP_200_OK
         )
+
+
+class UserGenerateOtpView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request, format=None):
+        response = script.send_otp(request)
+        return Response(response)
+
+
+class UserVerifyOtpView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request, format=None):
+        otp_id = request.data.get("otp_id")
+        otp = request.data.get("otp")
+        response = script.verify_otp(request, otp_id, otp)
+        return Response(response)

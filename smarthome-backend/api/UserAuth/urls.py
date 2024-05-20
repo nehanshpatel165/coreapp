@@ -11,4 +11,5 @@ urlpatterns = [
         name="change-password",
     ),
     path("token/refresh", views.CustomTokenRefreshView.as_view(), name="token_refresh"),
+    path("user-otp", views.UserGenerateOtpView.as_view(), name="user-otp"),
 ]
